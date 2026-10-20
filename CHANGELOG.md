@@ -1,11 +1,12 @@
 # Changelog
 
-## Unveröffentlicht
+## 0.1.0b1 – 2026-10-20
 
-- Projektgerüst nach dem Muster von Streckenwacht: uv, Ruff, pytest, CI, Dependabot.
-- Marke: Ausrufezeichen mit Wachlicht in Signalrot, Slogan „Was wichtig ist, meldet sich.“ (`docs/BRAND.md`); Bilder für Home Assistant, GitHub und Web aus `tools/brand/build.mjs`.
-- Datenquellen geprüft (`docs/ENTWICKLUNG.md` Abschnitt 2), bereinigte Fixtures für `headerapp`, `homepage`, `news` und `news?regions=1`.
-- Abruf und Auswertung ohne HA-Importe: `tagesschau.py` (Client und Parser für `headerapp`, `homepage`, `news`), `model.py` (`NewsItem`), `keywords.py` (Stichwortwächter mit `*` und Ausschlüssen), `changes.py` (neue Meldungen erkennen, quellenübergreifend nach Artikelpfad).
-- README mit Einrichtung, Stichwort-Syntax, Entitäten, Blueprints und Beispielen; Issue-Vorlagen.
-- Blueprints: Eilmeldung aufs Handy, Eilmeldung ansagen, neue Meldung eines Nachrichtenwächters aufs Handy – mit Ruhezeiten, ohne erneutes Senden nach Neustart oder Ausfall.
-- Home-Assistant-Integration: Eintrag „Eilwacht“ mit Eilmeldung (Event, Binärsensor, Sensor) und Nachrichtenwächter als Unter-Einträge (Bundesländer, Stichworte; Event, letzte Meldung, Meldungen der letzten 24 h). Diagnose mit der zuletzt aufgezeichneten echten Eilmeldung. CI mit hassfest, HACS-Prüfung (sobald öffentlich) und Test gegen HA 2026.3; Release-ZIP-Workflow.
+Erste Vorab-Version zum Testen.
+
+- **Eilmeldungen** der Tagesschau: Event „Eilmeldung“, Binärsensor „Eilmeldung aktiv“, Sensor „Letzte Eilmeldung“. Abruf jede Minute, die Startseite der Tagesschau-API dient als zweite Quelle, falls die erste ausfällt.
+- **Nachrichtenwächter** für ein oder mehrere Bundesländer oder bundesweit, auf Wunsch mit Stichworten (`Warnstreik`, `Streik*`, `*streik`, `-Fußball`): Event „Neue Meldung“, Sensor „Letzte Meldung“, Sensor „Meldungen (24 h)“.
+- **Blueprints:** Eilmeldung aufs Handy, Eilmeldung ansagen, neue Meldung eines Nachrichtenwächters aufs Handy – mit Ruhezeiten, ohne erneutes Senden nach Neustart oder Ausfall.
+- Hinweis unter *Reparaturen*, wenn eine Quelle längere Zeit nicht erreichbar ist.
+- Der Diagnose-Download enthält die zuletzt aufgezeichnete Eilmeldung im Rohformat. Das Format laufender Eilmeldungen ist noch nicht an einer echten Meldung überprüft – wer eine erlebt, hilft mit der Diagnose-Datei sehr.
+- Getestet mit Home Assistant 2026.3 und 2026.10.

@@ -8,7 +8,7 @@
 [![CI](https://github.com/eilwacht/integration/actions/workflows/ci.yml/badge.svg)](https://github.com/eilwacht/integration/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-F5A623.svg)](LICENSE)
 
-> ℹ️ **In Entwicklung.** Noch nicht veröffentlicht. Rückmeldungen sind willkommen – siehe [Fehler melden](#fehler-melden).
+> ℹ️ **Vorab-Version zum Testen.** Die erste Version ist ein Beta-Release: In HACS bei Eilwacht über ⋮ → **Neu herunterladen** den Schalter **Beta-Versionen anzeigen** einschalten. Rückmeldungen sind sehr willkommen – siehe [Fehler melden](#fehler-melden).
 
 Eilwacht bringt Eilmeldungen und Regionalnachrichten der Tagesschau in dein Home Assistant – nicht als Nachrichtenleser, sondern als Auslöser: für eine Push-Nachricht, eine Ansage in der Küche oder ein Lichtsignal. Nachrichtenwächter melden dir neue Meldungen aus deinem Bundesland, auf Wunsch nur die mit bestimmten Stichworten wie „Warnstreik“ oder „S-Bahn“.
 
