@@ -31,12 +31,13 @@ class BreakingSample:
         """Load the stored sample, if any."""
         self.data = await self._store.async_load()
 
-    def record(self, response: Any) -> None:
-        """Keep the response if it differs from the stored one."""
+    def record(self, response: Any) -> bool:
+        """Keep the response if it differs from the stored one; True if it did."""
         if self.data and self.data.get("response") == response:
-            return
+            return False
         self.data = {"recorded": dt_util.utcnow().isoformat(), "response": response}
         self._store.async_delay_save(lambda: self.data or {}, SAVE_DELAY)
+        return True
 
     @staticmethod
     async def async_remove(hass: HomeAssistant) -> None:

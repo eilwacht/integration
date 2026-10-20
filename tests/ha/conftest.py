@@ -49,13 +49,15 @@ class FakeClient:
         self.homepage: list[NewsItem] | Exception = []
         self.news: dict[tuple[int, ...], list[NewsItem]] | Exception = {}
         self.last_headerapp: Any = None
+        # Raw headerapp response to report instead of one built from `breaking`.
+        self.raw: Any = None
         self.calls: list[str] = []
 
     async def async_breaking_news(self) -> list[NewsItem]:
         self.calls.append("headerapp")
         if isinstance(self.breaking, Exception):
             raise self.breaking
-        self.last_headerapp = (
+        self.last_headerapp = self.raw or (
             {"breakingNews": [{"id": i.id, "headline": i.title} for i in self.breaking]}
             if self.breaking
             else {"liveStream": {}}

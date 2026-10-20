@@ -219,6 +219,19 @@ async def test_recorded_sample_in_diagnostics(
     assert diagnostics["watches"][next(iter(entry.subentries))]["title"] == "BW"
 
 
+async def test_unknown_alert_format_is_recorded_and_logged(
+    hass: HomeAssistant, client: FakeClient, caplog: pytest.LogCaptureFixture
+) -> None:
+    entry = make_entry()
+    await setup(hass, entry)
+    # The parser finds nothing usable, e.g. after a format change.
+    client.raw = {"breakingNews": [{"headlineText": "Neu", "link": "/x.html"}]}
+    await refresh_breaking(hass, entry)
+    await refresh_breaking(hass, entry)
+    assert entry.runtime_data.breaking.sample.data["response"] == client.raw
+    assert caplog.text.count("breaking news in an unknown format") == 1
+
+
 # --- News watches ---------------------------------------------------------------
 
 

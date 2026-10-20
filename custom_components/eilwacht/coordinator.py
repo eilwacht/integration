@@ -154,8 +154,7 @@ class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData])
             self._record_failure(repr(err))
         else:
             self._record_success()
-            if fast:
-                self.sample.record(self.client.last_headerapp)
+            self._record_sample(fast)
 
         await self._async_poll_homepage(now)
         if fast is None and self._homepage_at is None:
@@ -168,6 +167,21 @@ class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData])
             active.setdefault(item.key, item)
         new = self._tracker.update(active.values())
         return BreakingData(active=tuple(active.values()), new=tuple(new))
+
+    def _record_sample(self, parsed: list[NewsItem]) -> None:
+        """Keep every response with an alert, even one the parser cannot read.
+
+        The alert format is not verified yet; a response that holds
+        "breakingNews" but yields no alert is exactly the one to record.
+        """
+        raw = self.client.last_headerapp
+        if not isinstance(raw, dict) or not raw.get("breakingNews"):
+            return
+        if self.sample.record(raw) and not parsed:
+            _LOGGER.warning(
+                "tagesschau.de reports breaking news in an unknown format; "
+                "please report it with the diagnostics download"
+            )
 
     async def _async_poll_homepage(self, now: datetime) -> None:
         interval = HOMEPAGE_FALLBACK_INTERVAL if self.failures else HOMEPAGE_INTERVAL
