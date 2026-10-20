@@ -139,10 +139,13 @@ class TagesschauClient:
 
     def __init__(self, session: aiohttp.ClientSession) -> None:
         self._session = session
+        # Last raw headerapp response, kept for recording a real alert.
+        self.last_headerapp: Any = None
 
     async def async_breaking_news(self) -> list[NewsItem]:
         """Running breaking news alerts (fast source)."""
-        return parse_headerapp(await self._get_json(HEADERAPP_URL))
+        self.last_headerapp = await self._get_json(HEADERAPP_URL)
+        return parse_headerapp(self.last_headerapp)
 
     async def async_homepage(self) -> list[NewsItem]:
         """Homepage items: top news and one regional item per state."""

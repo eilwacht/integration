@@ -27,6 +27,33 @@ jobs:
       - name: Test
         run: uv run pytest
 
-  # Added together with custom_components/eilwacht (they fail without it):
-  # hassfest, hacs/action and the compat job for the oldest promised HA version,
-  # as in Streckenwacht.
+  hassfest:
+    # Home Assistant's own validation of manifest.json, strings and translations.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: home-assistant/actions/hassfest@master
+
+  hacs:
+    # HACS repository requirements (hacs.json, structure, description, topics).
+    # HACS cannot read a private repository: runs once the repo is public.
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hacs/action@22.5.0
+        with:
+          category: integration
+
+  compat:
+    # Oldest Home Assistant version promised in hacs.json / README (2026.3).
+    # Not locked: installs that version's test harness into a separate venv.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.2.0
+      - name: Install Home Assistant 2026.3
+        run: |
+          uv venv --python 3.14 .venv-compat
+          uv pip install --python .venv-compat "pytest-homeassistant-custom-component==0.13.320"
+      - name: Test
+        run: .venv-compat/bin/python -m pytest --durations=5

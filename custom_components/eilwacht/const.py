@@ -20,10 +20,22 @@ NEWS_URL: Final = "https://www.tagesschau.de/api2u/news"
 
 REQUEST_TIMEOUT: Final = 30
 
-# api2u allows at most 60 requests per hour for the whole instance.
+# api2u allows at most 60 requests per hour for the whole instance: at most
+# 30 (homepage while headerapp fails) + 8 (news, by state and national).
 HEADERAPP_INTERVAL: Final = timedelta(minutes=1)
 HOMEPAGE_INTERVAL: Final = timedelta(minutes=10)
+HOMEPAGE_FALLBACK_INTERVAL: Final = timedelta(minutes=2)
 NEWS_INTERVAL: Final = timedelta(minutes=15)
+
+# Failed polls in a row before a repair issue is raised (about 30 minutes).
+FAILURES_BEFORE_ISSUE: Final = {"headerapp": 30, "news": 2}
+
+SUBENTRY_WATCH: Final = "watch"
+CONF_REGIONS: Final = "regions"
+CONF_KEYWORDS: Final = "keywords"
+
+EVENT_BREAKING: Final = "breaking_news"
+EVENT_NEWS: Final = "news"
 
 # api2u "regions" parameter: federal states numbered alphabetically.
 REGIONS: Final[dict[int, str]] = {

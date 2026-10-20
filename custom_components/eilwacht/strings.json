@@ -1,0 +1,129 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Eilwacht",
+        "description": "Breaking news from tagesschau.de work right away. Afterwards, add news watches for your federal state via “Add news watch”.\n\nSource: tagesschau.de, for private use only. Eilwacht is not affiliated with ARD."
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Eilwacht is already set up. Add news watches there."
+    }
+  },
+  "config_subentries": {
+    "watch": {
+      "entry_type": "News watch",
+      "initiate_flow": {
+        "user": "Add news watch",
+        "reconfigure": "Change news watch"
+      },
+      "step": {
+        "user": {
+          "title": "Add news watch",
+          "description": "Announces new items from the chosen federal states – optionally only those mentioning certain keywords.",
+          "data": {
+            "name": "Name",
+            "regions": "Federal states",
+            "keywords": "Keywords"
+          },
+          "data_description": {
+            "name": "For example “Stuttgart”. Used in entity names.",
+            "regions": "Regional news of these states. “Germany-wide” adds national news without a state.",
+            "keywords": "Optional, comma-separated. “Warnstreik” matches the whole word, “Streik*” and “*streik” also longer words, “-Fußball” excludes. Empty: every item."
+          }
+        },
+        "reconfigure": {
+          "title": "Change news watch",
+          "description": "Announces new items from the chosen federal states – optionally only those mentioning certain keywords.",
+          "data": {
+            "name": "Name",
+            "regions": "Federal states",
+            "keywords": "Keywords"
+          },
+          "data_description": {
+            "name": "For example “Stuttgart”. Used in entity names.",
+            "regions": "Regional news of these states. “Germany-wide” adds national news without a state.",
+            "keywords": "Optional, comma-separated. “Warnstreik” matches the whole word, “Streik*” and “*streik” also longer words, “-Fußball” excludes. Empty: every item."
+          }
+        }
+      },
+      "error": {
+        "name_required": "Please enter a name.",
+        "no_regions": "Choose at least one federal state."
+      },
+      "abort": {
+        "reconfigure_successful": "The news watch was changed."
+      }
+    }
+  },
+  "selector": {
+    "regions": {
+      "options": {
+        "0": "Germany-wide (national news)",
+        "1": "Baden-Württemberg",
+        "2": "Bayern",
+        "3": "Berlin",
+        "4": "Brandenburg",
+        "5": "Bremen",
+        "6": "Hamburg",
+        "7": "Hessen",
+        "8": "Mecklenburg-Vorpommern",
+        "9": "Niedersachsen",
+        "10": "Nordrhein-Westfalen",
+        "11": "Rheinland-Pfalz",
+        "12": "Saarland",
+        "13": "Sachsen",
+        "14": "Sachsen-Anhalt",
+        "15": "Schleswig-Holstein",
+        "16": "Thüringen"
+      }
+    }
+  },
+  "issues": {
+    "source_failed": {
+      "title": "{source} is unreachable",
+      "description": "Eilwacht failed to fetch {source} {failures} times in a row. The last loaded data is kept. This message disappears automatically once fetching works again.\n\nError: {error}"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "breaking_active": {
+        "name": "Breaking news active"
+      }
+    },
+    "event": {
+      "breaking": {
+        "name": "Breaking news",
+        "state_attributes": {
+          "event_type": {
+            "state": {
+              "breaking_news": "Breaking news"
+            }
+          }
+        }
+      },
+      "news": {
+        "name": "New item",
+        "state_attributes": {
+          "event_type": {
+            "state": {
+              "news": "New item"
+            }
+          }
+        }
+      }
+    },
+    "sensor": {
+      "last_breaking": {
+        "name": "Last breaking news"
+      },
+      "last_news": {
+        "name": "Last item"
+      },
+      "news_24h": {
+        "name": "Items (24 h)",
+        "unit_of_measurement": "items"
+      }
+    }
+  }
+}

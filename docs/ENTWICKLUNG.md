@@ -49,6 +49,15 @@ Ein Coordinator je Endpunkt für alle Config-Entries – sonst vervielfacht jede
 
 ## 3. Entscheidungen
 
+### Aufbau in Home Assistant
+
+- **Ein Eintrag** „Eilwacht“ (`single_config_entry`), ohne Einstellungen. Gerät „Eilwacht“: `event` Eilmeldung (`breaking_news`), `binary_sensor` Eilmeldung aktiv, `sensor` Letzte Eilmeldung (bleibt nach dem Ende und über Neustarts erhalten).
+- **Unter-Einträge** „Nachrichtenwächter“ (`watch`): Name, Bundesländer (`0` = bundesweit, nur Meldungen ohne Bundesland), Stichworte. Gerät je Wächter: `event` Neue Meldung (`news`), `sensor` Letzte Meldung, `sensor` Meldungen (24 h).
+- **Coordinators:** `BreakingCoordinator` (headerapp jede Minute, homepage alle 10 bzw. bei Ausfall alle 2 Minuten, beide Quellen nach Artikelpfad zusammengeführt) und `NewsCoordinator` (eine Abfrage für alle Bundesländer aller Wächter, eine bundesweite nur bei Bedarf). Nur ein `NewsCoordinator`, wenn es Wächter gibt.
+- **Nichts doppelt melden:** Beim Start wird der Bestand still gelernt (`changes.py`). Meldungen, die während eines Neustarts erscheinen, werden deshalb nicht nachgemeldet.
+- **Repairs:** headerapp nach 30 Fehlversuchen in Folge, news nach 2.
+- **Echte Eilmeldung festhalten:** `sample.py` speichert die letzte headerapp-Antwort mit Eilmeldung (Store `eilwacht.breaking_sample`); sie steht im Diagnose-Download.
+
 - Gleiche Grundarchitektur wie Streckenwacht: UI-Config-Flow, `DataUpdateCoordinator`, async, `async_get_clientsession(hass)`, reine Logik ohne HA-Importe, Fehler pro Quelle über Repairs.
 - **Kein gemeinsames Python-Paket mit Streckenwacht.** Ein PyPI-Paket als `requirements` wäre eine weitere Veröffentlichung mit eigener Versionierung; die Überschneidung (Coordinator-Gerüst, Event-Muster) ist dafür zu klein. Muster werden übernommen, nicht geteilt.
 - README nur auf Deutsch (Zielgruppe ist deutschsprachig; Streckenwacht pflegt zwei vollständige READMEs à ≈ 29 KB). Ein kurzer englischer Absatz für das HACS-Verzeichnis genügt.

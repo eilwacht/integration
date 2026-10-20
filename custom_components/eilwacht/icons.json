@@ -1,0 +1,31 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "breaking_active": {
+        "default": "mdi:alert-circle-outline",
+        "state": {
+          "on": "mdi:alert-circle"
+        }
+      }
+    },
+    "event": {
+      "breaking": {
+        "default": "mdi:alert-decagram"
+      },
+      "news": {
+        "default": "mdi:newspaper-variant-outline"
+      }
+    },
+    "sensor": {
+      "last_breaking": {
+        "default": "mdi:alert-decagram-outline"
+      },
+      "last_news": {
+        "default": "mdi:newspaper-variant-outline"
+      },
+      "news_24h": {
+        "default": "mdi:counter"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "domain": "eilwacht",
+  "name": "Eilwacht",
+  "codeowners": [
+    "@n42net"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/eilwacht/integration",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/eilwacht/integration/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.0.0"
+}
