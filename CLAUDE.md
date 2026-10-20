@@ -6,13 +6,14 @@ Home-Assistant-Custom-Integration (HACS), Domain `eilwacht`. Eilmeldungen und Re
 
 - **`docs/ENTWICKLUNG.md`** – Umfang, verifizierte Eigenheiten der Datenquellen, Entscheidungen, Risiken, offene Fragen. Vor größeren Arbeiten lesen.
 - **`CHANGELOG.md`** – Projektstand und Versionsgeschichte. Hier stehen keine Statusberichte.
+- **`docs/BRAND.md`** – Farben, Schrift, Bilddateien, Regenerierung. Brand-Bilder nicht verändern oder neu erzeugen, außer auf ausdrücklichen Wunsch.
 
 ## Verbindliche Entscheidungen
 
 - Nur Tagesschau (`json/headerapp` + `api2u`). Kein allgemeines RSS, keine anderen Sender, keine Volltexte oder Bilder.
 - Nur UI-Config-Flow, kein YAML. `DataUpdateCoordinator`, durchgängig async, `async_get_clientsession(hass)`. Ein Coordinator je Endpunkt, gemeinsam für alle Config-Entries.
 - Höchstens 60 api2u-Abrufe pro Stunde für die gesamte Instanz (Abfrageplan in `docs/ENTWICKLUNG.md` Abschnitt 2).
-- Lizenz MIT. Geplantes Repo: `github.com/eilwacht/integration` (noch nicht angelegt). `codeowners`: `@n42net`.
+- Lizenz MIT. Repo: `github.com/eilwacht/integration` (privat bis zur ersten Veröffentlichung). `codeowners`: `@n42net`.
 
 ## Arbeitsregeln
 
