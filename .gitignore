@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+pytest-cache-files-*/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editor / OS
+CLAUDE.local.md
+.claude/settings.local.json
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Lokale HA-Testkonfiguration
+config/
+*.log
+
+# Rohantworten der Tagesschau: Inhalte dürfen nicht veröffentlicht werden.
+# Ins Repo kommen nur bereinigte Fixtures (tools/fetch_fixtures.py, siehe
+# docs/ENTWICKLUNG.md Abschnitt 4).
+raw/
+
+# Browser automation logs (Playwright MCP)
+.playwright-mcp/

@@ -1,0 +1,18 @@
+{
+ "headerapp": {
+  "source": "https://www.tagesschau.de/json/headerapp",
+  "stored": "2026-10-20T15:50:12+00:00"
+ },
+ "homepage": {
+  "source": "https://www.tagesschau.de/api2u/homepage",
+  "stored": "2026-10-20T15:50:12+00:00"
+ },
+ "news": {
+  "source": "https://www.tagesschau.de/api2u/news",
+  "stored": "2026-10-20T15:50:13+00:00"
+ },
+ "news_bw": {
+  "source": "https://www.tagesschau.de/api2u/news?regions=1",
+  "stored": "2026-10-20T15:50:13+00:00"
+ }
+}

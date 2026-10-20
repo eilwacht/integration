@@ -1,0 +1,417 @@
+{
+ "news": [
+  {
+   "sophoraId": "video-1669372",
+   "externalId": "6eca4184-d355-4d92-8c0c-bb936b1ec095",
+   "title": "Text 1",
+   "date": "2026-10-20T17:44:04.274+02:00",
+   "teaserImage": {
+    "copyright": "ARD",
+    "alttext": "Text 2",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/7c2e438e-69ff-45d2-a36f-7cb917787331/AAABoVn76kE/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "Spaziergänge"
+    },
+    {
+     "tag": "Freundschaft"
+    },
+    {
+     "tag": "Text 3"
+    },
+    {
+     "tag": "Einsamkeit"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/video-1669372.json?view=hasChanged&lastKnown=B25BBBDBD2DB6488289EB6505BE392AC",
+   "tracking": [
+    {
+     "sid": "app.multimedia.video.video-1669372",
+     "src": "tagesschau",
+     "ctp": "SEGMENT",
+     "pdt": "20261020T1744",
+     "otp": "video",
+     "cid": "video-1669372",
+     "pti": "Leipzig_Neue_Freundschaften_statt_Social_Media__tagesthemen_mittendrin",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false,
+     "av_air_time": "2026-10-20T17:00:00.000+02:00"
+    },
+    {
+     "assetid": "video-1669372",
+     "program": "tagesschau24",
+     "title": "Leipzig_Neue_Freundschaften_statt_Social_Media__tagesthemen_mittendrin",
+     "length": "217",
+     "c2": "p2,N",
+     "c5": "p5,https://www.tagesschau.de/video/video-1669372.html",
+     "c7": "p7,video-1669372",
+     "c8": "p8,217",
+     "c9": "p9,tagesschau24__Leipzig_Neue_Freundschaften_statt_Social_Media__tagesthemen_mittendrin__20.10.2026_1700",
+     "c10": "p10,Das_Erste",
+     "c12": "p12,content",
+     "c16": "p16,ARD_Information/ARD_Livestream",
+     "c18": "p18,N",
+     "type_nielsen": "content",
+     "type": "nielsen"
+    }
+   ],
+   "streams": {
+    "h264s": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1212-2400.webs.h264.mp4",
+    "h264m": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1212-2400.webm.h264.mp4",
+    "h264xl": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1212-2400.webxl.h264.mp4",
+    "adaptivestreaming": "https://adaptive.tagesschau.de/i/video/2026/1020/TV-20261020-1212-2400.,webl.h264,webs.h264,webm.h264,webxl.h264,webxxl.h264,.mp4.csmil/master.m3u8"
+   },
+   "alttext": "Text 4",
+   "type": "video"
+  },
+  {
+   "sophoraId": "swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102",
+   "externalId": "tagesschau_fm-story-swr-5f586dff-eebf-353c-826e-189701c0c46a",
+   "title": "Text 5",
+   "date": "2026-10-20T17:44:00.000+02:00",
+   "teaserImage": {
+    "copyright": "SWR",
+    "alttext": "Text 6",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "SWR"
+    },
+    {
+     "tag": "Baden-Württemberg"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102.json?view=hasChanged&lastKnown=13E7EBA363FDC472B561B922FF1AAB07",
+   "tracking": [
+    {
+     "sid": "app.inland.regional.badenwuerttemberg.swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102",
+     "src": "swr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1746",
+     "otp": "meldung",
+     "cid": "swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102",
+     "pti": "13-Jaehriger_spielt_mitten_im_Bodensee_Klavier",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Baden-Württemberg",
+   "firstSentence": "Text 7",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 8",
+    "copyright": "SWR",
+    "alttext": "Text 9",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/25ddb5d7-0642-43c2-b5bd-208e8d783190/AAABlaqAk6o/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/badenwuerttemberg/swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/badenwuerttemberg/swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102.html",
+   "shareURL": "https://www.swr.de/swraktuell/baden-wuerttemberg/friedrichshafen/13-jaehriger-spielt-klavier-im-bodensee-auf-teufelstisch-100.html",
+   "geotags": [],
+   "regionId": 1,
+   "regionIds": [
+    1
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "swr-lidl-ruft-forellenfilets-wegen-listeriengefahr-zurueck-100",
+   "externalId": "tagesschau_fm-story-swr-7c2fe013-bbc0-3118-a088-2e4b3d805e16",
+   "title": "Text 10",
+   "date": "2026-10-20T17:43:23.000+02:00",
+   "teaserImage": {
+    "title": "Text 11",
+    "copyright": "Text 12",
+    "alttext": "Text 13",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/9ec08121-5257-46cd-8c52-06163e3868ea/AAABoVn_kqA/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "SWR"
+    },
+    {
+     "tag": "Rheinland-Pfalz"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/swr-lidl-ruft-forellenfilets-wegen-listeriengefahr-zurueck-100.json?view=hasChanged&lastKnown=027D66610FC03CE3B5DBDE652504CAA2",
+   "tracking": [
+    {
+     "sid": "app.inland.regional.rheinlandpfalz.swr-lidl-ruft-forellenfilets-wegen-listeriengefahr-zurueck-100",
+     "src": "swr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1748",
+     "otp": "meldung",
+     "cid": "swr-lidl-ruft-forellenfilets-wegen-listeriengefahr-zurueck-100",
+     "pti": "Lidl_ruft_Forellenfilets_wegen_Listeriengefahr_zurueck",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Rheinland-Pfalz",
+   "firstSentence": "Text 14",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 15",
+    "copyright": "SWR",
+    "alttext": "Text 16",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/25ddb5d7-0642-43c2-b5bd-208e8d783190/AAABlaqAk6o/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/rheinlandpfalz/swr-lidl-ruft-forellenfilets-wegen-listeriengefahr-zurueck-100.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/rheinlandpfalz/swr-lidl-ruft-forellenfilets-wegen-listeriengefahr-zurueck-100.html",
+   "shareURL": "https://www.swr.de/swraktuell/lidl-ruft-forellenfilets-wegen-listeriengefahr-zurueck-100.html",
+   "geotags": [],
+   "regionId": 11,
+   "regionIds": [
+    11
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "holzminden-126",
+   "externalId": "ed9c0d99-c42f-4904-9e57-4e141897cc36",
+   "title": "Text 17",
+   "date": "2026-10-20T17:42:27.899+02:00",
+   "teaserImage": {
+    "copyright": "Text 18",
+    "alttext": "Text 19",
+    "imageVariants": {
+     "1x1-144": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.ndr.de/image/d826791a-e1e5-46e5-a3b5-c52d91945db9/AAABnnSCJyo/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/holzminden-126.json?view=hasChanged&lastKnown=97A7BD21338F6D5C2CECCE3DFB6AAD7F",
+   "tracking": [
+    {
+     "sid": "app.ndrde.nachrichten.niedersachsen.braunschweig_harz_goettingen.holzminden-126",
+     "src": "ndr",
+     "ctp": "DEFAULT",
+     "pdt": "20261020T1742",
+     "otp": "meldung",
+     "cid": "holzminden-126",
+     "pti": "Holzminden_30-Jaehriger_wird_durch_Messerstiche_schwer_verletzt",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Niedersachsen",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 20",
+    "copyright": "NDR",
+    "alttext": "Text 21",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/e33737ad-2315-4104-91e5-c515497253df/AAABlaqAfv8/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/nachrichten/niedersachsen/braunschweig_harz_goettingen/holzminden-126.json",
+   "detailsweb": "https://www.ndr.de/nachrichten/niedersachsen/braunschweig_harz_goettingen/holzminden-30-jaehriger-wird-durch-messerstiche-schwer-verletzt,holzminden-126.html",
+   "shareURL": "https://www.ndr.de/nachrichten/niedersachsen/braunschweig_harz_goettingen/holzminden-30-jaehriger-wird-durch-messerstiche-schwer-verletzt,holzminden-126.html",
+   "geotags": [],
+   "regionId": 9,
+   "regionIds": [
+    9
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "bruecke-mittelherwigsdorf-116",
+   "externalId": "7eb36d59-7fd5-43f5-8764-ebec1c46cc2e",
+   "title": "Text 22",
+   "date": "2026-10-20T17:41:54.295+02:00",
+   "teaserImage": {
+    "title": "Text 23",
+    "copyright": "Text 24",
+    "alttext": "Text 25",
+    "imageVariants": {
+     "1x1-144": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.mdr.de/image/3aeadf82-d59a-4ecf-a284-32c314512f92/AAABoVnUTcg/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/bruecke-mittelherwigsdorf-116.json?view=hasChanged&lastKnown=E6540886728895C17678D93194FF16F7",
+   "tracking": [
+    {
+     "sid": "app.mdrde.nachrichten.sachsen.bautzen.goerlitz-weisswasser-zittau.bruecke-mittelherwigsdorf-116",
+     "src": "mdr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1741",
+     "otp": "meldung",
+     "cid": "bruecke-mittelherwigsdorf-116",
+     "pti": "Neue_Bruecke_ueber_die_Bahnstrecke_in_Mittelherwigsdorf_nimmt_Gestalt_an",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Sachsen",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 26",
+    "copyright": "MDR",
+    "alttext": "Text 27",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/df8ccca6-d8bb-440e-98fa-addb2fa8dcdc/AAABlxb28lM/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/nachrichten/sachsen/bautzen/goerlitz-weisswasser-zittau/bruecke-mittelherwigsdorf-116.json",
+   "detailsweb": "https://www.mdr.de/nachrichten/sachsen/bautzen/goerlitz-weisswasser-zittau/ersatzneubau-freigabe-2026,bruecke-mittelherwigsdorf-116.html",
+   "shareURL": "https://www.mdr.de/nachrichten/sachsen/bautzen/goerlitz-weisswasser-zittau/ersatzneubau-freigabe-2026,bruecke-mittelherwigsdorf-116.html",
+   "geotags": [],
+   "regionId": 13,
+   "regionIds": [
+    13
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "eu-arktis-strategie-102",
+   "externalId": "cc8085ae-1758-4b31-8ded-3af63e5fe159",
+   "title": "Text 28",
+   "date": "2026-10-20T17:38:35.916+02:00",
+   "teaserImage": {
+    "copyright": "dpa",
+    "alttext": "Text 29",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/470bd8f8-aa98-476d-ae88-dd71f84774b3/AAABoVnONxw/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "Arktis"
+    },
+    {
+     "tag": "EU"
+    },
+    {
+     "tag": "Grönland"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/eu-arktis-strategie-102.json?view=hasChanged&lastKnown=0BC530F3E65F74AF87B2D7CADC3C5E23",
+   "tracking": [
+    {
+     "sid": "app.ausland.europa.eu-arktis-strategie-102",
+     "src": "tagesschau",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1738",
+     "otp": "meldung",
+     "cid": "eu-arktis-strategie-102",
+     "pti": "EU_legt_neue_Arktis-Strategie_vor_und_verstaerkt_militaerische_Praesenz",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Text 30",
+   "firstSentence": "Text 31",
+   "images": [],
+   "details": "https://www.tagesschau.de/api2u/ausland/europa/eu-arktis-strategie-102.json",
+   "detailsweb": "https://www.tagesschau.de/ausland/europa/eu-arktis-strategie-102.html",
+   "shareURL": "https://www.tagesschau.de/ausland/europa/eu-arktis-strategie-102.html",
+   "geotags": [],
+   "regionId": 0,
+   "regionIds": [],
+   "ressort": "ausland",
+   "breakingNews": false,
+   "type": "story"
+  }
+ ],
+ "regional": [],
+ "newStoriesCountLink": "",
+ "type": "Text 32",
+ "nextPage": "https://www.tagesschau.de/api2u/news?date=261019"
+}

@@ -1,0 +1,2214 @@
+{
+ "news": [
+  {
+   "sophoraId": "investitionsgipfel-114",
+   "externalId": "4672da4a-7aa0-4e00-830b-8000a3dd122c",
+   "title": "Text 1",
+   "date": "2026-10-20T14:23:47.761+02:00",
+   "teaserImage": {
+    "copyright": "Text 2",
+    "alttext": "Text 3",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/ad8a2b38-3812-45ba-b972-af3fb90e33e6/AAABoVkEifs/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "Wirtschaft"
+    },
+    {
+     "tag": "Investitionen"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/investitionsgipfel-114.json?view=hasChanged&lastKnown=8585EE63FA767A3072994898D579D94C",
+   "content": [
+    {
+     "value": "Text 4",
+     "type": "text"
+    },
+    {
+     "value": "Text 5",
+     "type": "text"
+    },
+    {
+     "value": "Text 6",
+     "type": "text"
+    },
+    {
+     "value": "Text 7",
+     "type": "text"
+    },
+    {
+     "box": {
+      "image": {
+       "copyright": "Text 8",
+       "alttext": "Text 9",
+       "imageVariants": {
+        "1x1-144": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSStQvU/1x1-144.jpg",
+        "1x1-256": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSStSJ8/1x1-256.jpg",
+        "1x1-432": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSStTkw/1x1-432.jpg",
+        "1x1-640": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSStU_E/1x1-640.jpg",
+        "1x1-840": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSStWZo/1x1-840.jpg",
+        "16x9-256": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSSvh0M/16x9-256.jpg",
+        "16x9-384": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSSvjXw/16x9-384.jpg",
+        "16x9-512": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSSvlIQ/16x9-512.jpg",
+        "16x9-640": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSSvmjA/16x9-640.jpg",
+        "16x9-960": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSSvpk8/16x9-960.jpg",
+        "16x9-1280": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSSveow/16x9-1280.jpg",
+        "16x9-1920": "https://images.tagesschau.de/image/af911a06-736a-4aef-bea9-956c58b702d2/AAABoVMuxqw/AAABnSSvgNE/16x9-1920.jpg"
+       },
+       "type": "image"
+      },
+      "date": "2026-10-19T15:12:19.778+02:00",
+      "link": "Text 10",
+      "subtitle": "Text 11",
+      "text": "Text 12",
+      "title": "Text 13",
+      "infobox": false
+     },
+     "type": "box"
+    },
+    {
+     "value": "Text 14",
+     "type": "headline"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.inland.innenpolitik.investitionsgipfel-114",
+     "src": "tagesschau",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1423",
+     "otp": "meldung",
+     "cid": "investitionsgipfel-114",
+     "pti": "Bundesregierung_spricht_von_Investitionszusagen_in_Milliardenhoehe",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Text 15",
+   "firstSentence": "Text 16",
+   "video": {
+    "sophoraId": "video-1669478",
+    "externalId": "123135a8-9ea7-40a2-b1d1-a11974bd3a3a",
+    "title": "Text 17",
+    "date": "2026-10-20T16:09:58.599+02:00",
+    "teaserImage": {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    },
+    "tags": [],
+    "updateCheckUrl": "https://www.tagesschau.de/api2u/video-1669478.json?view=hasChanged&lastKnown=D3A37F9A3B9A0504219F9AD49D2A4F90",
+    "tracking": [
+     {
+      "sid": "app.multimedia.video.video-1669478",
+      "src": "tagesschau",
+      "ctp": "VERTICALAPPVIDEO",
+      "pdt": "20261020T1610",
+      "otp": "video",
+      "cid": "video-1669478",
+      "pti": "APP1530_NiF-_Investitionsgipfel_vapp.mxf",
+      "bcr": "ja",
+      "type": "generic",
+      "av_full_show": false
+     },
+     {
+      "assetid": "video-1669478",
+      "program": "Tagesschau",
+      "title": "APP1530_NiF-_Investitionsgipfel_vapp.mxf",
+      "length": "19",
+      "c2": "p2,N",
+      "c5": "p5,https://www.tagesschau.de/video/video-1669478.html",
+      "c7": "p7,video-1669478",
+      "c8": "p8,19",
+      "c9": "p9,Tagesschau_APP1530_NiF-_Investitionsgipfel_vapp.mxf_20.10.2026_1610",
+      "c10": "p10,Das_Erste",
+      "c12": "p12,content",
+      "c16": "p16,ARD_Information/ARD_Livestream",
+      "c18": "p18,N",
+      "type_nielsen": "content",
+      "type": "nielsen"
+     }
+    ],
+    "streams": {
+     "h264s": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1543-1900.webs.h264.mp4",
+     "h264m": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1543-1900.webm.h264.mp4",
+     "h264xl": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1543-1900.webxl.h264.mp4",
+     "adaptivestreaming": "https://adaptive.tagesschau.de/i/video/2026/1020/TV-20261020-1543-1900.,webl.h264,webs.h264,webm.h264,webxl.h264,webxxl.h264,.mp4.csmil/master.m3u8"
+    },
+    "alttext": "Sendungsbild",
+    "type": "video"
+   },
+   "images": [
+    {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    }
+   ],
+   "firstFrame": {
+    "title": "Sendungsbild",
+    "copyright": "ARD-aktuell",
+    "alttext": "Sendungsbild",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/b2ac14aa-e1f2-4ac6-b62f-7176967afdf9/AAABoVmNrvk/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/innenpolitik/investitionsgipfel-114.json",
+   "detailsweb": "https://www.tagesschau.de/inland/innenpolitik/investitionsgipfel-114.html",
+   "shareURL": "https://www.tagesschau.de/inland/innenpolitik/investitionsgipfel-114.html",
+   "geotags": [],
+   "regionId": 0,
+   "regionIds": [],
+   "ressort": "inland",
+   "crop": {
+    "id": "TV-20261020-1543-1900",
+    "type": "video",
+    "croppingApiVersion": "1.1",
+    "croppingUIVersion": "20260916.2-Release-171",
+    "croppingServiceVersion": "1.1",
+    "noSound": false,
+    "videoSrc": "",
+    "imageSrc": [],
+    "imageNames": [],
+    "headerText": "Text 18",
+    "mainTexts": [
+     "Text 19",
+     "Text 20",
+     "Text 21",
+     "Text 22"
+    ],
+    "sceneSrcTexts": [
+     "",
+     "",
+     "",
+     ""
+    ],
+    "cameraMoves": [],
+    "events": [
+     [
+      0,
+      9,
+      139
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      2,
+      1
+     ],
+     [
+      0,
+      3,
+      0
+     ],
+     [
+      0,
+      0,
+      139
+     ],
+     [
+      5680,
+      1,
+      0
+     ]
+    ]
+   },
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "afd-hackerangriff-102",
+   "externalId": "a974ba14-d913-416e-bf20-b5c60b811831",
+   "title": "Text 23",
+   "date": "2026-10-20T15:49:30.974+02:00",
+   "teaserImage": {
+    "copyright": "EPA",
+    "alttext": "Text 24",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/bef8fad3-a7ce-4254-bb86-991e7bf082b0/AAABmeKpCqU/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "AfD"
+    },
+    {
+     "tag": "Hackerangriff"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/afd-hackerangriff-102.json?view=hasChanged&lastKnown=287D5832124CF4BB0FBC7864E7C12714",
+   "content": [
+    {
+     "value": "Text 25",
+     "type": "text"
+    },
+    {
+     "value": "Text 26",
+     "type": "text"
+    },
+    {
+     "value": "Text 27",
+     "type": "text"
+    },
+    {
+     "value": "Text 28",
+     "type": "text"
+    },
+    {
+     "box": {
+      "image": {
+       "copyright": "Text 29",
+       "alttext": "Text 30",
+       "imageVariants": {
+        "1x1-144": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSStQvU/1x1-144.jpg",
+        "1x1-256": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSStSJ8/1x1-256.jpg",
+        "1x1-432": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSStTkw/1x1-432.jpg",
+        "1x1-640": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSStU_E/1x1-640.jpg",
+        "1x1-840": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSStWZo/1x1-840.jpg",
+        "16x9-256": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSSvh0M/16x9-256.jpg",
+        "16x9-384": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSSvjXw/16x9-384.jpg",
+        "16x9-512": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSSvlIQ/16x9-512.jpg",
+        "16x9-640": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSSvmjA/16x9-640.jpg",
+        "16x9-960": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSSvpk8/16x9-960.jpg",
+        "16x9-1280": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSSveow/16x9-1280.jpg",
+        "16x9-1920": "https://images.tagesschau.de/image/10c9bfce-ba0b-4b57-932c-59c78b593359/AAABoO0-VxY/AAABnSSvgNE/16x9-1920.jpg"
+       },
+       "type": "image"
+      },
+      "date": "2026-10-07T15:55:15.339+02:00",
+      "link": "Text 31",
+      "subtitle": "Text 32",
+      "text": "Text 33",
+      "title": "Text 34",
+      "infobox": false
+     },
+     "type": "box"
+    },
+    {
+     "value": "Text 35",
+     "type": "headline"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.inland.innenpolitik.afd-hackerangriff-102",
+     "src": "tagesschau",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1042",
+     "otp": "meldung",
+     "cid": "afd-hackerangriff-102",
+     "pti": "AfD_bestaetigt_Hackerangriff_auf_E-Mail-Konten",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Text 36",
+   "firstSentence": "Text 37",
+   "video": {
+    "sophoraId": "video-1669384",
+    "externalId": "3fb25769-3e71-4ff1-b469-a7b4862d0f5f",
+    "title": "Text 38",
+    "date": "2026-10-20T13:04:38.783+02:00",
+    "teaserImage": {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    },
+    "tags": [],
+    "updateCheckUrl": "https://www.tagesschau.de/api2u/video-1669384.json?view=hasChanged&lastKnown=A9D7B1D1A1E8492B6F970CA18C408A90",
+    "tracking": [
+     {
+      "sid": "app.multimedia.video.video-1669384",
+      "src": "tagesschau",
+      "ctp": "VERTICALAPPVIDEO",
+      "pdt": "20261020T1304",
+      "otp": "video",
+      "cid": "video-1669384",
+      "pti": "App1300_FC-_Hackerangriff_AfD_vapp.mxf",
+      "bcr": "ja",
+      "type": "generic",
+      "av_full_show": false
+     },
+     {
+      "assetid": "video-1669384",
+      "program": "Tagesschau",
+      "title": "App1300_FC-_Hackerangriff_AfD_vapp.mxf",
+      "length": "17",
+      "c2": "p2,N",
+      "c5": "p5,https://www.tagesschau.de/video/video-1669384.html",
+      "c7": "p7,video-1669384",
+      "c8": "p8,17",
+      "c9": "p9,Tagesschau_App1300_FC-_Hackerangriff_AfD_vapp.mxf_20.10.2026_1304",
+      "c10": "p10,Das_Erste",
+      "c12": "p12,content",
+      "c16": "p16,ARD_Information/ARD_Livestream",
+      "c18": "p18,N",
+      "type_nielsen": "content",
+      "type": "nielsen"
+     }
+    ],
+    "streams": {
+     "h264s": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1254-4000.webs.h264.mp4",
+     "h264m": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1254-4000.webm.h264.mp4",
+     "h264xl": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1254-4000.webxl.h264.mp4",
+     "adaptivestreaming": "https://adaptive.tagesschau.de/i/video/2026/1020/TV-20261020-1254-4000.,webl.h264,webs.h264,webm.h264,webxl.h264,webxxl.h264,.mp4.csmil/master.m3u8"
+    },
+    "alttext": "Sendungsbild",
+    "type": "video"
+   },
+   "images": [
+    {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    }
+   ],
+   "firstFrame": {
+    "title": "Sendungsbild",
+    "copyright": "ARD-aktuell",
+    "alttext": "Sendungsbild",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/1221a3ee-d0e0-4adf-ac15-7097c7900191/AAABoVjzTuY/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/innenpolitik/afd-hackerangriff-102.json",
+   "detailsweb": "https://www.tagesschau.de/inland/innenpolitik/afd-hackerangriff-102.html",
+   "shareURL": "https://www.tagesschau.de/inland/innenpolitik/afd-hackerangriff-102.html",
+   "geotags": [],
+   "regionId": 0,
+   "regionIds": [],
+   "ressort": "inland",
+   "crop": {
+    "id": "TV-20261020-1254-4000",
+    "type": "video",
+    "croppingApiVersion": "1.1",
+    "croppingUIVersion": "20260916.2-Release-171",
+    "croppingServiceVersion": "1.1",
+    "noSound": false,
+    "videoSrc": "",
+    "imageSrc": [],
+    "imageNames": [],
+    "headerText": "Text 39",
+    "mainTexts": [
+     "Text 40",
+     "Text 41",
+     "Text 42",
+     "Text 43"
+    ],
+    "sceneSrcTexts": [
+     "",
+     ""
+    ],
+    "cameraMoves": [],
+    "events": [
+     [
+      0,
+      9,
+      154
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      2,
+      1
+     ],
+     [
+      0,
+      3,
+      0
+     ],
+     [
+      0,
+      0,
+      154
+     ],
+     [
+      3320,
+      1,
+      0
+     ]
+    ]
+   },
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "deutschlandticket-316",
+   "externalId": "15dff216-3682-4941-8362-667e1aa331b7",
+   "title": "Text 44",
+   "date": "2026-10-20T12:52:48.557+02:00",
+   "teaserImage": {
+    "copyright": "Text 45",
+    "alttext": "Text 46",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/30a922fb-cfca-42d6-9583-5e974ec56ead/AAABoVh1YCI/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "Deutschlandticket"
+    },
+    {
+     "tag": "Bedarf"
+    },
+    {
+     "tag": "Verkehrsminister"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/deutschlandticket-316.json?view=hasChanged&lastKnown=D18D120942D1A73596C0F48D64BB7FA0",
+   "content": [
+    {
+     "value": "Text 47",
+     "type": "text"
+    },
+    {
+     "value": "Text 48",
+     "type": "text"
+    },
+    {
+     "value": "Text 49",
+     "type": "text"
+    },
+    {
+     "htmlEmbed": {
+      "service": "degrees23",
+      "url": "https://app.23degrees.io/embed/4hRDSVijyr5FUNMV-ttc-linechart-anzahl-der-nutzenden-des"
+     },
+     "parameters": {},
+     "type": "htmlEmbed"
+    },
+    {
+     "value": "Text 50",
+     "type": "headline"
+    },
+    {
+     "value": "Text 51",
+     "type": "text"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.wirtschaft.verbraucher.deutschlandticket-316",
+     "src": "tagesschau",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1252",
+     "otp": "meldung",
+     "cid": "deutschlandticket-316",
+     "pti": "Verkehrsminister_planen_Deutschlandticket_fuer_Gelegenheitsfahrer",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Verkehrsministertreffen",
+   "firstSentence": "Text 52",
+   "video": {
+    "sophoraId": "video-1669396",
+    "externalId": "629f1272-08ee-4847-8178-a52655555e6e",
+    "title": "Text 53",
+    "date": "2026-10-20T13:28:18.940+02:00",
+    "teaserImage": {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    },
+    "tags": [],
+    "updateCheckUrl": "https://www.tagesschau.de/api2u/video-1669396.json?view=hasChanged&lastKnown=DCFC91DF8CF6C71DBDB255EB9D341B4E",
+    "tracking": [
+     {
+      "sid": "app.multimedia.video.video-1669396",
+      "src": "tagesschau",
+      "ctp": "VERTICALAPPVIDEO",
+      "pdt": "20261020T1327",
+      "otp": "video",
+      "cid": "video-1669396",
+      "pti": "App1330_FC-_Ticket_fuer_Nahverkehr_vapp.mxf",
+      "bcr": "ja",
+      "type": "generic",
+      "av_full_show": false
+     },
+     {
+      "assetid": "video-1669396",
+      "program": "Tagesschau",
+      "title": "App1330_FC-_Ticket_fuer_Nahverkehr_vapp.mxf",
+      "length": "16",
+      "c2": "p2,N",
+      "c5": "p5,https://www.tagesschau.de/video/video-1669396.html",
+      "c7": "p7,video-1669396",
+      "c8": "p8,16",
+      "c9": "p9,Tagesschau_App1330_FC-_Ticket_fuer_Nahverkehr_vapp.mxf_20.10.2026_1327",
+      "c10": "p10,Das_Erste",
+      "c12": "p12,content",
+      "c16": "p16,ARD_Information/ARD_Livestream",
+      "c18": "p18,N",
+      "type_nielsen": "content",
+      "type": "nielsen"
+     }
+    ],
+    "streams": {
+     "h264s": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1315-0900.webs.h264.mp4",
+     "h264m": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1315-0900.webm.h264.mp4",
+     "h264xl": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1315-0900.webxl.h264.mp4",
+     "adaptivestreaming": "https://adaptive.tagesschau.de/i/video/2026/1020/TV-20261020-1315-0900.,webl.h264,webs.h264,webm.h264,webxl.h264,webxxl.h264,.mp4.csmil/master.m3u8"
+    },
+    "alttext": "Sendungsbild",
+    "type": "video"
+   },
+   "images": [
+    {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    }
+   ],
+   "firstFrame": {
+    "title": "Sendungsbild",
+    "copyright": "ARD-aktuell",
+    "alttext": "Sendungsbild",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/a2ea6733-1c49-40fd-a6d1-969280e124c9/AAABoVkGFw4/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/wirtschaft/verbraucher/deutschlandticket-316.json",
+   "detailsweb": "https://www.tagesschau.de/wirtschaft/verbraucher/deutschlandticket-316.html",
+   "shareURL": "https://www.tagesschau.de/wirtschaft/verbraucher/deutschlandticket-316.html",
+   "comments": "https://www.tagesschau.de/api2u/deutschlandticket-316.json?view=comment",
+   "geotags": [],
+   "regionId": 0,
+   "regionIds": [],
+   "ressort": "wirtschaft",
+   "crop": {
+    "id": "TV-20261020-1315-0900",
+    "type": "video",
+    "croppingApiVersion": "1.1",
+    "croppingUIVersion": "20260916.2-Release-171",
+    "croppingServiceVersion": "1.1",
+    "noSound": false,
+    "videoSrc": "",
+    "imageSrc": [],
+    "imageNames": [],
+    "headerText": "Text 54",
+    "mainTexts": [
+     "Text 55",
+     "Text 56",
+     "Text 57",
+     "Text 58"
+    ],
+    "sceneSrcTexts": [
+     "",
+     "",
+     ""
+    ],
+    "cameraMoves": [],
+    "events": [
+     [
+      0,
+      9,
+      98
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      2,
+      1
+     ],
+     [
+      0,
+      3,
+      0
+     ],
+     [
+      0,
+      0,
+      98
+     ],
+     [
+      3720,
+      1,
+      0
+     ]
+    ]
+   },
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "porto-standardbrief-100",
+   "externalId": "da9103d1-96c1-4826-8f8b-27a7cfd9b511",
+   "title": "Text 59",
+   "date": "2026-10-20T16:00:04.371+02:00",
+   "teaserImage": {
+    "copyright": "Text 60",
+    "alttext": "Text 61",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/ba19f672-c3bd-4b0e-8159-06171cfd2d46/AAABoVmcs10/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "Porto"
+    },
+    {
+     "tag": "Brief"
+    },
+    {
+     "tag": "Post"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/porto-standardbrief-100.json?view=hasChanged&lastKnown=1570F2C713AEAD43F3D84667EECAD340",
+   "content": [
+    {
+     "value": "Text 62",
+     "type": "text"
+    },
+    {
+     "value": "Text 63",
+     "type": "text"
+    },
+    {
+     "value": "Text 64",
+     "type": "headline"
+    },
+    {
+     "value": "Text 65",
+     "type": "text"
+    },
+    {
+     "value": "Text 66",
+     "type": "text"
+    },
+    {
+     "box": {
+      "image": {
+       "title": "",
+       "copyright": "dpa",
+       "alttext": "Text 67",
+       "imageVariants": {
+        "1x1-144": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSStQvU/1x1-144.jpg",
+        "1x1-256": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSStSJ8/1x1-256.jpg",
+        "1x1-432": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSStTkw/1x1-432.jpg",
+        "1x1-640": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSStU_E/1x1-640.jpg",
+        "1x1-840": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSStWZo/1x1-840.jpg",
+        "16x9-256": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSSvh0M/16x9-256.jpg",
+        "16x9-384": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSSvjXw/16x9-384.jpg",
+        "16x9-512": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSSvlIQ/16x9-512.jpg",
+        "16x9-640": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSSvmjA/16x9-640.jpg",
+        "16x9-960": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSSvpk8/16x9-960.jpg",
+        "16x9-1280": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSSveow/16x9-1280.jpg",
+        "16x9-1920": "https://images.tagesschau.de/image/0478a7af-5cd8-4d5d-9c6e-364479c45d72/AAABlfYo4rg/AAABnSSvgNE/16x9-1920.jpg"
+       },
+       "type": "image"
+      },
+      "date": "2024-02-10T17:52:05.291+01:00",
+      "link": "Text 68",
+      "subtitle": "Text 69",
+      "text": "Text 70",
+      "title": "Text 71",
+      "infobox": false
+     },
+     "type": "box"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.wirtschaft.verbraucher.porto-standardbrief-100",
+     "src": "tagesschau",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1600",
+     "otp": "meldung",
+     "cid": "porto-standardbrief-100",
+     "pti": "Die_Deutsche_Post_will_2027_das_Porto_fuer_Briefe_erhoehen",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Text 72",
+   "firstSentence": "Text 73",
+   "video": {
+    "sophoraId": "video-1669464",
+    "externalId": "3137f48d-1d7d-42f9-af63-97c5b793bfd3",
+    "title": "Text 74",
+    "date": "2026-10-20T16:08:21.235+02:00",
+    "teaserImage": {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    },
+    "tags": [],
+    "updateCheckUrl": "https://www.tagesschau.de/api2u/video-1669464.json?view=hasChanged&lastKnown=0CF0F7FDA7D329DB3AE3805B013AE801",
+    "tracking": [
+     {
+      "sid": "app.multimedia.video.video-1669464",
+      "src": "tagesschau",
+      "ctp": "VERTICALAPPVIDEO",
+      "pdt": "20261020T1608",
+      "otp": "video",
+      "cid": "video-1669464",
+      "pti": "APP1530_FC-__Porto_vapp.mxf",
+      "bcr": "ja",
+      "type": "generic",
+      "av_full_show": false
+     },
+     {
+      "assetid": "video-1669464",
+      "program": "Tagesschau",
+      "title": "APP1530_FC-__Porto_vapp.mxf",
+      "length": "17",
+      "c2": "p2,N",
+      "c5": "p5,https://www.tagesschau.de/video/video-1669464.html",
+      "c7": "p7,video-1669464",
+      "c8": "p8,17",
+      "c9": "p9,Tagesschau_APP1530_FC-__Porto_vapp.mxf_20.10.2026_1608",
+      "c10": "p10,Das_Erste",
+      "c12": "p12,content",
+      "c16": "p16,ARD_Information/ARD_Livestream",
+      "c18": "p18,N",
+      "type_nielsen": "content",
+      "type": "nielsen"
+     }
+    ],
+    "streams": {
+     "h264s": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1521-3600.webs.h264.mp4",
+     "h264m": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1521-3600.webm.h264.mp4",
+     "h264xl": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1521-3600.webxl.h264.mp4",
+     "adaptivestreaming": "https://adaptive.tagesschau.de/i/video/2026/1020/TV-20261020-1521-3600.,webl.h264,webs.h264,webm.h264,webxl.h264,webxxl.h264,.mp4.csmil/master.m3u8"
+    },
+    "alttext": "Sendungsbild",
+    "type": "video"
+   },
+   "images": [
+    {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    }
+   ],
+   "firstFrame": {
+    "title": "Sendungsbild",
+    "copyright": "ARD-aktuell",
+    "alttext": "Sendungsbild",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/540287fb-66c9-470b-b2dc-54cfbf83e0bb/AAABoVl51Hw/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/wirtschaft/verbraucher/porto-standardbrief-100.json",
+   "detailsweb": "https://www.tagesschau.de/wirtschaft/verbraucher/porto-standardbrief-100.html",
+   "shareURL": "https://www.tagesschau.de/wirtschaft/verbraucher/porto-standardbrief-100.html",
+   "geotags": [],
+   "regionId": 0,
+   "regionIds": [],
+   "ressort": "wirtschaft",
+   "crop": {
+    "id": "TV-20261020-1521-3600",
+    "type": "video",
+    "croppingApiVersion": "1.1",
+    "croppingUIVersion": "20260916.2-Release-171",
+    "croppingServiceVersion": "1.1",
+    "noSound": false,
+    "videoSrc": "",
+    "imageSrc": [],
+    "imageNames": [],
+    "headerText": "Text 75",
+    "mainTexts": [
+     "Text 76",
+     "Text 77",
+     "Text 78",
+     "Text 79"
+    ],
+    "sceneSrcTexts": [
+     "",
+     "",
+     "",
+     ""
+    ],
+    "cameraMoves": [],
+    "events": [
+     [
+      0,
+      9,
+      27
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      2,
+      1
+     ],
+     [
+      0,
+      3,
+      0
+     ],
+     [
+      0,
+      0,
+      27
+     ],
+     [
+      3400,
+      1,
+      0
+     ]
+    ]
+   },
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "ukraine-treffen-witkoff-100",
+   "externalId": "472b141f-2329-4fa0-8690-6f62719870a1",
+   "title": "Text 80",
+   "date": "2026-10-20T12:50:05.731+02:00",
+   "teaserImage": {
+    "copyright": "Text 81",
+    "alttext": "Text 82",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/d9b552bc-b4c0-40c6-b558-c1e990a5dae1/AAABoVii2gE/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "Ukraine"
+    },
+    {
+     "tag": "Selenskyj"
+    },
+    {
+     "tag": "Text 83"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/ukraine-treffen-witkoff-100.json?view=hasChanged&lastKnown=6BC4D1A670526B7A74C17E9EA22209CC",
+   "content": [
+    {
+     "value": "Text 84",
+     "type": "text"
+    },
+    {
+     "value": "Text 85",
+     "type": "text"
+    },
+    {
+     "value": "Text 86",
+     "type": "text"
+    },
+    {
+     "box": {
+      "image": {
+       "copyright": "Text 87",
+       "alttext": "Text 88",
+       "imageVariants": {
+        "1x1-144": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSStQvU/1x1-144.jpg",
+        "1x1-256": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSStSJ8/1x1-256.jpg",
+        "1x1-432": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSStTkw/1x1-432.jpg",
+        "1x1-640": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSStU_E/1x1-640.jpg",
+        "1x1-840": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSStWZo/1x1-840.jpg",
+        "16x9-256": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSSvh0M/16x9-256.jpg",
+        "16x9-384": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSSvjXw/16x9-384.jpg",
+        "16x9-512": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSSvlIQ/16x9-512.jpg",
+        "16x9-640": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSSvmjA/16x9-640.jpg",
+        "16x9-960": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSSvpk8/16x9-960.jpg",
+        "16x9-1280": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSSveow/16x9-1280.jpg",
+        "16x9-1920": "https://images.tagesschau.de/image/f7cec16c-1e64-4017-9eaf-143b68fce60c/AAABoVb8zwY/AAABnSSvgNE/16x9-1920.jpg"
+       },
+       "type": "image"
+      },
+      "date": "2026-10-20T06:47:36.290+02:00",
+      "link": "Text 89",
+      "subtitle": "Text 90",
+      "text": "Text 91",
+      "title": "Text 92",
+      "infobox": false
+     },
+     "type": "box"
+    },
+    {
+     "value": "Text 93",
+     "type": "headline"
+    },
+    {
+     "value": "Text 94",
+     "type": "text"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.ausland.europa.ukraine-treffen-witkoff-100",
+     "src": "tagesschau",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1250",
+     "otp": "meldung",
+     "cid": "ukraine-treffen-witkoff-100",
+     "pti": "Selenskyj_trifft_sich_mit_US-Gesandtem_Witkoff_zu_Gespraechen_in_Oslo",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Text 95",
+   "firstSentence": "Text 96",
+   "video": {
+    "sophoraId": "video-1669352",
+    "externalId": "1a0948ab-4766-4b54-a75d-ec08cac40dd5",
+    "title": "Text 97",
+    "date": "2026-10-20T12:55:47.665+02:00",
+    "teaserImage": {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    },
+    "tags": [],
+    "updateCheckUrl": "https://www.tagesschau.de/api2u/video-1669352.json?view=hasChanged&lastKnown=4082AC0EA6DB8116309A45369AE671D4",
+    "tracking": [
+     {
+      "sid": "app.multimedia.video.video-1669352",
+      "src": "tagesschau",
+      "ctp": "VERTICALAPPVIDEO",
+      "pdt": "20261020T1255",
+      "otp": "video",
+      "cid": "video-1669352",
+      "pti": "APP1100_NiF-_Vor_Treffen_Selenskyj_und_Witkoff_vapp.mxf",
+      "bcr": "ja",
+      "type": "generic",
+      "av_full_show": false
+     },
+     {
+      "assetid": "video-1669352",
+      "program": "Tagesschau",
+      "title": "APP1100_NiF-_Vor_Treffen_Selenskyj_und_Witkoff_vapp.mxf",
+      "length": "18",
+      "c2": "p2,N",
+      "c5": "p5,https://www.tagesschau.de/video/video-1669352.html",
+      "c7": "p7,video-1669352",
+      "c8": "p8,18",
+      "c9": "p9,Tagesschau_APP1100_NiF-_Vor_Treffen_Selenskyj_und_Witkoff_vapp.mxf_20.10.2026_1255",
+      "c10": "p10,Das_Erste",
+      "c12": "p12,content",
+      "c16": "p16,ARD_Information/ARD_Livestream",
+      "c18": "p18,N",
+      "type_nielsen": "content",
+      "type": "nielsen"
+     }
+    ],
+    "streams": {
+     "h264s": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1107-0200.webs.h264.mp4",
+     "h264m": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1107-0200.webm.h264.mp4",
+     "h264xl": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-1107-0200.webxl.h264.mp4",
+     "adaptivestreaming": "https://adaptive.tagesschau.de/i/video/2026/1020/TV-20261020-1107-0200.,webl.h264,webs.h264,webm.h264,webxl.h264,webxxl.h264,.mp4.csmil/master.m3u8"
+    },
+    "alttext": "Sendungsbild",
+    "type": "video"
+   },
+   "images": [
+    {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    }
+   ],
+   "firstFrame": {
+    "title": "Sendungsbild",
+    "copyright": "ARD-aktuell",
+    "alttext": "Sendungsbild",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/c573b85e-0572-4eca-887d-954b46273607/AAABoViQz0g/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/ausland/europa/ukraine-treffen-witkoff-100.json",
+   "detailsweb": "https://www.tagesschau.de/ausland/europa/ukraine-treffen-witkoff-100.html",
+   "shareURL": "https://www.tagesschau.de/ausland/europa/ukraine-treffen-witkoff-100.html",
+   "geotags": [],
+   "regionId": 0,
+   "regionIds": [],
+   "ressort": "ausland",
+   "crop": {
+    "id": "TV-20261020-1107-0200",
+    "type": "video",
+    "croppingApiVersion": "1.1",
+    "croppingUIVersion": "20260916.2-Release-171",
+    "croppingServiceVersion": "1.1",
+    "noSound": false,
+    "videoSrc": "",
+    "imageSrc": [],
+    "imageNames": [],
+    "headerText": "Text 98",
+    "mainTexts": [
+     "Text 99",
+     "Text 100",
+     "Text 101",
+     "Text 102"
+    ],
+    "sceneSrcTexts": [
+     "gestern",
+     "gestern",
+     "",
+     ""
+    ],
+    "cameraMoves": [],
+    "events": [
+     [
+      0,
+      9,
+      35
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      2,
+      1
+     ],
+     [
+      0,
+      3,
+      0
+     ],
+     [
+      0,
+      0,
+      35
+     ],
+     [
+      40,
+      11,
+      0
+     ]
+    ]
+   },
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "frankreich-ausgangssperren-100",
+   "externalId": "1f4d6082-2f33-4f05-aa6b-cecb1e302ee1",
+   "title": "Text 103",
+   "date": "2026-10-20T10:28:16.729+02:00",
+   "teaserImage": {
+    "copyright": "AFP",
+    "alttext": "Text 104",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/a0f861a0-3320-49c2-b40a-b54bda567bee/AAABoVhs72s/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "Frankreich"
+    },
+    {
+     "tag": "Lecornu"
+    },
+    {
+     "tag": "Ausgangssperre"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/frankreich-ausgangssperren-100.json?view=hasChanged&lastKnown=88362D58045E46881F2FFDDF782A80EB",
+   "content": [
+    {
+     "value": "Text 105",
+     "type": "text"
+    },
+    {
+     "value": "Text 106",
+     "type": "text"
+    },
+    {
+     "value": "Text 107",
+     "type": "text"
+    },
+    {
+     "value": "Text 108",
+     "type": "text"
+    },
+    {
+     "box": {
+      "image": {
+       "copyright": "Text 109",
+       "alttext": "Text 110",
+       "imageVariants": {
+        "1x1-144": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSStQvU/1x1-144.jpg",
+        "1x1-256": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSStSJ8/1x1-256.jpg",
+        "1x1-432": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSStTkw/1x1-432.jpg",
+        "1x1-640": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSStU_E/1x1-640.jpg",
+        "1x1-840": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSStWZo/1x1-840.jpg",
+        "16x9-256": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSSvh0M/16x9-256.jpg",
+        "16x9-384": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSSvjXw/16x9-384.jpg",
+        "16x9-512": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSSvlIQ/16x9-512.jpg",
+        "16x9-640": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSSvmjA/16x9-640.jpg",
+        "16x9-960": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSSvpk8/16x9-960.jpg",
+        "16x9-1280": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSSveow/16x9-1280.jpg",
+        "16x9-1920": "https://images.tagesschau.de/image/3524461f-8bc2-457d-830e-b1f136cc589f/AAABoVRqT7k/AAABnSSvgNE/16x9-1920.jpg"
+       },
+       "type": "image"
+      },
+      "date": "2026-10-19T16:09:22.029+02:00",
+      "link": "Text 111",
+      "subtitle": "Text 112",
+      "text": "Text 113",
+      "title": "Text 114",
+      "infobox": false
+     },
+     "type": "box"
+    },
+    {
+     "value": "Text 115",
+     "type": "headline"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.ausland.europa.frankreich-ausgangssperren-100",
+     "src": "tagesschau",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1028",
+     "otp": "meldung",
+     "cid": "frankreich-ausgangssperren-100",
+     "pti": "Frankreich_verlaengert_oertliche_Ausgangssperren_-_nach_ruhiger_Nacht",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Text 116",
+   "firstSentence": "Text 117",
+   "video": {
+    "sophoraId": "video-1669296",
+    "externalId": "297e9336-d5ae-4610-af19-2e504c51ca7b",
+    "title": "Text 118",
+    "date": "2026-10-20T10:24:28.794+02:00",
+    "teaserImage": {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    },
+    "tags": [],
+    "updateCheckUrl": "https://www.tagesschau.de/api2u/video-1669296.json?view=hasChanged&lastKnown=105E311C7322ABC5E63BF7DD7520FEBD",
+    "tracking": [
+     {
+      "sid": "app.multimedia.video.video-1669296",
+      "src": "tagesschau",
+      "ctp": "VERTICALAPPVIDEO",
+      "pdt": "20261020T1024",
+      "otp": "video",
+      "cid": "video-1669296",
+      "pti": "APP0900_NiF-_Ausgangssperre_Frankreich_vapp.mxf",
+      "bcr": "ja",
+      "type": "generic",
+      "av_full_show": false
+     },
+     {
+      "assetid": "video-1669296",
+      "program": "Tagesschau",
+      "title": "APP0900_NiF-_Ausgangssperre_Frankreich_vapp.mxf",
+      "length": "18",
+      "c2": "p2,N",
+      "c5": "p5,https://www.tagesschau.de/video/video-1669296.html",
+      "c7": "p7,video-1669296",
+      "c8": "p8,18",
+      "c9": "p9,Tagesschau_APP0900_NiF-_Ausgangssperre_Frankreich_vapp.mxf_20.10.2026_1024",
+      "c10": "p10,Das_Erste",
+      "c12": "p12,content",
+      "c16": "p16,ARD_Information/ARD_Livestream",
+      "c18": "p18,N",
+      "type_nielsen": "content",
+      "type": "nielsen"
+     }
+    ],
+    "streams": {
+     "h264s": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-0850-0500.webs.h264.mp4",
+     "h264m": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-0850-0500.webm.h264.mp4",
+     "h264xl": "https://tagesschau-progressive.ard-mcdn.de/video/2026/1020/TV-20261020-0850-0500.webxl.h264.mp4",
+     "adaptivestreaming": "https://adaptive.tagesschau.de/i/video/2026/1020/TV-20261020-0850-0500.,webl.h264,webs.h264,webm.h264,webxl.h264,webxxl.h264,.mp4.csmil/master.m3u8"
+    },
+    "alttext": "Sendungsbild",
+    "type": "video"
+   },
+   "images": [
+    {
+     "title": "Sendungsbild",
+     "copyright": "ARD-aktuell",
+     "alttext": "Sendungsbild",
+     "imageVariants": {
+      "1x1-144": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStQvU/1x1-144.jpg",
+      "1x1-256": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStSJ8/1x1-256.jpg",
+      "1x1-432": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStTkw/1x1-432.jpg",
+      "1x1-640": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStU_E/1x1-640.jpg",
+      "1x1-840": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStWZo/1x1-840.jpg",
+      "16x9-256": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvh0M/16x9-256.jpg",
+      "16x9-384": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvjXw/16x9-384.jpg",
+      "16x9-512": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvlIQ/16x9-512.jpg",
+      "16x9-640": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvmjA/16x9-640.jpg",
+      "16x9-960": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvpk8/16x9-960.jpg",
+      "16x9-1280": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSveow/16x9-1280.jpg",
+      "16x9-1920": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvgNE/16x9-1920.jpg"
+     },
+     "type": "image"
+    }
+   ],
+   "firstFrame": {
+    "title": "Sendungsbild",
+    "copyright": "ARD-aktuell",
+    "alttext": "Sendungsbild",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/5da0f5ea-082d-4297-9eb7-a61ddc648dcd/AAABoVgTU3M/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/ausland/europa/frankreich-ausgangssperren-100.json",
+   "detailsweb": "https://www.tagesschau.de/ausland/europa/frankreich-ausgangssperren-100.html",
+   "shareURL": "https://www.tagesschau.de/ausland/europa/frankreich-ausgangssperren-100.html",
+   "geotags": [],
+   "regionId": 0,
+   "regionIds": [],
+   "ressort": "ausland",
+   "crop": {
+    "id": "TV-20261020-0850-0500",
+    "type": "video",
+    "croppingApiVersion": "1.1",
+    "croppingUIVersion": "20260916.2-Release-171",
+    "croppingServiceVersion": "1.1",
+    "noSound": false,
+    "videoSrc": "",
+    "imageSrc": [],
+    "imageNames": [],
+    "headerText": "Text 119",
+    "mainTexts": [
+     "Text 120",
+     "Text 121",
+     "Text 122"
+    ],
+    "sceneSrcTexts": [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    "cameraMoves": [],
+    "events": [
+     [
+      0,
+      9,
+      199
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      2,
+      1
+     ],
+     [
+      0,
+      3,
+      0
+     ],
+     [
+      0,
+      0,
+      199
+     ],
+     [
+      3480,
+      9,
+      164
+     ]
+    ]
+   },
+   "breakingNews": false,
+   "type": "story"
+  }
+ ],
+ "regional": [
+  {
+   "sophoraId": "swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102",
+   "externalId": "tagesschau_fm-story-swr-5f586dff-eebf-353c-826e-189701c0c46a",
+   "title": "Text 123",
+   "date": "2026-10-20T17:44:00.000+02:00",
+   "teaserImage": {
+    "copyright": "SWR",
+    "alttext": "Text 124",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "SWR"
+    },
+    {
+     "tag": "Baden-Württemberg"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102.json?view=hasChanged&lastKnown=13E7EBA363FDC472B561B922FF1AAB07",
+   "content": [
+    {
+     "value": "Text 125",
+     "type": "text"
+    },
+    {
+     "value": "Text 126",
+     "type": "text"
+    },
+    {
+     "value": "Text 127",
+     "type": "text"
+    },
+    {
+     "value": "Text 128",
+     "type": "headline"
+    },
+    {
+     "value": "Text 129",
+     "type": "text"
+    },
+    {
+     "value": "Text 130",
+     "type": "text"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.inland.regional.badenwuerttemberg.swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102",
+     "src": "swr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1746",
+     "otp": "meldung",
+     "cid": "swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102",
+     "pti": "13-Jaehriger_spielt_mitten_im_Bodensee_Klavier",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Baden-Württemberg",
+   "firstSentence": "Text 131",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 132",
+    "copyright": "SWR",
+    "alttext": "Text 133",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/25ddb5d7-0642-43c2-b5bd-208e8d783190/AAABlaqAk6o/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/badenwuerttemberg/swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/badenwuerttemberg/swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102.html",
+   "shareURL": "https://www.swr.de/swraktuell/baden-wuerttemberg/friedrichshafen/13-jaehriger-spielt-klavier-im-bodensee-auf-teufelstisch-100.html",
+   "geotags": [],
+   "regionId": 1,
+   "regionIds": [
+    1
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "br-geklaerter-cold-case-langley-noch-viel-arbeit-fuer-ermittler-102",
+   "externalId": "tagesschau_fm-story-br24-VYYxNT9",
+   "title": "Text 134",
+   "date": "2026-10-20T09:19:44.150+02:00",
+   "teaserImage": {
+    "title": "Text 135",
+    "copyright": "Text 136",
+    "alttext": "Text 137",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/58f3395d-f05d-4b2d-8c70-994e5e772865/AAABoVgyIDE/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "BR"
+    },
+    {
+     "tag": "Bayern"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/br-geklaerter-cold-case-langley-noch-viel-arbeit-fuer-ermittler-102.json?view=hasChanged&lastKnown=DDD8C1ED7BA0AC9B9C79FDABEA7F0ADE",
+   "content": [
+    {
+     "value": "Text 138",
+     "type": "text"
+    },
+    {
+     "value": "Text 139",
+     "type": "text"
+    },
+    {
+     "value": "Text 140",
+     "type": "text"
+    },
+    {
+     "value": "Text 141",
+     "type": "headline"
+    },
+    {
+     "value": "Text 142",
+     "type": "text"
+    },
+    {
+     "value": "Text 143",
+     "type": "text"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.inland.regional.bayern.br-geklaerter-cold-case-langley-noch-viel-arbeit-fuer-ermittler-102",
+     "src": "br",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T0924",
+     "otp": "meldung",
+     "cid": "br-geklaerter-cold-case-langley-noch-viel-arbeit-fuer-ermittler-102",
+     "pti": "Geklaerter_Cold_Case_Langley_Noch_viel_Arbeit_fuer_Ermittler",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Bayern",
+   "firstSentence": "Text 144",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 145",
+    "copyright": "BR",
+    "alttext": "Text 146",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/77b4c5c6-6b21-4cbf-92a1-43d75ff0e1e5/AAABlaqAb44/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/bayern/br-geklaerter-cold-case-langley-noch-viel-arbeit-fuer-ermittler-102.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/bayern/br-geklaerter-cold-case-langley-noch-viel-arbeit-fuer-ermittler-102.html",
+   "shareURL": "https://www.br.de/nachrichten/bayern/geklaerter-cold-case-langley-noch-viel-arbeit-fuer-ermittler,VYYxNT9",
+   "geotags": [],
+   "regionId": 2,
+   "regionIds": [
+    2
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "rbb-neue-fahrkartenautomaten-fahrgastverband-kritisiert-bvg-plaene-fuer-digitale-tickets-100",
+   "externalId": "tagesschau_fm-story-rbb_berlin-bvg-fahrgastverband-kritik-digitale-tickets-fahrkarten-automaten",
+   "title": "Text 147",
+   "date": "2026-10-20T16:10:35.000+02:00",
+   "teaserImage": {
+    "title": "urn:newsml:dpa.com:20090101:261015-936-120189",
+    "copyright": "dpa/Gateau",
+    "alttext": "Text 148",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/d18dd006-6fba-40d9-a1d9-305eb684849a/AAABoVmpi1I/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "rbb"
+    },
+    {
+     "tag": "Berlin"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/rbb-neue-fahrkartenautomaten-fahrgastverband-kritisiert-bvg-plaene-fuer-digitale-tickets-100.json?view=hasChanged&lastKnown=5A726937D35C1ECA83E94998B34B56DE",
+   "content": [
+    {
+     "value": "Text 149",
+     "type": "text"
+    },
+    {
+     "value": "Text 150",
+     "type": "text"
+    },
+    {
+     "value": "Text 151",
+     "type": "text"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.inland.regional.berlin.rbb-neue-fahrkartenautomaten-fahrgastverband-kritisiert-bvg-plaene-fuer-digitale-tickets-100",
+     "src": "rbb",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1614",
+     "otp": "meldung",
+     "cid": "rbb-neue-fahrkartenautomaten-fahrgastverband-kritisiert-bvg-plaene-fuer-digitale-tickets-100",
+     "pti": "Neue_Fahrkartenautomaten_Fahrgastverband_kritisiert_BVG-Plaene_fuer_digitale_Tickets",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Berlin",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 152",
+    "copyright": "rbb24",
+    "alttext": "Text 153",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/e03b1ea1-c03d-4d50-bfb2-41c40808e93a/AAABlaqAiSQ/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/berlin/rbb-neue-fahrkartenautomaten-fahrgastverband-kritisiert-bvg-plaene-fuer-digitale-tickets-100.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/berlin/rbb-neue-fahrkartenautomaten-fahrgastverband-kritisiert-bvg-plaene-fuer-digitale-tickets-100.html",
+   "shareURL": "https://www.rbb24.de/wirtschaft/beitrag/2026/10/berlin-bvg-fahrgastverband-kritik-digitale-tickets-fahrkarten-automaten.html",
+   "geotags": [],
+   "regionId": 3,
+   "regionIds": [
+    3
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "rbb-neuruppin-streicht-zehn-prozent-der-stellen-in-stadtverwaltung-102",
+   "externalId": "tagesschau_fm-story-rbb_neuruppin-stadtverwaltung-personal-stellen-sparen",
+   "title": "Text 154",
+   "date": "2026-10-20T10:58:00.000+02:00",
+   "teaserImage": {
+    "title": "Text 155",
+    "copyright": "Text 156",
+    "alttext": "Text 157",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/a6d6176e-d93c-4c3b-a93a-7c8e6abd1ea4/AAABoViL2o4/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "rbb"
+    },
+    {
+     "tag": "Brandenburg"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/rbb-neuruppin-streicht-zehn-prozent-der-stellen-in-stadtverwaltung-102.json?view=hasChanged&lastKnown=76A314F72A5C07213E444732A46D4A16",
+   "content": [
+    {
+     "value": "Text 158",
+     "type": "text"
+    },
+    {
+     "value": "Text 159",
+     "type": "text"
+    },
+    {
+     "value": "Text 160",
+     "type": "text"
+    },
+    {
+     "value": "Text 161",
+     "type": "text"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.inland.regional.brandenburg.rbb-neuruppin-streicht-zehn-prozent-der-stellen-in-stadtverwaltung-102",
+     "src": "rbb",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1102",
+     "otp": "meldung",
+     "cid": "rbb-neuruppin-streicht-zehn-prozent-der-stellen-in-stadtverwaltung-102",
+     "pti": "Neuruppin_streicht_zehn_Prozent_der_Stellen_in_Stadtverwaltung",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Brandenburg",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 162",
+    "copyright": "rbb24",
+    "alttext": "Text 163",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/e03b1ea1-c03d-4d50-bfb2-41c40808e93a/AAABlaqAiSQ/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/brandenburg/rbb-neuruppin-streicht-zehn-prozent-der-stellen-in-stadtverwaltung-102.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/brandenburg/rbb-neuruppin-streicht-zehn-prozent-der-stellen-in-stadtverwaltung-102.html",
+   "shareURL": "https://www.rbb24.de/panorama/beitrag/2026/10/neuruppin-stadtverwaltung-personal-stellen-sparen.html",
+   "geotags": [],
+   "regionId": 4,
+   "regionIds": [
+    4
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "rb-getoetetes-paar-in-bremen-vegesack-anklage-wegen-mordverdachts-erhoben-102",
+   "externalId": "tagesschau_fm-story-id-67166b65-2065-43fc-80de-68f5ef7f1f08-nimex",
+   "title": "Text 164",
+   "date": "2026-10-20T11:31:00.000+02:00",
+   "teaserImage": {
+    "title": "Text 165",
+    "copyright": "Text 166",
+    "alttext": "Text 167",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/b49d8f5b-6fc6-4557-940a-2bd6c382d5fd/AAABoVkasZ4/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "Bremen"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/rb-getoetetes-paar-in-bremen-vegesack-anklage-wegen-mordverdachts-erhoben-102.json?view=hasChanged&lastKnown=2BBF47C25FA618E60AF009D8BB2B1300",
+   "content": [
+    {
+     "value": "Text 168",
+     "type": "text"
+    },
+    {
+     "value": "Text 169",
+     "type": "text"
+    },
+    {
+     "value": "Text 170",
+     "type": "text"
+    },
+    {
+     "value": "Text 171",
+     "type": "headline"
+    },
+    {
+     "value": "Text 172",
+     "type": "text"
+    },
+    {
+     "value": "Text 173",
+     "type": "text"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.inland.regional.bremen.rb-getoetetes-paar-in-bremen-vegesack-anklage-wegen-mordverdachts-erhoben-102",
+     "src": "rb",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1338",
+     "otp": "meldung",
+     "cid": "rb-getoetetes-paar-in-bremen-vegesack-anklage-wegen-mordverdachts-erhoben-102",
+     "pti": "Getoetetes_Paar_in_Bremen-Vegesack_Anklage_wegen_Mordverdachts_erhoben",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Bremen",
+   "firstSentence": "Text 174",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 175",
+    "copyright": "butenunbinnen",
+    "alttext": "Text 176",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/85481f96-f50f-4436-ab07-b1c85b8425be/AAABlaqAg8M/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/bremen/rb-getoetetes-paar-in-bremen-vegesack-anklage-wegen-mordverdachts-erhoben-102.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/bremen/rb-getoetetes-paar-in-bremen-vegesack-anklage-wegen-mordverdachts-erhoben-102.html",
+   "shareURL": "https://www.butenunbinnen.de/nachrichten/staatsanwaltschaft-anklage-mord-vegesack-100.html",
+   "geotags": [],
+   "regionId": 5,
+   "regionIds": [
+    5
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "hr-debatte-nach-berlin-wahl-hat-die-hessische-linke-ein-antisemitismusproblem-100",
+   "externalId": "tagesschau_fm-story-id-86a619ad-1db5-4425-886c-bb9729adab1d",
+   "title": "Text 177",
+   "date": "2026-10-20T16:16:40.781+02:00",
+   "teaserImage": {
+    "copyright": "Text 178",
+    "alttext": "Text 179",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/c96b295d-0338-4c26-bbe0-bac779f6c380/AAABoVngbWk/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "HR"
+    },
+    {
+     "tag": "Hessen"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/hr-debatte-nach-berlin-wahl-hat-die-hessische-linke-ein-antisemitismusproblem-100.json?view=hasChanged&lastKnown=32CD722ABEFB4E0D0920498FC7D35AA5",
+   "content": [
+    {
+     "value": "Text 180",
+     "type": "text"
+    },
+    {
+     "value": "Text 181",
+     "type": "text"
+    },
+    {
+     "value": "Text 182",
+     "type": "text"
+    },
+    {
+     "value": "Text 183",
+     "type": "text"
+    },
+    {
+     "value": "Text 184",
+     "type": "headline"
+    },
+    {
+     "value": "Text 185",
+     "type": "text"
+    }
+   ],
+   "tracking": [
+    {
+     "sid": "app.inland.regional.hessen.hr-debatte-nach-berlin-wahl-hat-die-hessische-linke-ein-antisemitismusproblem-100",
+     "src": "hr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1618",
+     "otp": "meldung",
+     "cid": "hr-debatte-nach-berlin-wahl-hat-die-hessische-linke-ein-antisemitismusproblem-100",
+     "pti": "Debatte_nach_Berlin-Wahl_Hat_die_hessische_Linke_ein_Antisemitismusproblem",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Hessen",
+   "firstSentence": "Text 186",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 187",
+    "copyright": "hessenschau",
+    "alttext": "Text 188",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/10b182d2-ee50-42e2-9d87-309731667be5/AAABlaqAdVE/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/hessen/hr-debatte-nach-berlin-wahl-hat-die-hessische-linke-ein-antisemitismusproblem-100.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/hessen/hr-debatte-nach-berlin-wahl-hat-die-hessische-linke-ein-antisemitismusproblem-100.html",
+   "shareURL": "https://www.hessenschau.de/politik/debatte-nach-berlin-wahl-hat-die-hessische-linke-ein-antisemitismusproblem-v1,linke-antisemitismus-100.html",
+   "geotags": [],
+   "regionId": 7,
+   "regionIds": [
+    7
+   ],
+   "breakingNews": false,
+   "type": "story"
+  }
+ ],
+ "newStoriesCountLink": "https://www.tagesschau.de/api2u/newStoriesCount?state=H4sIAAAAAAAA%2FwFoAJf%2FSBQvYhBQvEelWb%2Fz2pED0Vaqva4Nm5GX7ZwNmVhbvXhTrHcIEW5geudHFA1R4LhxEsvWT4BANfRgAXCSTy91Zn6zbVlCwxz7fm4IaRXf8hZGctpKPHqR%2Fql0uhRHKxQfH01ggs5TiZZmrJjcaAAAAA%3D%3D",
+ "type": "news"
+}

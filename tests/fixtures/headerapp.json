@@ -1,0 +1,207 @@
+{
+ "liveStream": {
+  "button": {
+   "hideButton": false,
+   "buttonText": "Text 1",
+   "buttonURL": "/multimedia/livestreams",
+   "buttonIcon": "video"
+  },
+  "linkText": "Text 2",
+  "type": "tagesschau24",
+  "toplineText": "Text 3",
+  "initConfig": {
+   "pc": {
+    "web": {
+     "baseUrl": "/resources/assets/js/vendor/ardplayer/",
+     "isForcedAutoPlay": false,
+     "isEnablePostMessage": false,
+     "isForcedVideoView": true,
+     "disableBackButtonTitle": true,
+     "disablePosterTitle": true,
+     "disablePosterImage": true
+    },
+    "generic": {
+     "imageTemplateConfig": {
+      "size": [
+       {
+        "minWidth": 0,
+        "value": "AAABnSSvsdE/16x9-small"
+       },
+       {
+        "minWidth": 568,
+        "value": "AAABnSSvrFg/16x9-big"
+       }
+      ],
+      "width": {
+       "min": 320,
+       "max": 1920,
+       "stepSize": 320
+      }
+     },
+     "isAutoplay": false,
+     "isDvrEnabled": true
+    },
+    "pluginData": {}
+   },
+   "mc": {
+    "id": "08786048-925e-4660-9cc4-fd116b64a822",
+    "streams": [
+     {
+      "media": [
+       {
+        "url": "https://tagesschau-live.ard-mcdn.de/tagesschau/live/hls/de/master.m3u8",
+        "mimeType": "application/vnd.apple.mpegurl",
+        "audios": [
+         {
+          "kind": "standard",
+          "languageCode": "de"
+         }
+        ],
+        "isAdaptiveQualitySelectable": true
+       }
+      ],
+      "kind": "main",
+      "isAudioOnly": false
+     }
+    ],
+    "isGeoBlocked": true,
+    "live": {
+     "dvrWindowSeconds": 7200
+    },
+    "meta": {
+     "images": [
+      {
+       "url": "https://images.tagesschau.de/image/51d0641f-0130-4a85-84af-69db5dda0c8e/AAABmr8-o_o/{size}/sendungslogo-ts24-livestream-100.webp?width={width}",
+       "kind": "preview",
+       "title": "Text 4",
+       "alt": "Text 5"
+      },
+      {
+       "url": "https://images.tagesschau.de/image/51d0641f-0130-4a85-84af-69db5dda0c8e/AAABmr8-o_o/{size}/sendungslogo-ts24-livestream-100.jpg?width={width}",
+       "kind": "preview",
+       "title": "Text 6",
+       "alt": "Text 7"
+      }
+     ],
+     "title": "Text 8",
+     "seriesTitle": "tagesschau24",
+     "publicationService": {
+      "partner": "ard",
+      "name": "ARD"
+     },
+     "synopsis": "Text 9"
+    },
+    "pluginData": {
+     "sharing@web": {
+      "link": "https://www.tagesschau.de/multimedia/livestreams$params$",
+      "body": "Text 10",
+      "subject": "Text 11",
+      "disableStartTime": false,
+      "disableSubclipping": true,
+      "services": [
+       "url",
+       "email",
+       "whatsapp",
+       "facebook",
+       "fb-messenger",
+       "twitter"
+      ],
+      "embedCode": "Text 12",
+      "params": "?t=$start$",
+      "legal": "Text 13"
+     },
+     "download@web": {
+      "isEnabled": false
+     },
+     "multistream@all": {
+      "feedUrl": "https://www.tagesschau.de/json/multistream/sendereihe-tagesschau-vierundzwanzig-100",
+      "pollRate": 60,
+      "noContentPollRate": 300
+     },
+     "trackingPiano@all": {
+      "config": {
+       "dimensionTransform": {
+        "av_autoplay": "av_auto_mode"
+       },
+       "events": [
+        "av.speed",
+        "av.quality",
+        "av.error",
+        "av.volume",
+        "av.volume.mute",
+        "av.share"
+       ]
+      },
+      "avContent": {
+       "n:av_content_duration": 86400000,
+       "s:av_content": "tagesschau24",
+       "av_content_id": "livestream-5-100",
+       "s:av_show": "tagesschau24",
+       "s:av_content_type": "Video",
+       "s:av_broadcasting_type": "PermanentLive",
+       "b:av_web_only": false,
+       "b:av_full_show": false,
+       "s:av_player": "Text 14",
+       "s:av_content_creator": "tagesschau",
+       "s:av_content_external_id": "08786048-925e-4660-9cc4-fd116b64a822",
+       "s:av_content_crid": "crid://daserste.de/tagesschau/livestream",
+       "s:av_institution": "tagesschau",
+       "s:av_publisher": "Tagesschau24",
+       "s:av_show_id": "ts24",
+       "s:av_content_url": "https://www.tagesschau.de/multimedia/livestreams",
+       "s:av_show_crid": "crid://daserste.de/tagesschau24",
+       "d:av_online_since": "2025-06-23T07:12:07Z",
+       "d:av_publication_time": "2024-05-27T16:12:40Z",
+       "av_player_position": "HeaderApp"
+      },
+      "isEnabled": true
+     },
+     "trackingAgf@all": {
+      "appId": "PE6FF1BB7-FE88-4674-B083-2772ADAD55E9",
+      "playerID": "livestream-5-100",
+      "clipData": {
+       "type": "content",
+       "assetid": "livestream-5-100_0",
+       "program": "tagesschau24",
+       "length": "86400",
+       "title": "Text 15",
+       "nol_c0": "p0,0",
+       "nol_c2": "p2,N",
+       "nol_c5": "p5,https://www.tagesschau.de/multimedia/livestreams",
+       "nol_c7": "p7,livestream-5-100",
+       "nol_c9": "Text 16",
+       "nol_c10": "p10,Tagesschau24",
+       "nol_c12": "p12,Content",
+       "nol_c16": "p16,ARD_Information",
+       "nol_c18": "p18,Y"
+      },
+      "sfcode": "eu",
+      "prod": "vc",
+      "apn": "ardplayer",
+      "agfMetaDataSDK": {
+       "censuscategory": "Text 17",
+       "livestream": "yes"
+      }
+     },
+     "jumpmarks@all": {
+      "url": "https://programm-api.ard.de/nownext/api/channel?channel=Y3JpZDovL2Rhc2Vyc3RlLmRlL3RhZ2Vzc2NoYXUvbGl2ZXN0cmVhbQ",
+      "refreshSeconds": 5
+     },
+     "xray@all": {
+      "isEnabled": false
+     }
+    }
+   },
+   "mediadescription": "Text 18",
+   "playerType": "video",
+   "ratio": "16x9",
+   "posterImage": {
+    "altText": "Text 19",
+    "title": "Text 20",
+    "urlS": "https://images.tagesschau.de/image/51d0641f-0130-4a85-84af-69db5dda0c8e/AAABmr8-o_o/AAABnSSvrFg/16x9-big/sendungslogo-ts24-livestream-100.webp?width=640",
+    "urlM": "https://images.tagesschau.de/image/51d0641f-0130-4a85-84af-69db5dda0c8e/AAABmr8-o_o/AAABnSSvrFg/16x9-big/sendungslogo-ts24-livestream-100.webp?width=768",
+    "urlL": "https://images.tagesschau.de/image/51d0641f-0130-4a85-84af-69db5dda0c8e/AAABmr8-o_o/AAABnSSvrFg/16x9-big/sendungslogo-ts24-livestream-100.webp?width=1280"
+   }
+  }
+ }
+}

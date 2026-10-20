@@ -1,0 +1,431 @@
+{
+ "news": [
+  {
+   "sophoraId": "swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102",
+   "externalId": "tagesschau_fm-story-swr-5f586dff-eebf-353c-826e-189701c0c46a",
+   "title": "Text 1",
+   "date": "2026-10-20T17:44:00.000+02:00",
+   "teaserImage": {
+    "copyright": "SWR",
+    "alttext": "Text 2",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/fafe178f-8e0b-4923-a964-35feb97644a3/AAABoVn9wTU/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "SWR"
+    },
+    {
+     "tag": "Baden-Württemberg"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102.json?view=hasChanged&lastKnown=13E7EBA363FDC472B561B922FF1AAB07",
+   "tracking": [
+    {
+     "sid": "app.inland.regional.badenwuerttemberg.swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102",
+     "src": "swr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1746",
+     "otp": "meldung",
+     "cid": "swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102",
+     "pti": "13-Jaehriger_spielt_mitten_im_Bodensee_Klavier",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Baden-Württemberg",
+   "firstSentence": "Text 3",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 4",
+    "copyright": "SWR",
+    "alttext": "Text 5",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/25ddb5d7-0642-43c2-b5bd-208e8d783190/AAABlaqAk6o/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/badenwuerttemberg/swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/badenwuerttemberg/swr-13-jaehriger-spielt-mitten-im-bodensee-klavier-102.html",
+   "shareURL": "https://www.swr.de/swraktuell/baden-wuerttemberg/friedrichshafen/13-jaehriger-spielt-klavier-im-bodensee-auf-teufelstisch-100.html",
+   "geotags": [],
+   "regionId": 1,
+   "regionIds": [
+    1
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "swr-kompliziert-und-buerokratisch-neustart-bei-freiburger-verpackungssteuer-moeglich-100",
+   "externalId": "tagesschau_fm-story-swr-b8e56462-98cf-3a44-8a5f-887ab27649a4",
+   "title": "Text 6",
+   "date": "2026-10-20T17:15:00.000+02:00",
+   "teaserImage": {
+    "title": "Text 7",
+    "copyright": "Text 8",
+    "alttext": "Text 9",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/7cd7902e-c540-4afc-8951-7b6ca21ea9bd/AAABoVnpld0/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "SWR"
+    },
+    {
+     "tag": "Baden-Württemberg"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/swr-kompliziert-und-buerokratisch-neustart-bei-freiburger-verpackungssteuer-moeglich-100.json?view=hasChanged&lastKnown=9ED7FF3147DEDF437958EB97CFB4E7CD",
+   "tracking": [
+    {
+     "sid": "app.inland.regional.badenwuerttemberg.swr-kompliziert-und-buerokratisch-neustart-bei-freiburger-verpackungssteuer-moeglich-100",
+     "src": "swr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1724",
+     "otp": "meldung",
+     "cid": "swr-kompliziert-und-buerokratisch-neustart-bei-freiburger-verpackungssteuer-moeglich-100",
+     "pti": "Gemeinderat_beschliesst_Aenderung_der_Freiburger_Verpackungssteuer",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Baden-Württemberg",
+   "firstSentence": "Text 10",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 11",
+    "copyright": "SWR",
+    "alttext": "Text 12",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/25ddb5d7-0642-43c2-b5bd-208e8d783190/AAABlaqAk6o/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/badenwuerttemberg/swr-kompliziert-und-buerokratisch-neustart-bei-freiburger-verpackungssteuer-moeglich-100.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/badenwuerttemberg/swr-kompliziert-und-buerokratisch-neustart-bei-freiburger-verpackungssteuer-moeglich-100.html",
+   "shareURL": "https://www.swr.de/swraktuell/baden-wuerttemberg/freiburg/gemeinderat-entscheidung-aenderung-verpackungssteuer-100.html",
+   "geotags": [],
+   "regionId": 1,
+   "regionIds": [
+    1
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "swr-audi-setzt-rotstift-an-und-spart-auch-bei-kultur-und-sport-100",
+   "externalId": "tagesschau_fm-story-swr-06e4b8f8-c910-3198-a60f-d0a51f99c362",
+   "title": "Text 13",
+   "date": "2026-10-20T17:00:41.000+02:00",
+   "teaserImage": {
+    "copyright": "ARD-aktuell",
+    "alttext": "Text 14",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/ea0e597a-8e66-48b4-a2cf-6e1dbb4b6f88/AAABmYUrPXM/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "SWR"
+    },
+    {
+     "tag": "Baden-Württemberg"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/swr-audi-setzt-rotstift-an-und-spart-auch-bei-kultur-und-sport-100.json?view=hasChanged&lastKnown=3C88204797B75BF8EC3597F00FE27F1D",
+   "tracking": [
+    {
+     "sid": "app.inland.regional.badenwuerttemberg.swr-audi-setzt-rotstift-an-und-spart-auch-bei-kultur-und-sport-100",
+     "src": "swr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1708",
+     "otp": "meldung",
+     "cid": "swr-audi-setzt-rotstift-an-und-spart-auch-bei-kultur-und-sport-100",
+     "pti": "Audi_setzt_Rotstift_an_und_spart_auch_bei_Kultur_und_Sport",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Baden-Württemberg",
+   "firstSentence": "Text 15",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 16",
+    "copyright": "SWR",
+    "alttext": "Text 17",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/25ddb5d7-0642-43c2-b5bd-208e8d783190/AAABlaqAk6o/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/badenwuerttemberg/swr-audi-setzt-rotstift-an-und-spart-auch-bei-kultur-und-sport-100.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/badenwuerttemberg/swr-audi-setzt-rotstift-an-und-spart-auch-bei-kultur-und-sport-100.html",
+   "shareURL": "https://www.swr.de/swraktuell/baden-wuerttemberg/heilbronn/audi-setzt-rotstift-an-spart-bei-kultur-und-sport-100.html",
+   "geotags": [],
+   "regionId": 1,
+   "regionIds": [
+    1
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "swr-erst-im-casino-gewonnen-dann-von-zehn-leuten-ausgeraubt-100",
+   "externalId": "tagesschau_fm-story-swr-c2f087de-47ce-383a-b0ee-e31fe685dedb",
+   "title": "Text 18",
+   "date": "2026-10-20T16:55:00.000+02:00",
+   "teaserImage": {
+    "copyright": "Text 19",
+    "alttext": "Text 20",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/de18d729-a95f-4d8c-a515-d0a8d0317ce4/AAABoVnP8fo/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "SWR"
+    },
+    {
+     "tag": "Baden-Württemberg"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/swr-erst-im-casino-gewonnen-dann-von-zehn-leuten-ausgeraubt-100.json?view=hasChanged&lastKnown=086B9728CCDE5198E10716C5330A9689",
+   "tracking": [
+    {
+     "sid": "app.inland.regional.badenwuerttemberg.swr-erst-im-casino-gewonnen-dann-von-zehn-leuten-ausgeraubt-100",
+     "src": "swr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1656",
+     "otp": "meldung",
+     "cid": "swr-erst-im-casino-gewonnen-dann-von-zehn-leuten-ausgeraubt-100",
+     "pti": "Nach_Casinogewinn_ausgeraubt_Polizei_zweifelt_an_Aussage",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Baden-Württemberg",
+   "firstSentence": "Text 21",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 22",
+    "copyright": "SWR",
+    "alttext": "Text 23",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/25ddb5d7-0642-43c2-b5bd-208e8d783190/AAABlaqAk6o/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/badenwuerttemberg/swr-erst-im-casino-gewonnen-dann-von-zehn-leuten-ausgeraubt-100.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/badenwuerttemberg/swr-erst-im-casino-gewonnen-dann-von-zehn-leuten-ausgeraubt-100.html",
+   "shareURL": "https://www.swr.de/swraktuell/baden-wuerttemberg/karlsruhe/baden-baden-mann-nach-casino-gewinn-ausgeraubt-100.html",
+   "geotags": [],
+   "regionId": 1,
+   "regionIds": [
+    1
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "swr-nach-den-krawallen-in-frankreich-was-reisende-und-pendler-aus-bw-jetzt-beachten-muessen-100",
+   "externalId": "tagesschau_fm-story-swr-9265b4f4-0d87-3089-bf02-60e3e4f878e1",
+   "title": "Text 24",
+   "date": "2026-10-20T16:21:00.000+02:00",
+   "teaserImage": {
+    "title": "Text 25",
+    "copyright": "Text 26",
+    "alttext": "Text 27",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/3c52e5fe-b750-4f18-aa4f-f92a0d55e9d9/AAABoVnw_UQ/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "SWR"
+    },
+    {
+     "tag": "Baden-Württemberg"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/swr-nach-den-krawallen-in-frankreich-was-reisende-und-pendler-aus-bw-jetzt-beachten-muessen-100.json?view=hasChanged&lastKnown=5729F5E88BC499CBBFF17A5DC5AAC3F8",
+   "tracking": [
+    {
+     "sid": "app.inland.regional.badenwuerttemberg.swr-nach-den-krawallen-in-frankreich-was-reisende-und-pendler-aus-bw-jetzt-beachten-muessen-100",
+     "src": "swr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1732",
+     "otp": "meldung",
+     "cid": "swr-nach-den-krawallen-in-frankreich-was-reisende-und-pendler-aus-bw-jetzt-beachten-muessen-100",
+     "pti": "Nach_den_Krawallen_in_Frankreich_Was_Reisende_und_Pendler_aus_BW_jetzt_beachten_muessen",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Baden-Württemberg",
+   "firstSentence": "Text 28",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 29",
+    "copyright": "SWR",
+    "alttext": "Text 30",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/25ddb5d7-0642-43c2-b5bd-208e8d783190/AAABlaqAk6o/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/badenwuerttemberg/swr-nach-den-krawallen-in-frankreich-was-reisende-und-pendler-aus-bw-jetzt-beachten-muessen-100.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/badenwuerttemberg/swr-nach-den-krawallen-in-frankreich-was-reisende-und-pendler-aus-bw-jetzt-beachten-muessen-100.html",
+   "shareURL": "https://www.swr.de/swraktuell/baden-wuerttemberg/freiburg/nach-gewalt-in-frankreich-und-strassburg-hinweise-fuer-reisende-pendler-100.html",
+   "geotags": [],
+   "regionId": 1,
+   "regionIds": [
+    1
+   ],
+   "breakingNews": false,
+   "type": "story"
+  },
+  {
+   "sophoraId": "swr-verbrenner-aus-auf-der-kippe-das-sind-die-folgen-fuer-mercedes-porsche-und-co-100",
+   "externalId": "tagesschau_fm-story-swr-00305678-365e-3739-9079-7526c19efe9e",
+   "title": "Text 31",
+   "date": "2026-10-20T16:14:31.000+02:00",
+   "teaserImage": {
+    "title": "Text 32",
+    "copyright": "Text 33",
+    "alttext": "Text 34",
+    "imageVariants": {
+     "1x1-144": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSStQvU/1x1-144.jpg",
+     "1x1-256": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSStSJ8/1x1-256.jpg",
+     "1x1-432": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSStTkw/1x1-432.jpg",
+     "1x1-640": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSStU_E/1x1-640.jpg",
+     "1x1-840": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSStWZo/1x1-840.jpg",
+     "16x9-256": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSSvh0M/16x9-256.jpg",
+     "16x9-384": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSSvjXw/16x9-384.jpg",
+     "16x9-512": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSSvlIQ/16x9-512.jpg",
+     "16x9-640": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSSvmjA/16x9-640.jpg",
+     "16x9-960": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSSvpk8/16x9-960.jpg",
+     "16x9-1280": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSSveow/16x9-1280.jpg",
+     "16x9-1920": "https://images.tagesschau.de/image/7539626f-57e9-48a3-a179-40f2e71de626/AAABoVnE_2M/AAABnSSvgNE/16x9-1920.jpg"
+    },
+    "type": "image"
+   },
+   "tags": [
+    {
+     "tag": "SWR"
+    },
+    {
+     "tag": "Baden-Württemberg"
+    }
+   ],
+   "updateCheckUrl": "https://www.tagesschau.de/api2u/swr-verbrenner-aus-auf-der-kippe-das-sind-die-folgen-fuer-mercedes-porsche-und-co-100.json?view=hasChanged&lastKnown=19A77D9F15C65B522FFF9DF0869E22EA",
+   "tracking": [
+    {
+     "sid": "app.inland.regional.badenwuerttemberg.swr-verbrenner-aus-auf-der-kippe-das-sind-die-folgen-fuer-mercedes-porsche-und-co-100",
+     "src": "swr",
+     "ctp": "nicht-definiert",
+     "pdt": "20261020T1644",
+     "otp": "meldung",
+     "cid": "swr-verbrenner-aus-auf-der-kippe-das-sind-die-folgen-fuer-mercedes-porsche-und-co-100",
+     "pti": "Verbrenner-Aus_auf_der_Kippe_Das_sind_die_Folgen_fuer_Mercedes_Porsche_und_Co",
+     "bcr": "ja",
+     "type": "generic",
+     "av_full_show": false
+    }
+   ],
+   "topline": "Baden-Württemberg",
+   "firstSentence": "Text 35",
+   "images": [],
+   "brandingImage": {
+    "title": "Text 36",
+    "copyright": "SWR",
+    "alttext": "Text 37",
+    "imageVariants": {
+     "original": "https://images.tagesschau.de/image/25ddb5d7-0642-43c2-b5bd-208e8d783190/AAABlaqAk6o/AAABnR8VW9w/original.png"
+    },
+    "type": "image"
+   },
+   "details": "https://www.tagesschau.de/api2u/inland/regional/badenwuerttemberg/swr-verbrenner-aus-auf-der-kippe-das-sind-die-folgen-fuer-mercedes-porsche-und-co-100.json",
+   "detailsweb": "https://www.tagesschau.de/inland/regional/badenwuerttemberg/swr-verbrenner-aus-auf-der-kippe-das-sind-die-folgen-fuer-mercedes-porsche-und-co-100.html",
+   "shareURL": "https://www.swr.de/swraktuell/lockerung-verbrenner-aus-was-bedeutet-autofahrer-jobs-zulieferer-industrie-104.html",
+   "geotags": [],
+   "regionId": 1,
+   "regionIds": [
+    1
+   ],
+   "breakingNews": false,
+   "type": "story"
+  }
+ ],
+ "regional": [],
+ "newStoriesCountLink": "",
+ "type": "Text 38",
+ "nextPage": "https://www.tagesschau.de/api2u/news?date=261016&regions=1"
+}
