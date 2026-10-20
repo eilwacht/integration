@@ -1,0 +1,65 @@
+name: Fehler melden
+description: Etwas funktioniert nicht wie erwartet.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke fürs Melden! Mit Diagnose-Datei und Versionen lässt sich das meist schnell eingrenzen.
+  - type: textarea
+    id: description
+    attributes:
+      label: Was ist passiert?
+      description: Was hast du erwartet, was ist stattdessen passiert?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Wie lässt es sich nachvollziehen?
+      placeholder: |
+        1. Nachrichtenwächter für Baden-Württemberg mit Stichwort „Streik*“ angelegt
+        2. …
+  - type: input
+    id: ha_version
+    attributes:
+      label: Home-Assistant-Version
+      description: Einstellungen → Info
+      placeholder: "2026.10.2"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Eilwacht-Version
+      description: HACS → Eilwacht, oder Geräte & Dienste → Eilwacht
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Betroffen
+      multiple: true
+      options:
+        - Eilmeldungen
+        - Nachrichtenwächter
+        - Stichworte
+        - Blueprint
+        - Einrichtung
+        - weiß nicht
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnose-Datei
+      description: >-
+        Geräte & Dienste → Eilwacht → ⋮ → „Diagnose herunterladen“ und die Datei
+        hier hineinziehen. Sie enthält deine Wächter und Stichworte.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Protokoll
+      description: >-
+        Einstellungen → System → Protokolle, nach „eilwacht“ filtern.
+        Für Details vorher Debug-Logging aktivieren (siehe README, „Fehlerbehebung“).
+      render: text
