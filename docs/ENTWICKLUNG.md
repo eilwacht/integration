@@ -71,6 +71,6 @@ Ein Coordinator je Endpunkt für alle Config-Entries – sonst vervielfacht jede
 
 ## 6. Offene Fragen
 
-- Wie oft gibt es Eilmeldungen, wie lange stehen sie in `headerapp`, und erscheinen sie in `homepage` gleichzeitig?
+- Wie oft gibt es Eilmeldungen, wie lange stehen sie in `headerapp`, und erscheinen sie in `homepage` gleichzeitig? Webarchiv geprüft (2026-10-20): 168 lesbare Aufnahmen von `headerapp` zwischen Juli und Oktober 2026 (etwa zwei pro Tag, zufällige Uhrzeiten), keine mit `breakingNews`. Eilmeldungen sind also selten oder nur kurz sichtbar. Die erste echte Antwort soll die Integration selbst festhalten (Diagnose-Download).
 - Gibt es regionale Eilmeldungen (`breakingNews` in `regional` bzw. `news?regions=`)?
 - Welche HA-Mindestversion? Vorschlag wie Streckenwacht 2026.3 (Brand-Bilder im Integrationsordner).
