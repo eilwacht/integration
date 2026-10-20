@@ -1,0 +1,89 @@
+blueprint:
+  name: Eilwacht – Eilmeldung aufs Handy
+  description: >-
+    Schickt jede neue Eilmeldung der Tagesschau als Push-Nachricht an ein Handy
+    mit der Home-Assistant-App. Ein Tippen öffnet den Artikel. Während der
+    Ruhezeit kommt keine Nachricht.
+  domain: automation
+  author: Eilwacht
+  homeassistant:
+    min_version: "2026.3.0"
+  source_url: https://github.com/eilwacht/integration/blob/main/blueprints/automation/eilwacht/eilmeldung_push.yaml
+  input:
+    event_entity:
+      name: Eilmeldung
+      description: Die Entität „Eilmeldung“ des Geräts Eilwacht.
+      selector:
+        entity:
+          filter:
+            integration: eilwacht
+            domain: event
+    notify_device:
+      name: Handy
+      description: Gerät mit der offiziellen Home-Assistant-App.
+      selector:
+        device:
+          filter:
+            integration: mobile_app
+    quiet_enabled:
+      name: Ruhezeit verwenden
+      default: true
+      selector:
+        boolean: {}
+    quiet_start:
+      name: Ruhezeit ab
+      default: "22:00:00"
+      selector:
+        time: {}
+    quiet_end:
+      name: Ruhezeit bis
+      default: "07:00:00"
+      selector:
+        time: {}
+
+# Several alerts can arrive in one update: send each of them.
+mode: queued
+max: 10
+
+triggers:
+  - trigger: state
+    entity_id: !input event_entity
+
+variables:
+  quiet_enabled: !input quiet_enabled
+  # After a restart or an outage the entity shows its last event again: only a
+  # change from a real previous state is a new event.
+  is_new: >-
+    {{ trigger.from_state is not none and trigger.to_state is not none
+       and trigger.from_state.state != 'unavailable'
+       and trigger.to_state.state not in ['unavailable', 'unknown']
+       and trigger.to_state.state != trigger.from_state.state
+       and trigger.to_state.attributes.get('event_type') == 'breaking_news' }}
+  title: "{{ trigger.to_state.attributes.get('title', '') if trigger.to_state else '' }}"
+  summary: "{{ trigger.to_state.attributes.get('summary') or '' if trigger.to_state else '' }}"
+  url: "{{ trigger.to_state.attributes.get('url') or '' if trigger.to_state else '' }}"
+
+conditions:
+  - condition: template
+    value_template: "{{ is_new }}"
+  - condition: or
+    conditions:
+      - condition: template
+        value_template: "{{ not quiet_enabled }}"
+      - condition: not
+        conditions:
+          - condition: time
+            after: !input quiet_start
+            before: !input quiet_end
+
+actions:
+  - alias: Push-Nachricht an das Handy
+    domain: mobile_app
+    type: notify
+    device_id: !input notify_device
+    title: Eilmeldung
+    message: "{{ title }}{{ '\n' ~ summary if summary else '' }}"
+    data:
+      group: eilwacht
+      url: "{{ url }}"
+      clickAction: "{{ url }}"

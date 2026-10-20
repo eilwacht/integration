@@ -1,0 +1,106 @@
+blueprint:
+  name: Eilwacht – Eilmeldung ansagen
+  description: >-
+    Liest jede neue Eilmeldung der Tagesschau über Lautsprecher vor –
+    auf Wunsch nur, wenn jemand zu Hause ist, und nie während der Ruhezeit.
+  domain: automation
+  author: Eilwacht
+  homeassistant:
+    min_version: "2026.3.0"
+  source_url: https://github.com/eilwacht/integration/blob/main/blueprints/automation/eilwacht/eilmeldung_ansage.yaml
+  input:
+    event_entity:
+      name: Eilmeldung
+      description: Die Entität „Eilmeldung“ des Geräts Eilwacht.
+      selector:
+        entity:
+          filter:
+            integration: eilwacht
+            domain: event
+    tts_entity:
+      name: Sprachausgabe
+      description: Der Text-to-Speech-Dienst, z. B. Google Translate oder Piper.
+      selector:
+        entity:
+          filter:
+            domain: tts
+    media_players:
+      name: Lautsprecher
+      selector:
+        entity:
+          multiple: true
+          filter:
+            domain: media_player
+    intro:
+      name: Einleitung
+      description: Wird vor die Schlagzeile gesetzt.
+      default: "Eilmeldung der Tagesschau:"
+      selector:
+        text: {}
+    only_when_home:
+      name: Nur wenn jemand zu Hause ist
+      description: Nach der Zone „Zuhause“ (mindestens eine Person darin).
+      default: true
+      selector:
+        boolean: {}
+    quiet_enabled:
+      name: Ruhezeit verwenden
+      default: true
+      selector:
+        boolean: {}
+    quiet_start:
+      name: Ruhezeit ab
+      default: "21:30:00"
+      selector:
+        time: {}
+    quiet_end:
+      name: Ruhezeit bis
+      default: "07:30:00"
+      selector:
+        time: {}
+
+# Alerts are read one after the other, never on top of each other.
+mode: queued
+max: 5
+
+triggers:
+  - trigger: state
+    entity_id: !input event_entity
+
+variables:
+  intro: !input intro
+  only_when_home: !input only_when_home
+  quiet_enabled: !input quiet_enabled
+  # After a restart or an outage the entity shows its last event again: only a
+  # change from a real previous state is a new event.
+  is_new: >-
+    {{ trigger.from_state is not none and trigger.to_state is not none
+       and trigger.from_state.state != 'unavailable'
+       and trigger.to_state.state not in ['unavailable', 'unknown']
+       and trigger.to_state.state != trigger.from_state.state
+       and trigger.to_state.attributes.get('event_type') == 'breaking_news' }}
+  title: "{{ trigger.to_state.attributes.get('title', '') if trigger.to_state else '' }}"
+
+conditions:
+  - condition: template
+    value_template: "{{ is_new }}"
+  - condition: template
+    value_template: "{{ not only_when_home or (states('zone.home') | int(0)) > 0 }}"
+  - condition: or
+    conditions:
+      - condition: template
+        value_template: "{{ not quiet_enabled }}"
+      - condition: not
+        conditions:
+          - condition: time
+            after: !input quiet_start
+            before: !input quiet_end
+
+actions:
+  - alias: Ansage
+    action: tts.speak
+    target:
+      entity_id: !input tts_entity
+    data:
+      media_player_entity_id: !input media_players
+      message: "{{ (intro ~ ' ' ~ title) | trim }}"
