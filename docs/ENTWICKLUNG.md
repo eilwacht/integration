@@ -60,6 +60,8 @@ Ein Coordinator je Endpunkt für alle Config-Entries – sonst vervielfacht jede
 - **Inoffizieller Endpunkt:** `headerapp` kann jederzeit wegfallen → `homepage` als Ausweichquelle, Ausfall über Repairs melden.
 - **Kein zentraler Dienst:** Jede HA-Instanz fragt selbst ab (privater Gebrauch). Kein Proxy, kein Bot, keine Weiterverteilung.
 - **Quellenangabe** „Quelle: tagesschau.de“ als `attribution` an allen Entities.
+- **Name:** DPMAregister-Basisrecherche am 2026-10-20 ohne Treffer für `eil?wacht` und `eil?watch` (nationale, Unions- und internationale Marken). GitHub-Organisation `eilwacht` gehört dem Projekt.
+- **Marke:** Nichts, was nach Tagesschau oder ARD aussieht – kein Tagesschau-Blau, kein nachgebauter „Eilmeldung“-Balken.
 
 ## 5. Arbeitsweise
 
