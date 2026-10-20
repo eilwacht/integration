@@ -40,7 +40,7 @@ Kein ETag, kein `Last-Modified` – bedingte Abfragen wie bei Streckenwacht gehe
 ### Abfrageplan (Entwurf)
 
 | Quelle | Abstand | Zweck | api2u-Abrufe/h |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `headerapp` | 1 min | Eilmeldungen, schnell | – |
 | `homepage` | 10 min, bei Ausfall von `headerapp` 2 min | Ausweichquelle für Eilmeldungen | 6 (30) |
 | `news?regions=…` | 15 min | Regionalnachrichten, Stichworte | 4 |
