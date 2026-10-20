@@ -19,7 +19,7 @@ Eilwacht bringt die Tagesschau in Home Assistant – als Auslöser für Automati
 
 - Interner Endpunkt der Website, nicht dokumentiert. Antwort ≈ 6 KB, `Cache-Control: max-age=30`.
 - Ohne laufende Eilmeldung nur der Schlüssel `liveStream`. **`breakingNews` fehlt dann ganz** – kein leeres Array.
-- Während einer Eilmeldung: `breakingNews` ist eine Liste mit `id`, `headline`, `text`, `url`, `date` – **nur aus dem Code des Telegram-Eilbots bekannt** ([Brawl345/tagesschau-eilbot](https://github.com/Brawl345/tagesschau-eilbot), `handler/check.go`, fragt jede Minute ab, gepflegt, letzter Commit 2026-09-30). Noch nicht selbst gesehen → erste echte Antwort als Fixture sichern.
+- Während einer Eilmeldung: `breakingNews` ist eine Liste mit `id`, `headline`, `text`, `url`, `date` – **nur aus dem Code des Telegram-Eilbots bekannt** ([Brawl345/tagesschau-eilbot](https://github.com/Brawl345/tagesschau-eilbot), `handler/check.go`, fragt jede Minute ab, gepflegt, letzter Commit 2026-09-30). Noch nicht selbst gesehen → erste echte Antwort als Fixture sichern. Laut Eilbot: neueste Eilmeldung zuerst; `url` kann relativ sein (gegen `https://www.tagesschau.de/` auflösen); `date` ist Anzeigetext mit „Stand: “ davor, kein ISO-Zeitstempel; `text` kann leer sein. Beim Start merkt sich der Bot den Bestand, ohne ihn zu melden.
 - Ein fester Abfrageabstand ist nirgends dokumentiert; der Eilbot nutzt 60 s.
 
 ### `https://www.tagesschau.de/api2u/…` (dokumentiert von [bundesAPI](https://github.com/bundesAPI/tagesschau-api))
@@ -32,6 +32,10 @@ Eilwacht bringt die Tagesschau in Home Assistant – als Auslöser für Automati
 - `shareURL` regionaler Meldungen zeigt oft auf den Landessender (z. B. sr.de), `detailsweb` auf tagesschau.de.
 - **Bedingungen:** „Die Nutzung der Inhalte für den privaten, nicht-kommerziellen Gebrauch ist gestattet, die Veröffentlichung hingegen nicht“ (ausgenommen CC-Inhalte). „Es ist unzulässig, mehr als 60 Abrufe pro Stunde zu tätigen.“
 - Der ioBroker-Adapter ([ticaki/ioBroker.tagesschau](https://github.com/ticaki/ioBroker.tagesschau), 127 Installationen) liest Eilmeldungen seit 0.6.0 aus `homepage` (`news` + `regional`, `breakingNews === true`).
+
+### Übertragung
+
+Kein ETag, kein `Last-Modified` – bedingte Abfragen wie bei Streckenwacht gehen nicht. Alle drei Endpunkte komprimieren (Brotli, gzip; aiohttp fragt gzip von selbst an). Mit gzip: `headerapp` ≈ 2,5 KB, `homepage` ≈ 100 KB, `news?regions=1` ≈ 33 KB. Beim Abfrageplan unten sind das zusammen ≈ 20 MB am Tag.
 
 ### Abfrageplan (Entwurf)
 
