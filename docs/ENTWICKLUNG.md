@@ -77,6 +77,17 @@ Ein Coordinator je Endpunkt für alle Config-Entries – sonst vervielfacht jede
 - Fixtures: `uv run tools/fetch_fixtures.py`; eine einzelne Rohdatei (z. B. aus dem Webarchiv): `uv run tools/fetch_fixtures.py --from DATEI NAME`.
 - Tests: `uv run pytest`; Lint: `uv run ruff check .` und `uv run ruff format .`.
 - Branches wie bei Streckenwacht: entwickelt wird auf `dev`, `main` nur für Releases.
+- Release: Version in `manifest.json`, `const.py`, `pyproject.toml` anheben, `uv lock`, auf `dev` pushen, CI abwarten, `main` vorspulen, `gh release create vX --target main` (Vorab-Versionen mit `--prerelease`). Der Workflow „Release-ZIP“ hängt `eilwacht.zip` an.
+
+### GitHub-Einstellungen (Stand 2026-10-21)
+
+Nicht aus dem Code ablesbar, deshalb hier festgehalten:
+
+- **Repo:** Secret Scanning mit Push-Schutz, Dependabot-Warnungen und -Sicherheitsupdates, CodeQL (Standard-Setup: Python, JavaScript, Actions), vertrauliche Meldung von Sicherheitslücken (`SECURITY.md`). Branches nach dem Mergen löschen.
+- **Rulesets:** „main schützen“ (kein Löschen, kein Force-Push, Pflicht-Checks `test`, `hassfest`, `compat`, keine Ausnahmen) und „Release-Tags schützen“ (`v*`: nicht löschen, nicht verschieben).
+- **Actions:** nur GitHub-eigene Actions plus `astral-sh/setup-uv`, `home-assistant/actions/*`, `hacs/action`; Workflow-Token standardmäßig nur lesend; CI-Läufe aus fremden Pull Requests brauchen immer eine Freigabe. Eine neue Action im Workflow muss dort erst erlaubt werden (*Settings → Actions → General*).
+- **Bewusst aus:** „Unveränderliche Releases“ – der Workflow „Release-ZIP“ hängt die ZIP erst nach dem Veröffentlichen an.
+- **Organisation:** Drittanbieter-Apps eingeschränkt, feingranulare Tokens nur mit Freigabe und Ablaufdatum.
 
 ## 6. Offene Fragen
 
