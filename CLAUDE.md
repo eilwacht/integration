@@ -23,5 +23,5 @@ Home-Assistant-Custom-Integration (HACS), Domain `eilwacht`. Eilmeldungen und Re
 4. Alle HTTP-Requests mit User-Agent `Eilwacht/<version> (+https://github.com/eilwacht/integration)`. Quellenangabe „Quelle: tagesschau.de“ an allen Entities.
 5. Code, Kommentare, Entity-IDs auf Englisch; UI-Texte über `strings.json` + `translations/de.json` und `en.json`. Werkzeuge in `tools/` und Doku auf Deutsch.
 6. Tests gegen Fixtures, nicht gegen Live-APIs. HA-Tests (`tests/ha/`, `pytest-homeassistant-custom-component`) nur in GitHub Actions.
-7. **Branches:** Entwickelt wird auf `dev`; `main` erhält nur freigegebene Stände (Versions-Bump in `manifest.json`, `const.py` und `pyproject.toml` + GitHub-Release).
+7. **Branches:** Entwickelt wird auf `dev`; `main` erhält nur freigegebene Stände (Versions-Bump in `manifest.json`, `const.py` und `pyproject.toml` + GitHub-Release). Ein Ruleset erzwingt das: `main` nimmt nur Commits an, deren CI (`test`, `hassfest`, `compat`) grün ist – also erst `dev` pushen, CI abwarten, dann `main` vorspulen. Kein Force-Push, Tags `v*` sind unveränderlich.
 8. **Werkzeuge:** `uv run pytest`, `uv run ruff check .`, `uv run ruff format .`. `homeassistant` (dev) und `pytest-homeassistant-custom-component` (ha-tests) immer gemeinsam anheben. Rechnerspezifisches steht in `CLAUDE.local.md`.
