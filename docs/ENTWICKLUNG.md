@@ -57,6 +57,7 @@ Ein Coordinator je Endpunkt für alle Config-Entries – sonst vervielfacht jede
 - **Coordinators:** `BreakingCoordinator` (headerapp jede Minute, homepage nur solange headerapp ausfällt, dann alle 2 Minuten – nie beide zugleich, weil eine headerapp-Eilmeldung auf `/eilmeldung/…` statt auf den Artikel verweist und sonst doppelt gemeldet würde) und `NewsCoordinator` (eine Abfrage für alle Bundesländer aller Wächter, eine bundesweite nur bei Bedarf). Nur ein `NewsCoordinator`, wenn es Wächter gibt.
 - **Nichts doppelt melden:** Beim Start wird der Bestand still gelernt (`changes.py`). Meldungen, die während eines Neustarts erscheinen, werden deshalb nicht nachgemeldet.
 - **Repairs:** headerapp nach 30 Fehlversuchen in Folge, news nach 2.
+- **Einheiten übersetzen:** `unit_of_measurement` in `strings.json` übersetzt die Oberfläche („0 Meldungen“); im State und in der API steht dagegen die englische Standardsprache („items“). Nicht nach dem State beurteilen (Irrtum in 0.1.0).
 - **Echte Eilmeldung festhalten:** `sample.py` speichert die letzte headerapp-Antwort mit Eilmeldung (Store `eilwacht.breaking_sample`); sie steht im Diagnose-Download.
 
 - Gleiche Grundarchitektur wie Streckenwacht: UI-Config-Flow, `DataUpdateCoordinator`, async, `async_get_clientsession(hass)`, reine Logik ohne HA-Importe, Fehler pro Quelle über Repairs.

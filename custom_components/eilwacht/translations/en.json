@@ -121,7 +121,8 @@
         "name": "Last item"
       },
       "news_24h": {
-        "name": "Items (24 h)"
+        "name": "Items (24 h)",
+        "unit_of_measurement": "items"
       }
     }
   }

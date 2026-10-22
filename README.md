@@ -22,6 +22,8 @@ Eilwacht bringt Eilmeldungen und Regionalnachrichten der Tagesschau in dein Home
 - **Fertige Blueprints** für Push-Nachricht und Ansage, mit Ruhezeiten.
 - Fällt eine Quelle aus, erscheint nach einer Weile ein Hinweis unter *Reparaturen*.
 
+<img src="https://raw.githubusercontent.com/eilwacht/integration/main/assets/screenshots/integration.png" alt="Eilwacht in Home Assistant: das Gerät Eilwacht und ein Nachrichtenwächter Stuttgart" width="720">
+
 ## Datenquelle
 
 Alle Daten kommen von [tagesschau.de](https://www.tagesschau.de):
@@ -72,6 +74,9 @@ Nichts zu tun: Nach dem Hinzufügen gibt es das Gerät **Eilwacht** mit den Eilm
 
 *Geräte & Dienste → Eilwacht → Nachrichtenwächter hinzufügen*:
 
+<img src="https://raw.githubusercontent.com/eilwacht/integration/main/assets/screenshots/waechter_hinzufuegen.png" alt="Dialog Nachrichtenwächter hinzufügen: Name, Bundesländer, Stichworte" width="400">
+
+
 | Feld | Bedeutung |
 | --- | --- |
 | **Name** | z. B. „Stuttgart“ oder „Streik“; erscheint in den Namen der Entitäten |
@@ -105,6 +110,15 @@ Entitäts-IDs bei deutscher Oberfläche, Wächter mit dem Namen „Stuttgart“:
 | **Meldungen (24 h)** | `sensor.eilwacht_stuttgart_meldungen_24_h` | Zahl der Meldungen des Wächters aus den letzten 24 Stunden |
 
 Events und die Sensoren mit Schlagzeile tragen dieselben Attribute: `title`, `topline` (Dachzeile), `summary` (erster Satz), `url`, `published`, `regions`, `ressort` und bei Wächtern mit Stichworten `keywords` (die gefundenen Stichworte).
+
+<table>
+  <tr>
+    <td valign="top"><img src="https://raw.githubusercontent.com/eilwacht/integration/main/assets/screenshots/geraet_eilwacht.png" alt="Gerät Eilwacht: Eilmeldung aktiv, Letzte Eilmeldung, Event Eilmeldung" width="360"></td>
+    <td valign="top"><img src="https://raw.githubusercontent.com/eilwacht/integration/main/assets/screenshots/geraet_waechter.png" alt="Gerät eines Nachrichtenwächters: Letzte Meldung, Meldungen (24 h), Event Neue Meldung" width="360"></td>
+  </tr>
+</table>
+
+<sub>Screenshots mit Beispieltexten statt echter Schlagzeilen.</sub>
 
 ## Was du damit bauen kannst
 

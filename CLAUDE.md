@@ -13,7 +13,7 @@ Home-Assistant-Custom-Integration (HACS), Domain `eilwacht`. Eilmeldungen und Re
 - Nur Tagesschau (`json/headerapp` + `api2u`). Kein allgemeines RSS, keine anderen Sender, keine Volltexte oder Bilder.
 - Nur UI-Config-Flow, kein YAML. `DataUpdateCoordinator`, durchgängig async, `async_get_clientsession(hass)`. Ein Coordinator je Endpunkt, gemeinsam für alle Config-Entries.
 - Höchstens 60 api2u-Abrufe pro Stunde für die gesamte Instanz (Abfrageplan in `docs/ENTWICKLUNG.md` Abschnitt 2).
-- Lizenz MIT. Repo: `github.com/eilwacht/integration` (öffentlich seit 2026-10-20, aktuelles Release `v0.1.0`). `codeowners`: `@n42net`.
+- Lizenz MIT. Repo: `github.com/eilwacht/integration` (öffentlich seit 2026-10-20, aktuelles Release `v0.1.1`). `codeowners`: `@n42net`.
 
 ## Arbeitsregeln
 

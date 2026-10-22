@@ -1,12 +1,17 @@
 # Changelog
 
+## 0.1.1 – 2026-10-22
+
+- „Meldungen (24 h)“ zeigt wieder „Meldungen“ als Einheit. Die Entfernung in 0.1.0 war ein Irrtum: Die Oberfläche übersetzt die Einheit, nur die Rohdaten speichern sie englisch. Wer 0.1.0 installiert hatte, sieht unter *Reparaturen* eventuell erneut einen Hinweis zur Einheit – einfach bestätigen.
+- README mit Screenshots.
+
 ## 0.1.0 – 2026-10-22
 
 Erste reguläre Version, nach dem Test auf einer echten Home-Assistant-Instanz.
 
 - **Stichworte finden jetzt alle Wörter, die mit ihnen beginnen:** `Stuttgart` findet auch „Stuttgarter“, `Streik` auch „Streiks“ (aber weiterhin nicht „Warnstreik“, dafür `*streik`). Bisher zählte nur das ganze Wort. Bestehende Wächter finden dadurch eher mehr Meldungen.
 - Die Startseite der Tagesschau-API wird nur noch abgefragt, solange die Kopfzeile ausfällt. Eine Eilmeldung verweist auf eine eigene Seite, die Startseite auf den Artikel – beide zusammen hätten dieselbe Eilmeldung zweimal melden können. Nebenbei sinkt der Datenverkehr auf etwa 7 MB am Tag.
-- „Meldungen (24 h)“ ohne Einheit: Home Assistant speichert Einheiten immer auf Englisch („items“).
+- „Meldungen (24 h)“ ohne Einheit (in 0.1.1 zurückgenommen).
 - Das Format laufender Eilmeldungen ist jetzt an einer echten Eilmeldung (21.10.2026) bestätigt und getestet.
 
 ## 0.1.0b1 – 2026-10-20

@@ -121,7 +121,8 @@
         "name": "Letzte Meldung"
       },
       "news_24h": {
-        "name": "Meldungen (24 h)"
+        "name": "Meldungen (24 h)",
+        "unit_of_measurement": "Meldungen"
       }
     }
   }
