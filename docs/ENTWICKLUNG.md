@@ -19,7 +19,8 @@ Eilwacht bringt die Tagesschau in Home Assistant – als Auslöser für Automati
 
 - Interner Endpunkt der Website, nicht dokumentiert. Antwort ≈ 6 KB, `Cache-Control: max-age=30`.
 - Ohne laufende Eilmeldung nur der Schlüssel `liveStream`. **`breakingNews` fehlt dann ganz** – kein leeres Array.
-- Während einer Eilmeldung: `breakingNews` ist eine Liste mit `id`, `headline`, `text`, `url`, `date` – **nur aus dem Code des Telegram-Eilbots bekannt** ([Brawl345/tagesschau-eilbot](https://github.com/Brawl345/tagesschau-eilbot), `handler/check.go`, fragt jede Minute ab, gepflegt, letzter Commit 2026-09-30). Noch nicht selbst gesehen → erste echte Antwort als Fixture sichern. Laut Eilbot: neueste Eilmeldung zuerst; `url` kann relativ sein (gegen `https://www.tagesschau.de/` auflösen); `date` ist Anzeigetext mit „Stand: “ davor, kein ISO-Zeitstempel; `text` kann leer sein. Beim Start merkt sich der Bot den Bestand, ohne ihn zu melden.
+- Während einer Eilmeldung (**verifiziert 2026-10-21**, echte Aufnahme in `tests/fixtures/headerapp_breaking.json`): Die Antwort enthält dann **nur** `breakingNews` (kein `liveStream`), eine Liste mit `id` (UUID), `headline`, `text`, `url`, `date` und zusätzlich `linkText` ("Eilmeldung"). `url` ist relativ und zeigt auf eine eigene Seite (`/eilmeldung/eilmeldung-9580.html`), nicht auf den Artikel. `date` ist Anzeigetext „Stand: 21.10.2026 11:25 Uhr“, kein ISO-Zeitstempel. `text` endete mit ` 
+` (wird getrimmt). Damit bestätigt sich, was der Telegram-Eilbot ([Brawl345/tagesschau-eilbot](https://github.com/Brawl345/tagesschau-eilbot), `handler/check.go`) annimmt; laut Eilbot steht die neueste Eilmeldung zuerst und `text` kann leer sein.
 - Ein fester Abfrageabstand ist nirgends dokumentiert; der Eilbot nutzt 60 s.
 
 ### `https://www.tagesschau.de/api2u/…` (dokumentiert von [bundesAPI](https://github.com/bundesAPI/tagesschau-api))
@@ -35,14 +36,14 @@ Eilwacht bringt die Tagesschau in Home Assistant – als Auslöser für Automati
 
 ### Übertragung
 
-Kein ETag, kein `Last-Modified` – bedingte Abfragen wie bei Streckenwacht gehen nicht. Alle drei Endpunkte komprimieren (Brotli, gzip; aiohttp fragt gzip von selbst an). Mit gzip: `headerapp` ≈ 2,5 KB, `homepage` ≈ 100 KB, `news?regions=1` ≈ 33 KB. Beim Abfrageplan unten sind das zusammen ≈ 20 MB am Tag.
+Kein ETag, kein `Last-Modified` – bedingte Abfragen wie bei Streckenwacht gehen nicht. Alle drei Endpunkte komprimieren (Brotli, gzip; aiohttp fragt gzip von selbst an). Mit gzip: `headerapp` ≈ 2,5 KB, `homepage` ≈ 100 KB, `news?regions=1` ≈ 33 KB. Beim Abfrageplan unten sind das zusammen ≈ 7 MB am Tag.
 
 ### Abfrageplan (Entwurf)
 
 | Quelle | Abstand | Zweck | api2u-Abrufe/h |
 | --- | --- | --- | --- |
 | `headerapp` | 1 min | Eilmeldungen, schnell | – |
-| `homepage` | 10 min, bei Ausfall von `headerapp` 2 min | Ausweichquelle für Eilmeldungen | 6 (30) |
+| `homepage` | nur bei Ausfall von `headerapp`, dann 2 min | Ausweichquelle für Eilmeldungen | 0 (30) |
 | `news?regions=…` | 15 min | Regionalnachrichten, Stichworte | 4 |
 
 Ein Coordinator je Endpunkt für alle Config-Entries – sonst vervielfacht jeder weitere Eintrag die Abrufe.
@@ -53,7 +54,7 @@ Ein Coordinator je Endpunkt für alle Config-Entries – sonst vervielfacht jede
 
 - **Ein Eintrag** „Eilwacht“ (`single_config_entry`), ohne Einstellungen. Gerät „Eilwacht“: `event` Eilmeldung (`breaking_news`), `binary_sensor` Eilmeldung aktiv, `sensor` Letzte Eilmeldung (bleibt nach dem Ende und über Neustarts erhalten).
 - **Unter-Einträge** „Nachrichtenwächter“ (`watch`): Name, Bundesländer (`0` = bundesweit, nur Meldungen ohne Bundesland), Stichworte. Gerät je Wächter: `event` Neue Meldung (`news`), `sensor` Letzte Meldung, `sensor` Meldungen (24 h).
-- **Coordinators:** `BreakingCoordinator` (headerapp jede Minute, homepage alle 10 bzw. bei Ausfall alle 2 Minuten, beide Quellen nach Artikelpfad zusammengeführt) und `NewsCoordinator` (eine Abfrage für alle Bundesländer aller Wächter, eine bundesweite nur bei Bedarf). Nur ein `NewsCoordinator`, wenn es Wächter gibt.
+- **Coordinators:** `BreakingCoordinator` (headerapp jede Minute, homepage nur solange headerapp ausfällt, dann alle 2 Minuten – nie beide zugleich, weil eine headerapp-Eilmeldung auf `/eilmeldung/…` statt auf den Artikel verweist und sonst doppelt gemeldet würde) und `NewsCoordinator` (eine Abfrage für alle Bundesländer aller Wächter, eine bundesweite nur bei Bedarf). Nur ein `NewsCoordinator`, wenn es Wächter gibt.
 - **Nichts doppelt melden:** Beim Start wird der Bestand still gelernt (`changes.py`). Meldungen, die während eines Neustarts erscheinen, werden deshalb nicht nachgemeldet.
 - **Repairs:** headerapp nach 30 Fehlversuchen in Folge, news nach 2.
 - **Echte Eilmeldung festhalten:** `sample.py` speichert die letzte headerapp-Antwort mit Eilmeldung (Store `eilwacht.breaking_sample`); sie steht im Diagnose-Download.
@@ -91,6 +92,6 @@ Nicht aus dem Code ablesbar, deshalb hier festgehalten:
 
 ## 6. Offene Fragen
 
-- Wie oft gibt es Eilmeldungen, wie lange stehen sie in `headerapp`, und erscheinen sie in `homepage` gleichzeitig? Webarchiv geprüft (2026-10-20): 168 lesbare Aufnahmen von `headerapp` zwischen Juli und Oktober 2026 (etwa zwei pro Tag, zufällige Uhrzeiten), keine mit `breakingNews`. Eilmeldungen sind also selten oder nur kurz sichtbar. Die erste echte Antwort soll die Integration selbst festhalten (Diagnose-Download).
+- Wie oft gibt es Eilmeldungen, wie lange stehen sie in `headerapp`, und erscheinen sie in `homepage` gleichzeitig? Webarchiv geprüft (2026-10-20): 168 lesbare Aufnahmen von `headerapp` zwischen Juli und Oktober 2026 (etwa zwei pro Tag, zufällige Uhrzeiten), keine mit `breakingNews`. Eilmeldungen sind also selten oder nur kurz sichtbar. Die erste echte Antwort soll die Integration selbst festhalten (Diagnose-Download). Erste echte Eilmeldung am 2026-10-21 (11:25 Uhr, in Eilwacht ab 11:27): rund 31 Minuten in `headerapp` sichtbar; kein zweites Event über `homepage`. Offen: Ob `homepage` Eilmeldungen überhaupt mit `breakingNews` kennzeichnet – falls ja, unter der Artikel-URL statt `/eilmeldung/…`, dann würde die Zusammenführung nach Artikelpfad nicht greifen und eine Eilmeldung zweimal melden.
 - Gibt es regionale Eilmeldungen (`breakingNews` in `regional` bzw. `news?regions=`)?
 - Welche HA-Mindestversion? Vorschlag wie Streckenwacht 2026.3 (Brand-Bilder im Integrationsordner).

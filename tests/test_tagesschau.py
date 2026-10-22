@@ -19,9 +19,9 @@ from tests.conftest import load_fixture
 
 BERLIN = ZoneInfo("Europe/Berlin")
 
-# Shape of a running alert as the Telegram alert bot reads it (handler/check.go).
-# Not yet seen in a recording: replace with a real fixture once one exists.
-HEADERAPP_ALERT = {
+# Edge cases around the recorded format (headerapp_breaking.json): several
+# alerts, an empty text, an absolute URL, unusable entries.
+HEADERAPP_ALERTS = {
     "liveStream": {},
     "breakingNews": [
         {
@@ -48,8 +48,28 @@ def test_headerapp_without_alert() -> None:
     assert parse_headerapp(load_fixture("headerapp.json")) == []
 
 
-def test_headerapp_alert() -> None:
-    first, second = parse_headerapp(HEADERAPP_ALERT)
+def test_headerapp_recorded_alert() -> None:
+    """A real alert, recorded by Eilwacht on 2026-10-21 (only key: breakingNews)."""
+    (alert,) = parse_headerapp(load_fixture("headerapp_breaking.json"))
+    assert alert.id == "2193a59e-5da9-4585-85a6-9f71f377bfd8"
+    assert alert.source is Source.HEADERAPP
+    assert alert.breaking
+    assert alert.title == "Text 1"
+    assert alert.summary == "Text 2"
+    # Relative link to a page of its own, not to the article.
+    assert alert.url == "https://www.tagesschau.de/eilmeldung/eilmeldung-9580.html"
+    assert alert.published == datetime(2026, 10, 21, 11, 25, tzinfo=BERLIN)
+
+
+def test_headerapp_text_is_trimmed() -> None:
+    # The recorded text ended in " \r\n".
+    data = {"breakingNews": [{"id": "x", "headline": "Eil", "text": "Satz. \r\n"}]}
+    (alert,) = parse_headerapp(data)
+    assert alert.summary == "Satz."
+
+
+def test_headerapp_alerts() -> None:
+    first, second = parse_headerapp(HEADERAPP_ALERTS)
     assert first.id == "eil-2"
     assert first.source is Source.HEADERAPP
     assert first.breaking

@@ -45,13 +45,20 @@ ENDPOINTS = {
 # Längere Listen werden auf so viele Einträge gekürzt; Eilmeldungen bleiben immer.
 MAX_ITEMS = 6
 
+# Felder ohne Fließtext, die trotz Leerzeichen echt bleiben, z. B. die
+# Zeitangabe einer Eilmeldung („Stand: 21.10.2026 11:25 Uhr“).
+KEEP_KEYS = frozenset({"date"})
+
 
 def scrub(value: Any, counter: list[int] | None = None) -> Any:
     """Fließtext durch Platzhalter ersetzen, lange Listen kürzen."""
     if counter is None:
         counter = [0]
     if isinstance(value, dict):
-        return {key: scrub(item, counter) for key, item in value.items()}
+        return {
+            key: item if key in KEEP_KEYS else scrub(item, counter)
+            for key, item in value.items()
+        }
     if isinstance(value, list):
         if len(value) > MAX_ITEMS:
             keep = [

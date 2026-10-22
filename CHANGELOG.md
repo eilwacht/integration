@@ -1,5 +1,11 @@
 # Changelog
 
+## Unveröffentlicht
+
+- Die Startseite der Tagesschau-API wird nur noch abgefragt, solange die Kopfzeile ausfällt. Eine Eilmeldung verweist auf eine eigene Seite, die Startseite auf den Artikel – beide zusammen hätten dieselbe Eilmeldung zweimal melden können. Nebenbei sinkt der Datenverkehr auf etwa 7 MB am Tag.
+- „Meldungen (24 h)“ ohne Einheit: Home Assistant speichert Einheiten immer auf Englisch („items“).
+- Das Format laufender Eilmeldungen ist jetzt an einer echten Eilmeldung (21.10.2026) bestätigt und getestet.
+
 ## 0.1.0b1 – 2026-10-20
 
 Erste Vorab-Version zum Testen.

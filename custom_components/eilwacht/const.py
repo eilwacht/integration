@@ -23,7 +23,6 @@ REQUEST_TIMEOUT: Final = 30
 # api2u allows at most 60 requests per hour for the whole instance: at most
 # 30 (homepage while headerapp fails) + 8 (news, by state and national).
 HEADERAPP_INTERVAL: Final = timedelta(minutes=1)
-HOMEPAGE_INTERVAL: Final = timedelta(minutes=10)
 HOMEPAGE_FALLBACK_INTERVAL: Final = timedelta(minutes=2)
 NEWS_INTERVAL: Final = timedelta(minutes=15)
 

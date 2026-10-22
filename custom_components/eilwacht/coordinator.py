@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from typing import Any
@@ -21,7 +22,6 @@ from .const import (
     FAILURES_BEFORE_ISSUE,
     HEADERAPP_INTERVAL,
     HOMEPAGE_FALLBACK_INTERVAL,
-    HOMEPAGE_INTERVAL,
     NEWS_INTERVAL,
     SUBENTRY_WATCH,
 )
@@ -109,11 +109,12 @@ class _FailureTracking:
 
 
 class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData]):
-    """Polls headerapp every minute and api2u/homepage as second source.
+    """Polls headerapp every minute; api2u/homepage only stands in while it fails.
 
-    headerapp is fast but undocumented; the homepage carries the same alerts
-    (breakingNews flag) and is polled every 10 minutes, every 2 while headerapp
-    fails. The first update learns running alerts without announcing them.
+    Never both at once: a headerapp alert links to a page of its own
+    (/eilmeldung/...), the homepage to the article, so one alert from both
+    sources would be announced twice. The first update learns running alerts
+    without announcing them.
     """
 
     _key = "headerapp"
@@ -156,14 +157,20 @@ class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData])
             self._record_success()
             self._record_sample(fast)
 
-        await self._async_poll_homepage(now)
-        if fast is None and self._homepage_at is None:
-            raise UpdateFailed(
-                "tagesschau.de: neither headerapp nor homepage available"
-            )
+        if fast is not None:
+            self._homepage_at = None
+            self._homepage_breaking = ()
+            items: Iterable[NewsItem] = fast
+        else:
+            await self._async_poll_homepage(now)
+            if self._homepage_at is None:
+                raise UpdateFailed(
+                    "tagesschau.de: neither headerapp nor homepage available"
+                )
+            items = self._homepage_breaking
 
         active: dict[str, NewsItem] = {}
-        for item in (*(fast or ()), *self._homepage_breaking):
+        for item in items:
             active.setdefault(item.key, item)
         new = self._tracker.update(active.values())
         return BreakingData(active=tuple(active.values()), new=tuple(new))
@@ -171,8 +178,8 @@ class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData])
     def _record_sample(self, parsed: list[NewsItem]) -> None:
         """Keep every response with an alert, even one the parser cannot read.
 
-        The alert format is not verified yet; a response that holds
-        "breakingNews" but yields no alert is exactly the one to record.
+        The endpoint is undocumented; should its format change, a response
+        that holds "breakingNews" but yields no alert is the one to record.
         """
         raw = self.client.last_headerapp
         if not isinstance(raw, dict) or not raw.get("breakingNews"):
@@ -184,10 +191,9 @@ class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData])
             )
 
     async def _async_poll_homepage(self, now: datetime) -> None:
-        interval = HOMEPAGE_FALLBACK_INTERVAL if self.failures else HOMEPAGE_INTERVAL
         # A few seconds of tolerance: polls are not exactly one minute apart.
-        if self._homepage_at and now - self._homepage_at < interval - timedelta(
-            seconds=5
+        if self._homepage_at and now - self._homepage_at < (
+            HOMEPAGE_FALLBACK_INTERVAL - timedelta(seconds=5)
         ):
             return
         try:

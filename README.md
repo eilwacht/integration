@@ -29,10 +29,10 @@ Alle Daten kommen von [tagesschau.de](https://www.tagesschau.de):
 | Was | Woher | Wie oft |
 | --- | --- | --- |
 | Eilmeldungen | die Kopfzeile der Website (`json/headerapp`) | jede Minute |
-| Eilmeldungen, zweite Quelle | Startseite der Tagesschau-API (`api2u/homepage`, Feld `breakingNews`) | alle 10 Minuten, bei Ausfall der ersten Quelle alle 2 Minuten |
+| Eilmeldungen, Ersatzquelle | Startseite der Tagesschau-API (`api2u/homepage`, Feld `breakingNews`) | nur solange die erste Quelle ausfällt, dann alle 2 Minuten |
 | Regionalnachrichten | Tagesschau-API (`api2u/news`), alle Bundesländer aller Wächter in einer Abfrage | alle 15 Minuten |
 
-Die Nutzungsbedingungen der Tagesschau erlauben die Nutzung für den **privaten, nicht-kommerziellen Gebrauch** und höchstens 60 Abrufe pro Stunde. Eilwacht bleibt mit zusammen höchstens 38 Abrufen pro Stunde darunter. Jede Home-Assistant-Instanz ruft die Daten selbst ab; es gibt keinen zentralen Server.
+Die Nutzungsbedingungen der Tagesschau erlauben die Nutzung für den **privaten, nicht-kommerziellen Gebrauch** und höchstens 60 Abrufe pro Stunde. Eilwacht bleibt mit höchstens 8 Abrufen pro Stunde (38, solange die Kopfzeile ausfällt) darunter. Jede Home-Assistant-Instanz ruft die Daten selbst ab; es gibt keinen zentralen Server.
 
 **Eilwacht ist kein Angebot der ARD oder der Tagesschau** und steht mit ihnen in keiner Verbindung.
 

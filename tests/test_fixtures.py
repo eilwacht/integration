@@ -28,6 +28,11 @@ def test_scrub_replaces_prose_and_keeps_structure() -> None:
     assert fetch_fixtures.scrub(raw) == {**raw, "title": "Text 1"}
 
 
+def test_scrub_keeps_dates() -> None:
+    raw = {"headline": "Eilmeldung eins", "date": "Stand: 21.10.2026 11:25 Uhr"}
+    assert fetch_fixtures.scrub(raw) == {**raw, "headline": "Text 1"}
+
+
 def test_scrub_shortens_lists_but_keeps_breaking_news() -> None:
     items = [{"breakingNews": False, "n": i} for i in range(20)]
     items[15]["breakingNews"] = True
@@ -38,7 +43,12 @@ def test_scrub_shortens_lists_but_keeps_breaking_news() -> None:
 
 def _strings(value: object) -> list[str]:
     if isinstance(value, dict):
-        return [s for item in value.values() for s in _strings(item)]
+        return [
+            s
+            for key, item in value.items()
+            if key not in fetch_fixtures.KEEP_KEYS
+            for s in _strings(item)
+        ]
     if isinstance(value, list):
         return [s for item in value for s in _strings(item)]
     return [value] if isinstance(value, str) else []

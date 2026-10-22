@@ -81,7 +81,7 @@ async def test_setup_without_watches(hass: HomeAssistant, client: FakeClient) ->
     await setup(hass, entry)
     assert entry.state is ConfigEntryState.LOADED
     assert entry.runtime_data.news is None
-    assert client.calls == ["headerapp", "homepage"]
+    assert client.calls == ["headerapp"]  # the homepage only while it fails
 
     ids = breaking_ids(hass, entry)
     assert hass.states.get(ids["event"]).state == STATE_UNKNOWN
@@ -135,7 +135,7 @@ async def test_alert_running_at_startup_is_not_announced(
     assert hass.states.get(ids["last"]).state == "Eilmeldung eins"
 
 
-async def test_same_alert_on_homepage_is_not_announced_again(
+async def test_homepage_is_ignored_while_headerapp_works(
     hass: HomeAssistant, client: FakeClient, freezer: FrozenDateTimeFactory
 ) -> None:
     entry = make_entry()
@@ -146,11 +146,12 @@ async def test_same_alert_on_homepage_is_not_announced_again(
     await refresh_breaking(hass, entry)
     fired_at = hass.states.get(ids["event"]).state
 
-    # the homepage flags the same article (same URL, other id) ten minutes later
-    client.homepage = [news_item("eil-1", source=Source.HOMEPAGE, breaking=True)]
+    # The homepage flags the same alert under the article URL: polled together,
+    # it would be announced twice.
+    client.homepage = [news_item("artikel-100", source=Source.HOMEPAGE, breaking=True)]
     freezer.tick(timedelta(minutes=11))
     await refresh_breaking(hass, entry)
-    assert client.calls.count("homepage") == 2
+    assert "homepage" not in client.calls
     assert hass.states.get(ids["event"]).state == fired_at
     assert len(entry.runtime_data.breaking.data.active) == 1
 
@@ -184,9 +185,11 @@ async def test_homepage_is_the_fallback(
     assert issue is not None
     assert issue.translation_key == "source_failed"
 
+    # headerapp is back: the homepage's alert no longer counts
     client.breaking = []
     await refresh_breaking(hass, entry)
     assert issue_registry.async_get_issue(DOMAIN, "source_failed_headerapp") is None
+    assert hass.states.get(ids["active"]).state == STATE_OFF
 
 
 async def test_both_sources_down(hass: HomeAssistant, client: FakeClient) -> None:
