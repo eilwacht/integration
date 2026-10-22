@@ -1,6 +1,6 @@
 # Changelog
 
-## Unveröffentlicht
+## 0.2.0 – 2026-10-22
 
 - **Nichts verpassen beim Neustart:** Eilmeldungen und Wächter-Meldungen, die erscheinen, während Home Assistant neu startet, werden danach gemeldet – auch über die Blueprints aufs Handy. Bisher lernte Eilwacht nach jedem Start still, was schon da war. Nach mehr als 6 Stunden Pause oder nach dem Ändern eines Wächters wird weiterhin still gelernt.
 

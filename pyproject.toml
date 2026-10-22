@@ -1,7 +1,7 @@
 [project]
 name = "eilwacht"
 # Kept equal to custom_components/eilwacht/manifest.json (checked by tests/test_manifest.py).
-version = "0.1.1"
+version = "0.2.0"
 description = "Home Assistant integration: Tagesschau breaking news, regional news and keyword alerts."
 readme = "README.md"
 license = "MIT"
