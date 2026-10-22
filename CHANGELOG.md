@@ -1,5 +1,9 @@
 # Changelog
 
+## Unveröffentlicht
+
+- **Nichts verpassen beim Neustart:** Eilmeldungen und Wächter-Meldungen, die erscheinen, während Home Assistant neu startet, werden danach gemeldet – auch über die Blueprints aufs Handy. Bisher lernte Eilwacht nach jedem Start still, was schon da war. Nach mehr als 6 Stunden Pause oder nach dem Ändern eines Wächters wird weiterhin still gelernt.
+
 ## 0.1.1 – 2026-10-22
 
 - „Meldungen (24 h)“ zeigt wieder „Meldungen“ als Einheit. Die Entfernung in 0.1.0 war ein Irrtum: Die Oberfläche übersetzt die Einheit, nur die Rohdaten speichern sie englisch. Wer 0.1.0 installiert hatte, sieht unter *Reparaturen* eventuell erneut einen Hinweis zur Einheit – einfach bestätigen.

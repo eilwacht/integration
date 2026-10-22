@@ -63,3 +63,29 @@ def test_memory_is_bounded() -> None:
     tracker.update([item("a"), item("b"), item("c")])
     # "a" was forgotten and counts as new again.
     assert tracker.update([item("a")]) == [item("a")]
+
+
+def test_restored_tracker_reports_items_since_the_restart() -> None:
+    before = NewItemTracker()
+    before.update([item("a", hour=8), item("b", hour=9)])
+
+    after = NewItemTracker()
+    after.restore(before.keys, datetime(2026, 10, 20, 10, tzinfo=BERLIN))
+    new = after.update(
+        [
+            item("a", hour=8),  # seen before the restart
+            item("old", hour=9),  # older than the cutoff: not news
+            item("undated"),
+            item("c", hour=11),  # appeared during the restart
+        ]
+    )
+    assert [n.id for n in new] == ["c"]
+    # The cutoff only applies to the first update after restoring.
+    assert after.update([item("late", hour=7)]) == [item("late", hour=7)]
+
+
+def test_keys_keep_order() -> None:
+    tracker = NewItemTracker()
+    tracker.update([item("a"), item("b")])
+    tracker.update([item("c")])
+    assert tracker.keys == ["news:a", "news:b", "news:c"]

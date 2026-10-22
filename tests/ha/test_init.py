@@ -7,8 +7,14 @@ from datetime import timedelta
 import pytest
 from freezegun.api import FrozenDateTimeFactory
 from homeassistant.config_entries import ConfigEntryState, ConfigSubentryData
-from homeassistant.const import STATE_OFF, STATE_ON, STATE_UNAVAILABLE, STATE_UNKNOWN
-from homeassistant.core import HomeAssistant
+from homeassistant.const import (
+    EVENT_STATE_CHANGED,
+    STATE_OFF,
+    STATE_ON,
+    STATE_UNAVAILABLE,
+    STATE_UNKNOWN,
+)
+from homeassistant.core import Event, HomeAssistant, callback
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers import issue_registry as ir
 from pytest_homeassistant_custom_component.common import MockConfigEntry
@@ -313,3 +319,111 @@ async def test_news_failure_raises_issue(
     await refresh_news(hass, entry)
     assert issue_registry.async_get_issue(DOMAIN, "source_failed_news") is None
     assert hass.states.get(watch_ids(hass, entry)["count"]).state == "0"
+
+
+# --- Restarts (seen.py) -----------------------------------------------------------
+
+# 12:30 in Berlin, half an hour after the test items are published.
+NOON = "2026-10-20T10:30:00+00:00"
+
+
+async def restart(hass: HomeAssistant, entry: MockConfigEntry) -> None:
+    """Unload and set up again, as Home Assistant does on a restart."""
+    assert await hass.config_entries.async_unload(entry.entry_id)
+    await hass.async_block_till_done()
+    assert await hass.config_entries.async_setup(entry.entry_id)
+    await hass.async_block_till_done()
+
+
+@pytest.mark.freeze_time(NOON)
+async def test_alert_during_restart_is_announced(
+    hass: HomeAssistant, client: FakeClient
+) -> None:
+    entry = make_entry()
+    await setup(hass, entry)
+    ids = breaking_ids(hass, entry)
+
+    changes: list[dict] = []
+
+    @callback
+    def record(event: Event) -> None:
+        if event.data["entity_id"] == ids["event"]:
+            changes.append(event.data)
+
+    hass.bus.async_listen(EVENT_STATE_CHANGED, record)
+
+    client.breaking = [ALERT]  # appears while Home Assistant restarts
+    await restart(hass, entry)
+    event = hass.states.get(ids["event"])
+    assert event.state != STATE_UNKNOWN
+    assert event.attributes["title"] == "Eilmeldung eins"
+
+    # The bundled blueprints skip changes from nothing or from "unavailable"
+    # (what a restart looks like): the caught-up alert must not be one.
+    (announced,) = [
+        c for c in changes if c["new_state"] and c["new_state"].attributes.get("title")
+    ]
+    assert announced["old_state"] is not None
+    assert announced["old_state"].state != STATE_UNAVAILABLE
+
+    # known now: the next restart does not announce it again
+    fired_at = event.state
+    await restart(hass, entry)
+    assert hass.states.get(ids["event"]).state == fired_at
+
+
+@pytest.mark.freeze_time(NOON)
+async def test_after_a_long_pause_nothing_is_caught_up(
+    hass: HomeAssistant, client: FakeClient, freezer: FrozenDateTimeFactory
+) -> None:
+    entry = make_entry()
+    await setup(hass, entry)
+    ids = breaking_ids(hass, entry)
+    assert await hass.config_entries.async_unload(entry.entry_id)
+
+    freezer.tick(timedelta(hours=7))
+    client.breaking = [news_item("eil-2", source=Source.HEADERAPP, hour=18)]
+    assert await hass.config_entries.async_setup(entry.entry_id)
+    await hass.async_block_till_done()
+    assert hass.states.get(ids["event"]).state == STATE_UNKNOWN
+
+
+@pytest.mark.freeze_time(NOON)
+async def test_watch_item_during_restart_is_announced(
+    hass: HomeAssistant, client: FakeClient
+) -> None:
+    client.news = {
+        (1,): [news_item("alt", title="Streik gestern", regions=(1,), hour=9)]
+    }
+    entry = make_entry(("Streik", [1], "Streik"))
+    await setup(hass, entry)
+    ids = watch_ids(hass, entry)
+    assert hass.states.get(ids["event"]).state == STATE_UNKNOWN
+
+    client.news[(1,)].insert(
+        0, news_item("neu", title="Streiks bei der SSB", regions=(1,), hour=12)
+    )
+    await restart(hass, entry)
+    event = hass.states.get(ids["event"])
+    assert event.attributes["title"] == "Streiks bei der SSB"
+    assert event.attributes["keywords"] == ["Streik"]
+
+
+@pytest.mark.freeze_time(NOON)
+async def test_changed_watch_learns_silently(
+    hass: HomeAssistant, client: FakeClient
+) -> None:
+    client.news = {(1,): [news_item("a", title="Streik", regions=(1,), hour=12)]}
+    entry = make_entry(("Streik", [1], "Streik"))
+    await setup(hass, entry)
+    ids = watch_ids(hass, entry)
+
+    # Without keywords the watch shows other items: no flood of "new" ones.
+    client.news[(1,)].append(news_item("b", title="Wetter", regions=(1,), hour=12))
+    (subentry,) = entry.subentries.values()
+    hass.config_entries.async_update_subentry(
+        entry, subentry, data={CONF_REGIONS: [1], CONF_KEYWORDS: ""}
+    )
+    await hass.async_block_till_done()
+    assert entry.state is ConfigEntryState.LOADED
+    assert hass.states.get(ids["event"]).state == STATE_UNKNOWN

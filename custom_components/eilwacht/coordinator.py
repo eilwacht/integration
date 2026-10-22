@@ -28,6 +28,7 @@ from .const import (
 from .keywords import KeywordFilter
 from .model import NewsItem
 from .sample import BreakingSample
+from .seen import SeenStore
 from .tagesschau import TagesschauClient, TagesschauError
 from .watch import NATIONAL, Watch
 
@@ -69,6 +70,17 @@ def watch_from_subentry(subentry: ConfigSubentry) -> Watch:
         regions=frozenset(int(r) for r in subentry.data.get(CONF_REGIONS, ())),
         keywords=KeywordFilter.parse(subentry.data.get(CONF_KEYWORDS)),
     )
+
+
+def watch_seen_name(subentry_id: str) -> str:
+    """Name of a watch's tracker in the SeenStore."""
+    return f"watch:{subentry_id}"
+
+
+def watch_fingerprint(subentry: ConfigSubentry) -> str:
+    """Settings that decide which items a watch shows (seen.py)."""
+    regions = ",".join(str(r) for r in sorted(subentry.data.get(CONF_REGIONS, ())))
+    return f"{regions}|{subentry.data.get(CONF_KEYWORDS, '')}"
 
 
 def issue_id(key: str) -> str:
@@ -113,11 +125,13 @@ class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData])
 
     Never both at once: a headerapp alert links to a page of its own
     (/eilmeldung/...), the homepage to the article, so one alert from both
-    sources would be announced twice. The first update learns running alerts
-    without announcing them.
+    sources would be announced twice. Alerts that appeared while Home
+    Assistant was restarting are announced (seen.py); without a recent saved
+    state the first update learns running alerts silently.
     """
 
     _key = "headerapp"
+    SEEN_NAME = "breaking"
 
     def __init__(
         self,
@@ -125,6 +139,7 @@ class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData])
         entry: ConfigEntry,
         client: TagesschauClient,
         sample: BreakingSample,
+        seen: SeenStore,
     ) -> None:
         super().__init__(
             hass,
@@ -137,7 +152,9 @@ class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData])
         self.client = client
         self.sample = sample
         self.failures = 0
+        self.seen = seen
         self._tracker = NewItemTracker()
+        seen.restore(self.SEEN_NAME, self._tracker)
         self._homepage_at: datetime | None = None
         self._homepage_breaking: tuple[NewsItem, ...] = ()
         self.homepage_error: str | None = None
@@ -173,6 +190,7 @@ class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData])
         for item in items:
             active.setdefault(item.key, item)
         new = self._tracker.update(active.values())
+        self.seen.save(self.SEEN_NAME, self._tracker)
         return BreakingData(active=tuple(active.values()), new=tuple(new))
 
     def _record_sample(self, parsed: list[NewsItem]) -> None:

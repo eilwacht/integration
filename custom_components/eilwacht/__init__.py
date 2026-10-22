@@ -18,9 +18,11 @@ from .coordinator import (
     NewsCoordinator,
     issue_id,
     watch_from_subentry,
+    watch_seen_name,
     watch_subentries,
 )
 from .sample import BreakingSample
+from .seen import SeenStore
 from .tagesschau import TagesschauClient
 from .watch import Watch
 
@@ -36,6 +38,7 @@ class EilwachtRuntimeData:
     breaking: BreakingCoordinator
     news: NewsCoordinator | None
     watches: dict[str, Watch]  # subentry_id -> watch
+    seen: SeenStore
 
 
 type EilwachtConfigEntry = ConfigEntry[EilwachtRuntimeData]
@@ -49,7 +52,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: EilwachtConfigEntry) -> 
 
     watches = {s.subentry_id: watch_from_subentry(s) for s in watch_subentries(entry)}
     regions = frozenset(r for watch in watches.values() for r in watch.regions)
-    breaking = BreakingCoordinator(hass, entry, client, sample)
+    seen = SeenStore(hass)
+    await seen.async_load(
+        keep={BreakingCoordinator.SEEN_NAME, *(watch_seen_name(s) for s in watches)}
+    )
+    breaking = BreakingCoordinator(hass, entry, client, sample, seen)
     news = NewsCoordinator(hass, entry, client, regions) if regions else None
     if news is None:
         ir.async_delete_issue(hass, DOMAIN, issue_id("news"))
@@ -59,7 +66,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: EilwachtConfigEntry) -> 
     await asyncio.gather(*(c.async_refresh() for c in (breaking, news) if c))
 
     entry.runtime_data = EilwachtRuntimeData(
-        breaking=breaking, news=news, watches=watches
+        breaking=breaking, news=news, watches=watches, seen=seen
     )
     # Subentry (watch) changes trigger a reload.
     entry.async_on_unload(entry.add_update_listener(_async_update_listener))
@@ -68,15 +75,19 @@ async def async_setup_entry(hass: HomeAssistant, entry: EilwachtConfigEntry) -> 
 
 
 async def async_unload_entry(hass: HomeAssistant, entry: EilwachtConfigEntry) -> bool:
-    """Unload a config entry."""
-    return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
+    """Unload a config entry; write the seen items for the next setup."""
+    unloaded = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
+    if unloaded:
+        await entry.runtime_data.seen.async_flush()
+    return unloaded
 
 
 async def async_remove_entry(hass: HomeAssistant, entry: EilwachtConfigEntry) -> None:
-    """Remove repair issues and the stored alert sample."""
+    """Remove repair issues, the stored alert sample and the seen items."""
     for key in ("headerapp", "news"):
         ir.async_delete_issue(hass, DOMAIN, issue_id(key))
     await BreakingSample.async_remove(hass)
+    await SeenStore.async_remove(hass)
 
 
 async def _async_update_listener(

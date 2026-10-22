@@ -43,7 +43,7 @@ Die Nutzungsbedingungen der Tagesschau erlauben die Nutzung für den **privaten,
 - **Nur die Tagesschau.** Andere Sender (ZDF, Deutschlandfunk, SWR, n-tv) kennzeichnen Eilmeldungen nicht maschinenlesbar. Für beliebige RSS-Feeds gibt es in Home Assistant die Integration [Feedreader](https://www.home-assistant.io/integrations/feedreader/).
 - **Keine Volltexte und Bilder** – Schlagzeile, Dachzeile, erster Satz und der Link zum Artikel.
 - **Keine amtlichen Warnungen.** Dafür gibt es [NINA](https://www.home-assistant.io/integrations/nina/) und die [DWD-Wetterwarnungen](https://www.home-assistant.io/integrations/dwd_weather_warnings/).
-- **Nichts nachträglich:** Was während eines Neustarts von Home Assistant erscheint, wird nicht nachgemeldet – dafür auch nichts doppelt.
+- **Nur kurze Pausen werden nachgeholt:** Was während eines Neustarts von Home Assistant erscheint, wird danach gemeldet. War Home Assistant länger als 6 Stunden aus, lernt Eilwacht still neu – sonst käme nach einem Tag Pause eine Flut von Nachrichten.
 - **Eilmeldungen sind selten.** Die Tagesschau verschickt sie nur bei wirklich wichtigen Ereignissen. Im Alltag melden sich die Nachrichtenwächter deutlich öfter.
 
 ## Datenschutz
