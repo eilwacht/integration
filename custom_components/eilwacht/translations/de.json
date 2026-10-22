@@ -29,7 +29,7 @@
           "data_description": {
             "name": "Zum Beispiel „Stuttgart“. Wird in den Namen der Entitäten verwendet.",
             "regions": "Regionalnachrichten dieser Länder. „Bundesweit“ ergänzt überregionale Nachrichten ohne Bundesland.",
-            "keywords": "Optional, durch Kommas getrennt. „Warnstreik“ findet das ganze Wort, „Streik*“ und „*streik“ auch längere Wörter, „-Fußball“ schließt aus. Leer: jede Meldung."
+            "keywords": "Optional, durch Kommas getrennt. Ein Stichwort findet Wörter, die damit beginnen: „Stuttgart“ auch „Stuttgarter“, „Streik“ auch „Streiks“. „*streik“ findet auch Wörter, in denen es steckt („Warnstreik“), „-Fußball“ schließt aus. Leer: jede Meldung."
           }
         },
         "reconfigure": {
@@ -43,7 +43,7 @@
           "data_description": {
             "name": "Zum Beispiel „Stuttgart“. Wird in den Namen der Entitäten verwendet.",
             "regions": "Regionalnachrichten dieser Länder. „Bundesweit“ ergänzt überregionale Nachrichten ohne Bundesland.",
-            "keywords": "Optional, durch Kommas getrennt. „Warnstreik“ findet das ganze Wort, „Streik*“ und „*streik“ auch längere Wörter, „-Fußball“ schließt aus. Leer: jede Meldung."
+            "keywords": "Optional, durch Kommas getrennt. Ein Stichwort findet Wörter, die damit beginnen: „Stuttgart“ auch „Stuttgarter“, „Streik“ auch „Streiks“. „*streik“ findet auch Wörter, in denen es steckt („Warnstreik“), „-Fußball“ schließt aus. Leer: jede Meldung."
           }
         }
       },

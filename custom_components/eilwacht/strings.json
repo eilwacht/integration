@@ -29,7 +29,7 @@
           "data_description": {
             "name": "For example “Stuttgart”. Used in entity names.",
             "regions": "Regional news of these states. “Germany-wide” adds national news without a state.",
-            "keywords": "Optional, comma-separated. “Warnstreik” matches the whole word, “Streik*” and “*streik” also longer words, “-Fußball” excludes. Empty: every item."
+            "keywords": "Optional, comma-separated. A keyword finds words starting with it: “Stuttgart” also finds “Stuttgarter”, “Streik” also “Streiks”. “*streik” also finds words containing it (“Warnstreik”), “-Fußball” excludes. Empty: every item."
           }
         },
         "reconfigure": {
@@ -43,7 +43,7 @@
           "data_description": {
             "name": "For example “Stuttgart”. Used in entity names.",
             "regions": "Regional news of these states. “Germany-wide” adds national news without a state.",
-            "keywords": "Optional, comma-separated. “Warnstreik” matches the whole word, “Streik*” and “*streik” also longer words, “-Fußball” excludes. Empty: every item."
+            "keywords": "Optional, comma-separated. A keyword finds words starting with it: “Stuttgart” also finds “Stuttgarter”, “Streik” also “Streiks”. “*streik” also finds words containing it (“Warnstreik”), “-Fußball” excludes. Empty: every item."
           }
         }
       },

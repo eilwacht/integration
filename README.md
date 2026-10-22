@@ -78,16 +78,16 @@ Nichts zu tun: Nach dem Hinzufügen gibt es das Gerät **Eilwacht** mit den Eilm
 | **Bundesländer** | Regionalnachrichten dieser Länder. **Bundesweit** ergänzt überregionale Nachrichten ohne Bundesland. |
 | **Stichworte** | optional, durch Kommas getrennt; leer heißt: jede Meldung |
 
-Stichworte durchsuchen Dachzeile, Schlagzeile, ersten Satz und Schlagwörter der Meldung, ohne Rücksicht auf Groß- und Kleinschreibung:
+Stichworte durchsuchen Dachzeile, Schlagzeile, ersten Satz und Schlagwörter der Meldung, ohne Rücksicht auf Groß- und Kleinschreibung. Ein Stichwort findet alle Wörter, die damit **beginnen** – so klappt es auch mit Mehrzahl, Beugung und zusammengesetzten Wörtern:
 
 | Eingabe | findet | findet nicht |
 | --- | --- | --- |
-| `Warnstreik` | „Warnstreik bei der Bahn“ | „Warnstreiks“ |
-| `Streik*` | „Streiks“, „Streikende“ | „Warnstreik“ |
-| `*streik` | „Warnstreik“, „Bahnstreik“ | „Streiks“ |
-| `S-Bahn` | „S-Bahn fällt aus“ | „Bahn“ allein |
-| `S-Bahn Stuttgart` | „S-Bahn Stuttgart“ | „S-Bahn in Stuttgart“ |
-| `-Fußball` | schließt Meldungen mit „Fußball“ aus | |
+| `Stuttgart` | „Stuttgart“, „Stuttgarter Gänsheide“ | |
+| `Streik` | „Streik“, „Streiks“, „Streikende“ | „Warnstreik“ |
+| `*streik` | „Warnstreik“, „Bahnstreiks“, „Streik“ | |
+| `Bahn` | „Bahn“, „Bahnhof“ | „Autobahn“, „S-Bahn“ |
+| `S-Bahn Stuttgart` | „S-Bahn Stuttgart“, „S-Bahn Stuttgarts“ | „S-Bahn in Stuttgart“ |
+| `-Fußball` | schließt Meldungen mit „Fußball“ oder „Fußballer“ aus | |
 
 Wächter lassen sich jederzeit über ⋮ → **Neu konfigurieren** ändern.
 

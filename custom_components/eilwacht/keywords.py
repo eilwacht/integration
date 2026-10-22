@@ -1,12 +1,15 @@
 """Keyword filter for news items. Pure Python, no Home Assistant imports.
 
 Syntax (comma-separated, case-insensitive):
-  Warnstreik     whole word: matches "Warnstreik", not "Warnstreiks"
-  Streik*        word starting with "Streik": "Streiks", "Streikende"
-  *streik        word ending with "streik": "Warnstreik", "Bahnstreik"
-  S-Bahn Stuttgart  phrases work the same way
-  -Fußball       exclude: items mentioning it never match
-An empty filter matches every item.
+  Stuttgart      words starting with it: "Stuttgart", "Stuttgarter"
+  Streik         "Streik", "Streiks", "Streikende", not "Warnstreik"
+  *streik        words containing it: "Warnstreik", "Bahnstreiks"
+  Bahn           "Bahnhof", not "Autobahn", not "S-Bahn"
+  S-Bahn Stuttgart  phrases: the last word may continue ("Stuttgarter")
+  -Fußball       exclude: items with words starting with it never match
+An empty filter matches every item. German inflects and compounds a lot,
+so matching the start of words finds what users mean ("Stuttgarter",
+"Streiks") without a trailing "*" (still accepted).
 """
 
 from __future__ import annotations
@@ -26,7 +29,8 @@ def _compile(term: str) -> re.Pattern[str]:
         for word in term.split()
     )
     body = r"\s+".join(words)
-    return re.compile(rf"(?<!{_WORD}){body}(?!{_WORD})", re.IGNORECASE)
+    # Anchored at the start of a word only: the word may continue.
+    return re.compile(rf"(?<!{_WORD}){body}", re.IGNORECASE)
 
 
 @dataclass(frozen=True, slots=True)
