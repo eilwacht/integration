@@ -93,6 +93,12 @@ Nicht aus dem Code ablesbar, deshalb hier festgehalten:
 
 ## 6. Offene Fragen
 
-- Wie oft gibt es Eilmeldungen, wie lange stehen sie in `headerapp`, und erscheinen sie in `homepage` gleichzeitig? Webarchiv geprüft (2026-10-20): 168 lesbare Aufnahmen von `headerapp` zwischen Juli und Oktober 2026 (etwa zwei pro Tag, zufällige Uhrzeiten), keine mit `breakingNews`. Eilmeldungen sind also selten oder nur kurz sichtbar. Die erste echte Antwort soll die Integration selbst festhalten (Diagnose-Download). Erste echte Eilmeldung am 2026-10-21 (11:25 Uhr, in Eilwacht ab 11:27): rund 31 Minuten in `headerapp` sichtbar; kein zweites Event über `homepage`. Offen: Ob `homepage` Eilmeldungen überhaupt mit `breakingNews` kennzeichnet – falls ja, unter der Artikel-URL statt `/eilmeldung/…`, dann würde die Zusammenführung nach Artikelpfad nicht greifen und eine Eilmeldung zweimal melden.
-- Gibt es regionale Eilmeldungen (`breakingNews` in `regional` bzw. `news?regions=`)?
-- Welche HA-Mindestversion? Vorschlag wie Streckenwacht 2026.3 (Brand-Bilder im Integrationsordner).
+- **Kennzeichnet `homepage` Eilmeldungen überhaupt mit `breakingNews`?** Bei der ersten echten Eilmeldung (2026-10-21, 11:25 Uhr) wurde `homepage` noch alle 10 Minuten abgefragt, ein zweites Event gab es nicht. Seit 0.1.0 dient `homepage` nur noch als Ersatz bei Ausfall von `headerapp` (Abschnitt 3), deshalb ist die Frage nur noch für diesen Fall wichtig.
+- **Gibt es regionale Eilmeldungen** (`breakingNews` in `regional` bzw. `news?regions=`)? Bisher keine gesehen.
+- **Wie oft gibt es Eilmeldungen?** Im Webarchiv (Juli–Oktober 2026, etwa zwei Aufnahmen pro Tag) keine; in Eilwacht die erste am 2026-10-21, rund 31 Minuten in `headerapp` sichtbar.
+
+## 7. Erledigte Fragen
+
+- **HA-Mindestversion:** 2026.3 (Brand-Bilder im Integrationsordner), in der CI mit dem Job `compat` geprüft.
+- **Format laufender Eilmeldungen:** am 2026-10-21 an einer echten Eilmeldung verifiziert (Abschnitt 2, Fixture `headerapp_breaking.json`).
+- **Bekanntmachen:** simon42 Community (Showroom, 2026-10-22); HACS-Standardliste beantragt am 2026-10-26 ([hacs/default#12711](https://github.com/hacs/default/pull/12711)). Home-Assistant-Forum (englisch) später – die Inhalte sind rein deutsch.
