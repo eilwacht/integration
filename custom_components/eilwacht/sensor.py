@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from homeassistant.components.sensor import SensorEntity, SensorStateClass
+from homeassistant.components.sensor import SensorEntity
 from homeassistant.const import STATE_UNAVAILABLE, STATE_UNKNOWN
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
@@ -90,9 +90,12 @@ class LastNewsSensor(WatchEntity, SensorEntity):
 
 
 class NewsCountSensor(WatchEntity, SensorEntity):
-    """Number of items the watch shows from the last 24 hours."""
+    """Number of items the watch shows from the last 24 hours.
 
-    _attr_state_class = SensorStateClass.MEASUREMENT
+    Deliberately without state_class: long-term statistics would add rows
+    every 5 minutes and every hour for a number that rarely changes, a
+    burden on SD cards for little use. The recorder history still has it.
+    """
 
     @property
     def native_value(self) -> int | None:

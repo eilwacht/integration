@@ -21,6 +21,7 @@ Eilwacht bringt Eilmeldungen und Regionalnachrichten der Tagesschau in dein Home
 - **Stichwortwächter:** nur Meldungen mit bestimmten Wörtern, mit Platzhaltern und Ausschlüssen.
 - **Fertige Blueprints** für Push-Nachricht und Ansage, mit Ruhezeiten.
 - Fällt eine Quelle aus, erscheint nach einer Weile ein Hinweis unter *Reparaturen*.
+- **Schont SD-Karten:** Eilwacht schreibt nur, wenn sich etwas ändert – wichtig für Home Assistant auf einem Raspberry Pi.
 
 <img src="https://raw.githubusercontent.com/eilwacht/integration/main/assets/screenshots/integration.png" alt="Eilwacht in Home Assistant: das Gerät Eilwacht und ein Nachrichtenwächter Stuttgart" width="720">
 

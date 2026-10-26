@@ -277,6 +277,9 @@ async def test_watch(hass: HomeAssistant, client: FakeClient) -> None:
     assert last.attributes["keywords"] == ["Streik*"]
     assert last.attributes["regions"] == ["Baden-Württemberg"]
     assert hass.states.get(ids["count"]).state == "1"  # "alt" is older than 24 hours
+    # No long-term statistics: rows every 5 minutes would wear SD cards.
+    assert "state_class" not in hass.states.get(ids["count"]).attributes
+    assert hass.states.get(ids["count"]).attributes["unit_of_measurement"] == "items"
 
     client.news[(1, 2)] = [
         news_item("neu", title="Streik bei der SSB", regions=(1,), hour=17),

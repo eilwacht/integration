@@ -1,5 +1,9 @@
 # Changelog
 
+## Unveröffentlicht
+
+- **Schonender für SD-Karten:** Das Gedächtnis für Neustarts wird nur noch kurz nach neuen Meldungen geschrieben, sonst höchstens alle 3 Stunden und beim Herunterfahren (bisher bis zu alle 10 Minuten). „Meldungen (24 h)“ legt keine Langzeitstatistik mehr an, die Home Assistant alle 5 Minuten fortschrieb; der normale Verlauf bleibt. Falls Home Assistant danach unter *Reparaturen* meldet, dass der Sensor keine Statistik mehr hat: die alten Statistikdaten löschen.
+
 ## 0.2.0 – 2026-10-22
 
 - **Nichts verpassen beim Neustart:** Eilmeldungen und Wächter-Meldungen, die erscheinen, während Home Assistant neu startet, werden danach gemeldet – auch über die Blueprints aufs Handy. Bisher lernte Eilwacht nach jedem Start still, was schon da war. Nach mehr als 6 Stunden Pause oder nach dem Ändern eines Wächters wird weiterhin still gelernt.
