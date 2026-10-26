@@ -27,7 +27,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-USER_AGENT = "Eilwacht/0.2.0 (+https://github.com/eilwacht/integration)"
+USER_AGENT = "Eilwacht/0.2.1 (+https://github.com/eilwacht/integration)"
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "tests" / "fixtures"
 RAW = ROOT / "raw"

@@ -1,6 +1,6 @@
 # Changelog
 
-## Unveröffentlicht
+## 0.2.1 – 2026-10-26
 
 - **Schonender für SD-Karten:** Das Gedächtnis für Neustarts wird nur noch kurz nach neuen Meldungen geschrieben, sonst höchstens alle 3 Stunden und beim Herunterfahren (bisher bis zu alle 10 Minuten). „Meldungen (24 h)“ legt keine Langzeitstatistik mehr an, die Home Assistant alle 5 Minuten fortschrieb; der normale Verlauf bleibt. Falls Home Assistant danach unter *Reparaturen* meldet, dass der Sensor keine Statistik mehr hat: die alten Statistikdaten löschen.
 
