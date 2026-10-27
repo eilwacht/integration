@@ -81,7 +81,7 @@ Ein Coordinator je Endpunkt für alle Config-Entries – sonst vervielfacht jede
 - **Quellen-Check:** `uv run tools/source_check.py` prüft alle drei Endpunkte (Bericht nur mit Zahlen, keine Inhalte) mit dem echten Code; läuft montags per `.github/workflows/source-check.yml`, öffnet bei Problemen ein Issue (Label `quellen-check`), kommentiert ein offenes und schließt es, sobald alles wieder geht. Zeitgesteuerte Workflows laufen nur von `main` und schlafen nach 60 Tagen ohne Repo-Aktivität ein.
 - Tests: `uv run pytest`; Lint: `uv run ruff check .` und `uv run ruff format .`.
 - Branches wie bei Streckenwacht: entwickelt wird auf `dev`, `main` nur für Releases.
-- Release: Version in `manifest.json`, `const.py`, `pyproject.toml` anheben, `uv lock`, auf `dev` pushen, CI abwarten, `main` vorspulen, `gh release create vX --target main` (Vorab-Versionen mit `--prerelease`). Der Workflow „Release-ZIP“ hängt `eilwacht.zip` an.
+- Release: Version in `manifest.json`, `const.py`, `pyproject.toml` anheben, `uv lock`, auf `dev` pushen, CI abwarten, `main` vorspulen, `gh release create vX --target main`, immer als reguläres Release, nie `--prerelease` (Checkliste in `CLAUDE.md`, Abschnitt „Release“). Der Workflow „Release-ZIP“ hängt `eilwacht.zip` an.
 
 ### GitHub-Einstellungen (Stand 2026-10-21)
 

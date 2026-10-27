@@ -17,7 +17,6 @@ Home-Assistant-Custom-Integration (HACS), Domain `eilwacht`. Eilmeldungen und Re
 - `homepage` nur als Ersatz, solange `headerapp` ausfällt – nie beide zugleich (Eilmeldung verweist auf `/eilmeldung/…`, homepage auf den Artikel → Doppelmeldung).
 - Nichts doppelt, nichts verpasst: gesehene Meldungen in `SeenStore` (`seen.py`), nach Neustart bis 6 h nachmelden, sonst still lernen.
 - SD-Karten schonen: selten schreiben, keine `state_class` für selten wechselnde Zähler (Details `docs/ENTWICKLUNG.md` Abschnitt 3).
-- Nur reguläre Releases, keine Vorab-Releases: HACS bietet ohne Beta-Schalter sonst den letzten Commit als „Update“ an, das fehlschlägt.
 - Lizenz MIT. Repo: `github.com/eilwacht/integration` (öffentlich). `codeowners`: `@n42net`.
 
 ## Arbeitsregeln
@@ -28,9 +27,21 @@ Home-Assistant-Custom-Integration (HACS), Domain `eilwacht`. Eilmeldungen und Re
 4. Alle HTTP-Requests mit User-Agent `Eilwacht/<version> (+https://github.com/eilwacht/integration)`. Quellenangabe „Quelle: tagesschau.de“ an allen Entities.
 5. Code, Kommentare, Entity-IDs auf Englisch; UI-Texte über `strings.json` + `translations/de.json` und `en.json`. Werkzeuge in `tools/` und Doku auf Deutsch.
 6. Tests gegen Fixtures, nicht gegen Live-APIs. HA-Tests (`tests/ha/`, `pytest-homeassistant-custom-component`) nur in GitHub Actions.
-7. **Branches:** Entwickelt wird auf `dev`; `main` erhält nur freigegebene Stände (Versions-Bump in `manifest.json`, `const.py` und `pyproject.toml` + GitHub-Release). Ein Ruleset erzwingt das: `main` nimmt nur Commits an, deren CI (`test`, `hassfest`, `compat`) grün ist – also erst `dev` pushen, CI abwarten, dann `main` vorspulen. Kein Force-Push, Tags `v*` sind unveränderlich.
+7. **Branches:** Entwickelt wird auf `dev`; `main` erhält nur freigegebene Stände (Ablauf unter „Release“), weil die HACS-Installationen daran hängen. Ein Ruleset erzwingt grüne CI (`test`, `hassfest`, `compat`) für `main`. Kein Force-Push, Tags `v*` sind unveränderlich.
 8. **Werkzeuge:** `uv run pytest`, `uv run ruff check .`, `uv run ruff format .`. `homeassistant` (dev) und `pytest-homeassistant-custom-component` (ha-tests) immer gemeinsam anheben. Rechnerspezifisches steht in `CLAUDE.local.md`.
-9. **Release:** Version in `manifest.json`, `const.py`, `pyproject.toml` und `tools/fetch_fixtures.py` (User-Agent), `uv lock`, „Unveröffentlicht“ in `CHANGELOG.md` zur Version machen → `dev` pushen → auf den CI-Lauf **genau dieses Commits** warten (`gh run list --commit <sha>`; Push-CI startet manchmal Minuten verspätet, ein älterer grüner Lauf täuscht) → `git push origin dev:main` → `gh release create vX --target main --latest --notes-file …` (Text aus dem Changelog) → Workflow „Release-ZIP“ prüfen.
+
+## Release
+
+Gleicher Ablauf in allen Schwesterprojekten (Eilwacht, Einspeisewacht, Streckenwacht, Tarifwacht). Neue Erkenntnisse zum Ablauf hier eintragen und für die Schwestern melden.
+
+1. Version in `manifest.json`, `const.py` und `pyproject.toml` anheben (dazu den User-Agent in `tools/fetch_fixtures.py`), `uv lock`; `tests/test_manifest.py` prüft die Gleichheit. „Unveröffentlicht“ in `CHANGELOG.md` zur Version machen.
+2. `dev` pushen und auf den CI-Lauf **genau dieses Commits** warten (`gh run list --commit <sha>`): Push-CI startet manchmal Minuten verspätet, ein älterer grüner Lauf täuscht.
+3. `main` vorspulen mit `git push origin dev:main` – **ohne Branch-Wechsel** im Arbeitsverzeichnis (auf dem Netzlaufwerk hat `git switch` schon Dateien verloren, ein Release entstand so auf altem Stand). Danach prüfen, dass `origin/main` auf dem Versions-Commit steht.
+4. `gh release create vX --target main --latest --notes-file …` (Text aus dem Changelog). Ziel `main`, kein Kurz-SHA (gibt 422). Immer ein **reguläres** Release, auch für Betas, nie `--prerelease`: Sonst nimmt HACS den letzten Commit und sucht dort vergeblich die ZIP. Blockiert der Auto-Modus das Veröffentlichen: Befehl nennen, der Inhaber führt ihn aus – nie umgehen.
+5. Workflow „Release-ZIP“ prüfen: `eilwacht.zip` muss am Release hängen. Der Workflow bricht ab, wenn Tag und `manifest.json` nicht passen; fehlt die ZIP, ihn per Hand mit dem Tag starten. Ohne ZIP scheitern HACS-Installationen.
+6. Bricht eine Sitzung mitten im Release ab: erst den Stand prüfen (`git log origin/dev origin/main`, CI des Commits, `gh release list`), dann weitermachen.
+
+„Unveränderliche Releases“ bleibt in GitHub aus, weil der Workflow die ZIP erst nach dem Veröffentlichen anhängt; die Tags `v*` schützt das Ruleset.
 
 ## Fallstricke
 
@@ -40,4 +51,3 @@ Home-Assistant-Custom-Integration (HACS), Domain `eilwacht`. Eilmeldungen und Re
 - Dependabot meldet Pillow-Lücken in `uv.lock`: nur Entwicklungsumgebung über den HA-Pin, die Integration hat keine Abhängigkeiten. Begründet abhaken („tolerable_risk“); beheben, sobald ein HA-Release Pillow ≥ 13 pinnt.
 - Screenshots (`assets/screenshots/`): echte Schlagzeilen nur in der Browser-Anzeige durch Beispieltexte ersetzen und im README so kennzeichnen.
 - Home Assistant des Nutzers: MCP nur lesend; Browser (Playwright) braucht seine eigene Anmeldung. Konto- und Organisationseinstellungen bei GitHub klickt der Nutzer selbst.
-- Sitzungen brechen manchmal mitten im Release ab: vor dem Wiederholen Stand prüfen (`git log origin/dev origin/main`, CI des Commits, `gh release list`).
