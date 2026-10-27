@@ -1,5 +1,10 @@
 # Changelog
 
+## Unveröffentlicht
+
+- Intern: wöchentlicher Quellen-Check (`tools/source_check.py`, Workflow „Quellen-Check“, montags): ruft headerapp, homepage und news mit dem echten Client ab und prüft, ob Format, Zeitangaben und Bundesländer noch erkannt werden (nur Zahlen im Bericht, keine Inhalte). Bei Problemen öffnet er ein Issue mit Label `quellen-check` und schließt es wieder, sobald alles geht.
+- Intern: Entwicklungs- und Testumgebung auf Home Assistant 2026.10.4 angehoben (Testbibliothek 0.13.375), wie bei Streckenwacht.
+
 ## 0.2.1 – 2026-10-26
 
 - **Schonender für SD-Karten:** Das Gedächtnis für Neustarts wird nur noch kurz nach neuen Meldungen geschrieben, sonst höchstens alle 3 Stunden und beim Herunterfahren (bisher bis zu alle 10 Minuten). „Meldungen (24 h)“ legt keine Langzeitstatistik mehr an, die Home Assistant alle 5 Minuten fortschrieb; der normale Verlauf bleibt. Falls Home Assistant danach unter *Reparaturen* meldet, dass der Sensor keine Statistik mehr hat: die alten Statistikdaten löschen.
