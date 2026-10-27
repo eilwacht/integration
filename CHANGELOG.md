@@ -4,6 +4,7 @@
 
 - Intern: wöchentlicher Quellen-Check (`tools/source_check.py`, Workflow „Quellen-Check“, montags): ruft headerapp, homepage und news mit dem echten Client ab und prüft, ob Format, Zeitangaben und Bundesländer noch erkannt werden (nur Zahlen im Bericht, keine Inhalte). Bei Problemen öffnet er ein Issue mit Label `quellen-check` und schließt es wieder, sobald alles geht.
 - Intern: Entwicklungs- und Testumgebung auf Home Assistant 2026.10.4 angehoben (Testbibliothek 0.13.375), wie bei Streckenwacht.
+- Intern: `astral-sh/setup-uv` 10.3.2; Dependabot schlägt Aktualisierungen jetzt für `dev` vor statt für `main`.
 
 ## 0.2.1 – 2026-10-26
 
