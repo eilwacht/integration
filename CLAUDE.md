@@ -49,6 +49,6 @@ Gleicher Ablauf in allen Schwesterprojekten (Eilwacht, Einspeisewacht, Streckenw
 - Event-Entities: Nachgeholte Events erst nach dem ersten geschriebenen Zustand auslösen (`_after_first_state`), sonst fallen sie unter den Neustart-Filter der Blueprints („von nichts“/„unavailable“).
 - `Store.async_delay_save` verschiebt einen anstehenden Schreibvorgang bei jedem Aufruf – nicht pro Abruf aufrufen (siehe `SeenStore._schedule`).
 - `unit_of_measurement` übersetzt nur die Oberfläche; State/API zeigen die englische Standardsprache. Nach der Oberfläche beurteilen, nicht nach dem State.
-- Dependabot meldet Pillow-Lücken in `uv.lock`: nur Entwicklungsumgebung über den HA-Pin, die Integration hat keine Abhängigkeiten. Begründet abhaken („tolerable_risk“); beheben, sobald ein HA-Release Pillow ≥ 13 pinnt.
+- Dependabot meldet Pillow-Lücken in `uv.lock`: nur Entwicklungsumgebung über den HA-Pin, die Integration hat keine Abhängigkeiten. Seit 2026-10-29 zieht `override-dependencies` in `pyproject.toml` Pillow auf 13.0.0 vor; den Override entfernen, sobald der HA-Pin selbst Pillow ≥ 13 verlangt. Künftige Lücken dieser Art ebenso per Override beheben statt abhaken.
 - Screenshots (`assets/screenshots/`): echte Schlagzeilen nur in der Browser-Anzeige durch Beispieltexte ersetzen und im README so kennzeichnen.
 - Home Assistant des Nutzers: MCP nur lesend; Browser (Playwright) braucht seine eigene Anmeldung. Konto- und Organisationseinstellungen bei GitHub klickt der Nutzer selbst.
