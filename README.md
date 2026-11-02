@@ -14,6 +14,13 @@ Eilwacht bringt Eilmeldungen und Regionalnachrichten der Tagesschau in dein Home
 
 *English:* Home Assistant integration for breaking news and regional news from Germany's public broadcaster Tagesschau, as triggers for automations. German-language content only.
 
+## Inhalt
+
+- [Was Eilwacht kann](#was-eilwacht-kann) · [Datenquelle](#datenquelle) · [Was Eilwacht nicht kann](#was-eilwacht-nicht-kann)
+- **Loslegen:** [Installation](#installation-hacs-benutzerdefiniertes-repository) · [Einrichtung](#einrichtung) · [Eilmeldungen](#eilmeldungen) · [Nachrichtenwächter](#nachrichtenwächter) · [Entitäten](#entitäten)
+- **[Was du damit bauen kannst](#was-du-damit-bauen-kannst):** [Blueprints](#fertige-blueprints) · [Licht rot bei Eilmeldung](#licht-kurz-rot-färben-bei-einer-eilmeldung) · [Letzte Eilmeldung im Dashboard](#letzte-eilmeldung-im-dashboard)
+- **Mehr:** [Datenschutz](#datenschutz) · [Fehlerbehebung](#fehlerbehebung) · [Fehler melden](#fehler-melden) · [Weitere Wachten](#weitere-wachten)
+
 ## Was Eilwacht kann
 
 - **Eilmeldungen** der Tagesschau als Event, als Binärsensor „Eilmeldung aktiv“ und als Sensor „Letzte Eilmeldung“ – ohne Einrichtung, sofort nach dem Hinzufügen.
