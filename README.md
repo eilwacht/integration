@@ -197,7 +197,9 @@ content: >-
 
 ## Fehler melden
 
-Fehler und Ideen bitte als [GitHub-Issue](https://github.com/eilwacht/integration/issues), möglichst mit Diagnose-Datei und Home-Assistant-Version.
+Fehler und Ideen bitte als [GitHub-Issue](https://github.com/eilwacht/integration/issues), möglichst mit Diagnose-Datei und Home-Assistant-Version. Sicherheitslücken bitte vertraulich, siehe [SECURITY.md](https://github.com/eilwacht/integration/blob/main/SECURITY.md).
+
+Pull Requests sind willkommen. Wie, steht in [CONTRIBUTING.md](https://github.com/eilwacht/integration/blob/main/CONTRIBUTING.md).
 
 ## Weitere Wachten
 
