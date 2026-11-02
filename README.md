@@ -3,7 +3,7 @@
   <img alt="Eilwacht – Was wichtig ist, meldet sich." src="https://raw.githubusercontent.com/eilwacht/integration/main/assets/github/readme-header-light@2x.png" width="640">
 </picture>
 
-[![HACS Custom](https://img.shields.io/badge/HACS-Custom-9B2423.svg)](https://hacs.xyz/)
+[![HACS Default](https://img.shields.io/badge/HACS-Default-005B8C.svg)](https://hacs.xyz/)
 [![Release](https://img.shields.io/github/v/release/eilwacht/integration?color=9B2423)](https://github.com/eilwacht/integration/releases)
 [![CI](https://github.com/eilwacht/integration/actions/workflows/ci.yml/badge.svg)](https://github.com/eilwacht/integration/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-F5A623.svg)](LICENSE)
@@ -17,7 +17,7 @@ Eilwacht bringt Eilmeldungen und Regionalnachrichten der Tagesschau in dein Home
 ## Inhalt
 
 - [Was Eilwacht kann](#was-eilwacht-kann) · [Datenquelle](#datenquelle) · [Was Eilwacht nicht kann](#was-eilwacht-nicht-kann)
-- **Loslegen:** [Installation](#installation-hacs-benutzerdefiniertes-repository) · [Einrichtung](#einrichtung) · [Eilmeldungen](#eilmeldungen) · [Nachrichtenwächter](#nachrichtenwächter) · [Entitäten](#entitäten)
+- **Loslegen:** [Installation](#installation-hacs) · [Einrichtung](#einrichtung) · [Eilmeldungen](#eilmeldungen) · [Nachrichtenwächter](#nachrichtenwächter) · [Entitäten](#entitäten)
 - **[Was du damit bauen kannst](#was-du-damit-bauen-kannst):** [Blueprints](#fertige-blueprints) · [Licht rot bei Eilmeldung](#licht-kurz-rot-färben-bei-einer-eilmeldung) · [Letzte Eilmeldung im Dashboard](#letzte-eilmeldung-im-dashboard)
 - **Mehr:** [Datenschutz](#datenschutz) · [Fehlerbehebung](#fehlerbehebung) · [Fehler melden](#fehler-melden) · [Weitere Wachten](#weitere-wachten)
 
@@ -58,19 +58,19 @@ Die Nutzungsbedingungen der Tagesschau erlauben die Nutzung für den **privaten,
 
 Eilwacht ruft nur tagesschau.de ab. Deine Bundesländer und Stichworte bleiben in Home Assistant; die Abfrage enthält nur die Nummern der Bundesländer.
 
-## Installation (HACS, benutzerdefiniertes Repository)
+## Installation (HACS)
 
 Voraussetzung: Home Assistant **2026.3** oder neuer und [HACS](https://hacs.xyz/).
 
 **Mit einem Klick:** [![In HACS öffnen](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=eilwacht&repository=integration&category=integration) → herunterladen, Home Assistant neu starten → [![Integration hinzufügen](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=eilwacht)
 
-Oder von Hand:
+Oder von Hand – Eilwacht ist seit November 2026 in der Standardliste von HACS, ein benutzerdefiniertes Repository ist nicht mehr nötig:
 
-1. HACS öffnen → Menü (⋮) → **Benutzerdefinierte Repositories**.
-2. URL `https://github.com/eilwacht/integration` eintragen, Typ **Integration**, hinzufügen.
-3. **Eilwacht** in HACS öffnen → **Herunterladen**.
-4. Home Assistant neu starten.
-5. **Einstellungen → Geräte & Dienste → Integration hinzufügen → Eilwacht**.
+1. HACS öffnen, nach **Eilwacht** suchen → **Herunterladen**.
+2. Home Assistant neu starten.
+3. **Einstellungen → Geräte & Dienste → Integration hinzufügen → Eilwacht**.
+
+Hinweis: Im HACS-Dashboard fehlt das Icon derzeit ([HACS-Issue #5171](https://github.com/hacs/integration/issues/5171)); in den Home-Assistant-Einstellungen wird es angezeigt.
 
 ## Einrichtung
 

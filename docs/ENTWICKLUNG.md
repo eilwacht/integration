@@ -103,4 +103,4 @@ Nicht aus dem Code ablesbar, deshalb hier festgehalten:
 
 - **HA-Mindestversion:** 2026.3 (Brand-Bilder im Integrationsordner), in der CI mit dem Job `compat` geprüft.
 - **Format laufender Eilmeldungen:** am 2026-10-21 an einer echten Eilmeldung verifiziert (Abschnitt 2, Fixture `headerapp_breaking.json`).
-- **Bekanntmachen:** simon42 Community (Showroom, 2026-10-22); HACS-Standardliste beantragt am 2026-10-26 ([hacs/default#12711](https://github.com/hacs/default/pull/12711)). Home-Assistant-Forum (englisch) später – die Inhalte sind rein deutsch.
+- **Bekanntmachen:** simon42 Community (Showroom, 2026-10-22); HACS-Standardliste beantragt am 2026-10-26, aufgenommen am 2026-11-02 ([hacs/default#12711](https://github.com/hacs/default/pull/12711)); README seitdem mit Installation über die HACS-Suche. Home-Assistant-Forum (englisch) später – die Inhalte sind rein deutsch.
