@@ -7,8 +7,11 @@
 [![Release](https://img.shields.io/github/v/release/eilwacht/integration?color=9B2423)](https://github.com/eilwacht/integration/releases)
 [![CI](https://github.com/eilwacht/integration/actions/workflows/ci.yml/badge.svg)](https://github.com/eilwacht/integration/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-F5A623.svg)](LICENSE)
+[![Live-Demo](https://img.shields.io/badge/Live--Demo-ausprobieren-F5A623.svg)](https://eilwacht.github.io/integration/?lang=de)
 
 Eilwacht bringt Eilmeldungen und Regionalnachrichten der Tagesschau in dein Home Assistant – nicht als Nachrichtenleser, sondern als Auslöser: für eine Push-Nachricht, eine Ansage in der Küche oder ein Lichtsignal. Nachrichtenwächter melden dir neue Meldungen aus deinem Bundesland, auf Wunsch nur die mit bestimmten Stichworten wie „Warnstreik“ oder „S-Bahn“.
+
+**Ausprobieren ohne Installation:** Die [Live-Demo](https://eilwacht.github.io/integration/?lang=de) hat einen Stichwort-Tester – tippe Stichworte wie im Wächter-Dialog und sieh, welche Meldungen gemeldet würden – und zeigt Geräte, Dashboard-Karte, Verlauf und Push-Nachrichten, ruhig und bei laufender Eilmeldung. Alle Meldungen dort sind erfunden.
 
 *English:* Home Assistant integration for breaking news and regional news from Germany's public broadcaster Tagesschau, as triggers for automations. German-language content only.
 

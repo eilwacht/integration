@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eilwacht – Live-Demo</title>
+    <meta
+      name="description"
+      content="Eilwacht zum Ausprobieren: Stichwort-Tester, Geräte, Verlauf und Push-Nachrichten – mit erfundenen Meldungen, verarbeitet vom Code der Integration."
+    />
+    <link rel="icon" href="../../custom_components/eilwacht/brand/icon.png" />
+    <style>
+      /* Page chrome in the Eilwacht colours (docs/BRAND.md), the dashboard
+         with Home Assistant's default theme variables. Deliberately nothing
+         that looks like the Tagesschau: no blue, no red alert bar. */
+      :root {
+        color-scheme: light;
+        --page-bg: #faf7f2;
+        --page-text: #1f1c18;
+        --page-muted: #6b6357;
+        --page-line: #e4ddd1;
+        --brand: #9b2423;
+        --accent: #f5a623;
+        --offwhite: #fbf7ee;
+        --control-bg: #ffffff;
+        --primary-color: #03a9f4;
+        --card-background-color: #ffffff;
+        --primary-text-color: #212121;
+        --secondary-text-color: #727272;
+        --secondary-background-color: #f2f2f2;
+        --divider-color: rgba(0, 0, 0, 0.12);
+        --state-icon-color: #44739e;
+        --state-active-color: #ff9800;
+        --timeline-off: #d7d3cc;
+        --series-1: #44739e;
+        --series-2: #8e5ea2;
+        --hit: #2e7d32;
+        --miss: #9e9e9e;
+        --out: #b3261e;
+        --mark: rgba(245, 166, 35, 0.38);
+      }
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --page-bg: #14181d;
+        --page-text: #ece8e1;
+        --page-muted: #b9b2a6;
+        --page-line: #2a3038;
+        --brand: #d9645f;
+        --control-bg: #1d232a;
+        --card-background-color: #1c1c1c;
+        --primary-text-color: #e1e1e1;
+        --secondary-text-color: #9b9b9b;
+        --secondary-background-color: #282828;
+        --divider-color: rgba(225, 225, 225, 0.12);
+        --state-icon-color: #6aa7d8;
+        --timeline-off: #3a3f46;
+        --series-1: #6aa7d8;
+        --series-2: #c39bd3;
+        --hit: #66bb6a;
+        --miss: #8a8a8a;
+        --out: #f2867f;
+        --mark: rgba(245, 166, 35, 0.32);
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--page-bg); color: var(--page-text);
+        font: 15px/1.5 Roboto, system-ui, -apple-system, "Segoe UI", sans-serif; }
+      .page { max-width: 1280px; margin: 0 auto; padding: 24px 16px 48px; }
+      header { display: flex; gap: 14px; align-items: center; margin-bottom: 20px; }
+      header img { width: 52px; height: 52px; border-radius: 12px; flex: none; }
+      h1 { margin: 0; font-size: 24px; line-height: 1.2; }
+      h1 span { color: var(--page-muted); font-weight: 400; }
+      .tagline { margin: 2px 0 0; color: var(--page-muted); }
+      header a.repo { margin-left: auto; color: var(--brand); text-decoration: none; font-weight: 600;
+        white-space: nowrap; }
+      .controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end; margin-bottom: 20px; }
+      .group { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+      .group > span { font-size: 12px; color: var(--page-muted); text-transform: uppercase; letter-spacing: .04em; }
+      .seg { display: inline-flex; flex-wrap: wrap; max-width: 100%; overflow: hidden;
+        border: 1px solid var(--page-line); border-radius: 8px; background: var(--control-bg); }
+      .seg button { border: 0; border-right: 1px solid var(--page-line); background: none; color: inherit;
+        font: inherit; padding: 6px 12px; cursor: pointer; }
+      .seg button:last-child { border-right: 0; }
+      .seg button[aria-pressed="true"] { background: var(--brand); color: #fff; }
+      :root[data-theme="dark"] .seg button[aria-pressed="true"] { color: #14181d; }
+      .seg button:focus-visible, .chips button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+      svg.mdi { width: 1em; height: 1em; fill: currentColor; flex: none; vertical-align: -0.125em; }
+      .banner { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; padding: 10px 14px;
+        border-radius: 10px; border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent);
+        background: color-mix(in srgb, var(--accent) 14%, var(--page-bg)); font-size: 14px; }
+      .banner svg.mdi { font-size: 22px; color: var(--accent); }
+
+      /* Dashboard: Home Assistant's sections view. */
+      .sections { display: grid; gap: 24px 16px;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+      .section { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+      .section.wide { grid-column: 1 / -1; }
+      @media (max-width: 720px) { header a.repo { display: none; } }
+      .heading { display: flex; align-items: center; gap: 8px; min-height: 36px; font-size: 16px;
+        font-weight: 500; color: var(--primary-text-color); }
+      .heading svg.mdi { font-size: 20px; color: var(--secondary-text-color); }
+      .card { background: var(--card-background-color); color: var(--primary-text-color);
+        border: 1px solid var(--divider-color); border-radius: 12px; overflow: hidden; min-width: 0; }
+      .card-title { padding: 14px 16px 4px; font-size: 20px; font-weight: 400; }
+      .card-foot { padding: 10px 16px 12px; border-top: 1px solid var(--divider-color); font-size: 13px;
+        color: var(--secondary-text-color); }
+      .card-foot a { display: inline-block; margin-right: 12px; }
+      .muted { color: var(--secondary-text-color); }
+
+      /* Device page cards */
+      .info { padding: 2px 16px 6px; font-size: 14px; color: var(--secondary-text-color); }
+      .info p { margin: 0 0 6px; }
+      .info .version { color: var(--primary-text-color); }
+      .link-row { display: flex; align-items: center; gap: 14px; padding: 8px 16px; font-size: 14px; }
+      .link-row img { width: 24px; height: 24px; border-radius: 5px; }
+      .link-row svg.mdi { margin-left: auto; font-size: 22px; color: var(--secondary-text-color); }
+      .visit { display: flex; align-items: center; gap: 8px; padding: 10px 16px; font-size: 14px; font-weight: 500;
+        color: var(--primary-color); border-top: 1px solid var(--divider-color); }
+      .visit svg.mdi { font-size: 20px; }
+      .visit .dots { margin-left: auto; color: var(--secondary-text-color); }
+      .rows { padding: 4px 0; }
+      details.row > summary { display: flex; align-items: center; gap: 16px; padding: 9px 16px; font-size: 14px;
+        cursor: pointer; list-style: none; }
+      details.row > summary::-webkit-details-marker { display: none; }
+      details.row > summary:hover { background: var(--secondary-background-color); }
+      details.row > summary > svg.mdi { font-size: 24px; color: var(--state-icon-color); }
+      details.row > summary > svg.mdi.on { color: var(--state-active-color); }
+      .row .name { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .row .value { flex: 0 1 auto; max-width: 58%; text-align: right; overflow: hidden; text-overflow: ellipsis;
+        white-space: nowrap; }
+      .row .value small { display: block; color: var(--secondary-text-color); font-size: 13px; }
+      details.row pre { margin: 0 16px 10px; }
+      pre { padding: 10px 12px; border-radius: 8px; background: var(--secondary-background-color);
+        font: 12px/1.5 ui-monospace, Consolas, monospace; overflow: auto; max-height: 360px; white-space: pre-wrap;
+        overflow-wrap: anywhere; }
+
+      /* Markdown card (README) */
+      .md { padding: 4px 16px 14px; font-size: 14px; }
+      .md p { margin: 0 0 8px; }
+      .md .fake-link { color: var(--primary-color); font-weight: 700; }
+      .md small { color: var(--secondary-text-color); }
+
+      /* History */
+      svg.chart { display: block; width: 100%; height: auto; }
+      svg.chart text { fill: var(--secondary-text-color); font-size: 11px; }
+      svg.chart .grid { stroke: var(--divider-color); }
+      .chart-label { padding: 10px 16px 0; font-size: 13px; color: var(--secondary-text-color); }
+      .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; padding: 0 12px 10px;
+        font-size: 12px; }
+      .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
+
+      /* Push notifications (phone lock screen) and announcement */
+      .phone { padding: 14px 12px; display: flex; flex-direction: column; gap: 8px;
+        background: linear-gradient(160deg, #1f252c, #3a3f46 55%, #6b5d4a); }
+      .push { background: rgba(255, 255, 255, 0.88); color: #1b1b1b; border-radius: 16px; padding: 9px 12px;
+        font-size: 13px; line-height: 1.4; white-space: pre-line; overflow-wrap: anywhere; }
+      :root[data-theme="dark"] .push { background: rgba(30, 30, 30, 0.88); color: #eee; }
+      .push .app { display: flex; gap: 6px; align-items: center; font-size: 11px; opacity: 0.75; white-space: normal; }
+      .push .app svg.mdi { font-size: 14px; }
+      .push .app span:last-child { margin-left: auto; white-space: nowrap; }
+      .push b { display: block; }
+      .speaker { display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; }
+      .speaker > svg.mdi { font-size: 28px; color: var(--accent); margin-top: 2px; }
+      .speaker q { display: block; font-size: 15px; quotes: "„" "“" "‘" "’"; }
+      :root[lang="en"] .speaker q { quotes: "“" "”" "‘" "’"; }
+      .speaker small { display: block; color: var(--secondary-text-color); font-size: 12px; margin-top: 4px; }
+
+      /* Keyword tester */
+      .tester { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+      @media (max-width: 860px) { .tester { grid-template-columns: minmax(0, 1fr); } }
+      .tester-side { padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; font-size: 14px;
+        border-right: 1px solid var(--divider-color); }
+      @media (max-width: 860px) { .tester-side { border-right: 0; border-bottom: 1px solid var(--divider-color); } }
+      .tester-side p { margin: 0; color: var(--secondary-text-color); }
+      .tester-side label > span { display: block; font-size: 12px; color: var(--secondary-text-color); margin-bottom: 4px; }
+      .tester-side input[type="text"] { width: 100%; padding: 10px 12px; border-radius: 8px; font: 16px ui-monospace, Consolas, monospace;
+        border: 1px solid var(--divider-color); background: var(--secondary-background-color); color: inherit; }
+      .tester-side input[type="text"]:focus { outline: 2px solid var(--accent); outline-offset: 0; }
+      .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+      .chips button { border: 1px solid var(--divider-color); border-radius: 14px; padding: 2px 10px;
+        background: none; color: inherit; font: 13px ui-monospace, Consolas, monospace; cursor: pointer; }
+      .chips button:hover { background: var(--secondary-background-color); }
+      .chips.regions button { font-family: inherit; }
+      .chips.regions button[aria-pressed="true"] { border-color: var(--brand); color: var(--brand);
+        background: color-mix(in srgb, var(--brand) 10%, transparent); }
+      .parsed { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+      .term { border-radius: 6px; padding: 1px 7px; font: 13px ui-monospace, Consolas, monospace;
+        background: color-mix(in srgb, var(--hit) 16%, transparent); color: var(--hit); }
+      .term.minus { background: color-mix(in srgb, var(--out) 14%, transparent); color: var(--out); }
+      table.syntax { width: 100%; border-collapse: collapse; font-size: 13px; }
+      table.syntax td { padding: 4px 6px; border-bottom: 1px solid var(--divider-color); vertical-align: top; }
+      table.syntax td:first-child { font-family: ui-monospace, Consolas, monospace; white-space: nowrap; }
+      .tester details summary { cursor: pointer; color: var(--brand); }
+      .results { padding: 6px 0; }
+      .results h3 { margin: 0; padding: 10px 16px 4px; font-size: 14px; font-weight: 500; }
+      .results details > summary { padding: 10px 16px 4px; font-size: 14px; font-weight: 500; cursor: pointer; color: var(--brand); }
+      .hit { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 2px 10px; padding: 8px 16px;
+        border-top: 1px solid var(--divider-color); font-size: 14px; }
+      .hit > svg.mdi { font-size: 20px; margin-top: 1px; }
+      .hit.yes > svg.mdi { color: var(--hit); }
+      .hit.no > svg.mdi { color: var(--miss); }
+      .hit.out > svg.mdi { color: var(--out); }
+      .hit.no .body, .hit.out .body { opacity: 0.78; }
+      .hit .top { font-size: 12px; color: var(--secondary-text-color); }
+      .hit .title { font-weight: 500; }
+      .hit .sum { color: var(--secondary-text-color); font-size: 13px; }
+      .hit .meta { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; font-size: 12px;
+        color: var(--secondary-text-color); margin-top: 2px; }
+      .hit .tag { border: 1px solid var(--divider-color); border-radius: 10px; padding: 0 6px; }
+      .hit .why { font-weight: 500; }
+      .hit.yes .why { color: var(--hit); } .hit.out .why { color: var(--out); }
+      mark { background: var(--mark); color: inherit; border-radius: 3px; padding: 0 1px; }
+      mark.minus { background: color-mix(in srgb, var(--out) 22%, transparent); text-decoration: line-through; }
+      .count { padding: 12px 16px 2px; font-size: 15px; }
+      .count b { font-size: 20px; }
+
+      .below { margin-top: 28px; display: grid; gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+      .box { border: 1px solid var(--page-line); border-radius: 10px; padding: 12px 14px; background: var(--control-bg); }
+      .box h2 { margin: 0 0 6px; font-size: 14px; }
+      .box p, .box li { margin: 0 0 6px; color: var(--page-muted); font-size: 14px; }
+      .box.notice { border-color: color-mix(in srgb, var(--brand) 45%, var(--page-line)); }
+      a { color: var(--brand); }
+      footer { margin-top: 24px; font-size: 13px; color: var(--page-muted); text-align: center; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <img src="../../custom_components/eilwacht/brand/icon.png" alt="" />
+        <div>
+          <h1>Eilwacht <span data-t="demo"></span></h1>
+          <p class="tagline" data-t="tagline"></p>
+        </div>
+        <a class="repo" href="https://github.com/eilwacht/integration">GitHub →</a>
+      </header>
+
+      <div class="controls">
+        <div class="group"><span data-t="time"></span><div class="seg" id="moment"></div></div>
+        <div class="group"><span data-t="lang"></span><div class="seg" id="lang"></div></div>
+        <div class="group"><span data-t="theme"></span><div class="seg" id="dark"></div></div>
+      </div>
+
+      <div class="banner" id="banner"></div>
+
+      <div class="sections">
+        <section class="section wide" id="tester"></section>
+      </div>
+      <main class="sections" id="dashboard" style="margin-top: 24px"></main>
+
+      <div class="below">
+        <div class="box">
+          <h2 data-t="about"></h2>
+          <p data-t="data"></p>
+          <p data-t="port"></p>
+        </div>
+        <div class="box notice">
+          <h2 data-t="noticeTitle"></h2>
+          <p data-t="notice"></p>
+          <p data-t="terms"></p>
+        </div>
+        <div class="box">
+          <h2 data-t="build"></h2>
+          <p data-t="buildText"></p>
+          <p><a href="https://github.com/eilwacht/integration#nachrichtenwächter" data-t="readme"></a></p>
+          <p data-t="credits"></p>
+        </div>
+      </div>
+      <footer data-t="footer"></footer>
+    </div>
+
+    <script type="module">
+      import { PATHS } from "./icons.js";
+
+      const MOMENTS = ["quiet", "breaking"];
+      const NATIONAL = 0;
+      const TESTER_REGIONS = [0, 1, 2];
+      const PRESETS = [
+        "Stuttgart",
+        "Streik",
+        "*streik",
+        "*streik, -Fußball",
+        "Bahn",
+        "S-Bahn Stuttgart",
+        "-Fußball",
+        "Brezel*, Gartenzwerg",
+      ];
+      const BLUEPRINT_URL =
+        "https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=" +
+        "https%3A%2F%2Fgithub.com%2Feilwacht%2Fintegration%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Feilwacht%2F";
+
+      // Entity names from custom_components/eilwacht/translations/*.json.
+      const TEXT = {
+        de: {
+          demo: "Live-Demo",
+          tagline: "Was wichtig ist, meldet sich. Eilmeldungen und Regionalnachrichten als Auslöser in Home Assistant – zum Ausprobieren.",
+          time: "Zeitpunkt",
+          lang: "Sprache",
+          theme: "Darstellung",
+          moments: { quiet: "Ruhiger Nachmittag", breaking: "Eilmeldung läuft" },
+          auto: "Auto", light: "Hell", dark: "Dunkel",
+          banner: (time) => `Alle Meldungen sind erfunden – nur zur Vorführung. Demo-Zeit: ${time} Uhr.`,
+          entities: {
+            breaking_active: "Eilmeldung aktiv",
+            breaking: "Eilmeldung",
+            last_breaking: "Letzte Eilmeldung",
+            news: "Neue Meldung",
+            last_news: "Letzte Meldung",
+            news_24h: "Meldungen (24 h)",
+          },
+          eventTypes: { breaking_news: "Eilmeldung", news: "Neue Meldung" },
+          unit: "Meldungen",
+          on: "An", off: "Aus", unknown: "Unbekannt",
+          serviceInfo: "Dienst-Informationen",
+          by: "von Eilwacht",
+          version: (v) => `Version ${v}`,
+          visit: "Besuchen",
+          sensors: "Sensoren",
+          events: "Ereignisse",
+          addToDashboard: "Zu Dashboard hinzufügen",
+          attribution: "Quelle: erfundene Beispieldaten",
+          devices: "Geräte",
+          device: (d) => `Gerät „${d}“`,
+          watchOf: (regions, keywords) => `${regions}${keywords ? ` · Stichworte: ${keywords}` : ""}`,
+          dashboard: "Dashboard",
+          mdTitle: "Eilmeldung",
+          mdEmpty: "Keine Eilmeldung.",
+          mdNote: "Markdown-Karte aus der README. In Home Assistant steht dort „Quelle: tagesschau.de“.",
+          history: "Verlauf (24 h)",
+          countOf: (w) => `Meldungen (24 h) – Eilwacht ${w}`,
+          notifications: "Benachrichtigungen",
+          noPush: "Noch keine Push-Nachricht in den letzten 24 Stunden.",
+          pushNote: "Texte wie in den Vorlagen der Blueprints; nachts (22–7 Uhr) schweigen sie.",
+          blueprints: {
+            eilmeldung_push: "Eilmeldung aufs Handy",
+            eilmeldung_ansage: "Eilmeldung ansagen",
+            neue_meldung_push: "Neue Meldung eines Nachrichtenwächters aufs Handy",
+          },
+          announce: "Letzte Ansage",
+          announceNote: "Blueprint „Eilmeldung ansagen“. Die Einleitung ist frei wählbar (Standard: „Eilmeldung der Tagesschau:“); die Demo nimmt „Eilmeldung:“, weil die Meldungen erfunden sind.",
+          speaker: "Lautsprecher Küche",
+          testerTitle: "Stichwort-Tester",
+          testerIntro: "Tippe Stichworte wie im Wächter-Dialog und sieh, welche der erfundenen Meldungen der Wächter melden würde. Gerechnet wird mit einem Nachbau des Stichwortfilters der Integration.",
+          keywords: "Stichworte",
+          placeholder: "z. B. *streik, -Fußball",
+          examples: "Beispiele",
+          regionsLabel: "Bundesländer",
+          national: "Bundesweit",
+          searches: "Sucht",
+          excludes: "Schließt aus",
+          everything: "Leer: jede Meldung der gewählten Bundesländer",
+          noRegion: "Wähle mindestens ein Bundesland.",
+          countText: (n, m) => `<b>${n}</b> von ${m} Meldungen würde der Wächter melden`,
+          reported: "Würde gemeldet",
+          notReported: (n) => `Nicht gemeldet (${n})`,
+          why: { region: "anderes Bundesland", nokw: "kein Stichwort gefunden", out: (t) => `ausgeschlossen: ${t}` },
+          syntax: "Schreibweise",
+          syntaxRows: [
+            ["Stuttgart", "„Stuttgart“, „Stuttgarter“ – Wörter, die damit beginnen"],
+            ["*streik", "„Warnstreik“, „Bahnstreiks“ – Wörter, in denen es steckt"],
+            ["S-Bahn Stuttgart", "genau diese Wortfolge; das letzte Wort darf weitergehen"],
+            ["-Fußball", "schließt Meldungen mit „Fußball…“ aus"],
+            ["a, b", "Komma trennt: eines der Stichworte genügt"],
+          ],
+          searched: "Durchsucht werden Dachzeile, Schlagzeile, erster Satz und Schlagwörter, ohne Rücksicht auf Groß- und Kleinschreibung.",
+          germanOnly: "",
+          about: "Erfunden, aber echt verarbeitet",
+          data:
+            "Orte wie Musterstadt oder Exempelingen, Vereine und Firmen gibt es nicht; die Links zeigen ins Leere (example.invalid). " +
+            "Verarbeitet werden die Meldungen vom Code der Integration – als Antworten der Tagesschau-Schnittstelle, Abruf für Abruf über zwei Tage, wie in deinem Home Assistant.",
+          port:
+            "Der Stichwort-Tester rechnet im Browser mit einem Nachbau des Python-Filters; ein Selbsttest vergleicht ihn mit den Ergebnissen des Originals.",
+          noticeTitle: "Kein Angebot der ARD oder der Tagesschau",
+          notice: "Eilwacht ist kein Angebot der ARD oder der Tagesschau und steht mit ihnen in keiner Verbindung.",
+          terms: "Im echten Betrieb ruft jede Home-Assistant-Instanz tagesschau.de selbst ab – für den privaten Gebrauch, wie es die Nutzungsbedingungen erlauben. Deshalb zeigt diese öffentliche Seite keine echten Meldungen.",
+          build: "Selbst einrichten",
+          buildText: "Eilwacht gibt es über HACS. Nachrichtenwächter legst du unter Geräte & Dienste → Eilwacht an; die README erklärt Stichworte, Entitäten und Blueprints.",
+          readme: "Nachrichtenwächter in der README →",
+          credits: "Symbole: Material Design Icons (Pictogrammers Free License).",
+          footer: "Eilwacht ist kein Angebot der ARD oder der Tagesschau. Alle Meldungen auf dieser Seite sind erfunden.",
+        },
+        en: {
+          demo: "live demo",
+          tagline: "What matters speaks up. Breaking and regional news from Germany as triggers in Home Assistant – try it out.",
+          time: "Moment",
+          lang: "Language",
+          theme: "Theme",
+          moments: { quiet: "Quiet afternoon", breaking: "Breaking news running" },
+          auto: "Auto", light: "Light", dark: "Dark",
+          banner: (time) => `All news items are made up – for demonstration only. Demo time: ${time}.`,
+          entities: {
+            breaking_active: "Breaking news active",
+            breaking: "Breaking news",
+            last_breaking: "Last breaking news",
+            news: "New item",
+            last_news: "Last item",
+            news_24h: "Items (24 h)",
+          },
+          eventTypes: { breaking_news: "Breaking news", news: "New item" },
+          unit: "items",
+          on: "On", off: "Off", unknown: "Unknown",
+          serviceInfo: "Service info",
+          by: "by Eilwacht",
+          version: (v) => `Version ${v}`,
+          visit: "Visit",
+          sensors: "Sensors",
+          events: "Events",
+          addToDashboard: "Add to dashboard",
+          attribution: "Source: made-up sample data",
+          devices: "Devices",
+          device: (d) => `Device “${d}”`,
+          watchOf: (regions, keywords) => `${regions}${keywords ? ` · keywords: ${keywords}` : ""}`,
+          dashboard: "Dashboard",
+          mdTitle: "Eilmeldung",
+          mdEmpty: "Keine Eilmeldung.",
+          mdNote: "Markdown card from the README (German texts). In Home Assistant it says “Quelle: tagesschau.de”.",
+          history: "History (24 h)",
+          countOf: (w) => `Items (24 h) – Eilwacht ${w}`,
+          notifications: "Notifications",
+          noPush: "No push notification in the last 24 hours.",
+          pushNote: "Texts as in the blueprints' templates (German); at night (22–7) they stay silent.",
+          blueprints: {
+            eilmeldung_push: "Breaking news to the phone",
+            eilmeldung_ansage: "Announce breaking news",
+            neue_meldung_push: "New item of a news watch to the phone",
+          },
+          announce: "Last announcement",
+          announceNote: "Blueprint “Eilmeldung ansagen”. The intro can be changed (default: “Eilmeldung der Tagesschau:”); the demo uses “Eilmeldung:” as the items are made up.",
+          speaker: "Kitchen speaker",
+          testerTitle: "Keyword tester",
+          testerIntro: "Type keywords as in the watch dialog and see which of the made-up items the watch would report. It runs a port of the integration's keyword filter.",
+          keywords: "Keywords",
+          placeholder: "e.g. *streik, -Fußball",
+          examples: "Examples",
+          regionsLabel: "Federal states",
+          national: "Germany-wide",
+          searches: "Looks for",
+          excludes: "Excludes",
+          everything: "Empty: every item of the chosen states",
+          noRegion: "Choose at least one federal state.",
+          countText: (n, m) => `The watch would report <b>${n}</b> of ${m} items`,
+          reported: "Would be reported",
+          notReported: (n) => `Not reported (${n})`,
+          why: { region: "other federal state", nokw: "no keyword found", out: (t) => `excluded: ${t}` },
+          syntax: "Syntax",
+          syntaxRows: [
+            ["Stuttgart", "“Stuttgart”, “Stuttgarter” – words starting with it"],
+            ["*streik", "“Warnstreik”, “Bahnstreiks” – words containing it"],
+            ["S-Bahn Stuttgart", "exactly these words in a row; the last one may continue"],
+            ["-Fußball", "excludes items with “Fußball…”"],
+            ["a, b", "comma separates: any one keyword is enough"],
+          ],
+          searched: "Searched are topline, headline, first sentence and tags, ignoring case.",
+          germanOnly: "The items are in German, like the source.",
+          about: "Made up, but processed for real",
+          data:
+            "Places like Musterstadt or Exempelingen, clubs and companies do not exist; the links go nowhere (example.invalid). " +
+            "The items are processed by the integration's own code – as responses of the Tagesschau API, poll by poll over two days, just as in your Home Assistant.",
+          port:
+            "The keyword tester runs a port of the Python filter in the browser; a self-test compares it with the original's results.",
+          noticeTitle: "Not affiliated with ARD or Tagesschau",
+          notice: "Eilwacht is not a service of ARD or the Tagesschau and is not affiliated with them.",
+          terms: "In real use every Home Assistant instance fetches tagesschau.de itself – for private use, as the terms of use allow. That is why this public page shows no real news.",
+          build: "Set it up",
+          buildText: "Eilwacht is available through HACS. Add news watches under Devices & services → Eilwacht; the README (German) explains keywords, entities and blueprints.",
+          readme: "News watches in the README →",
+          credits: "Icons: Material Design Icons (Pictogrammers Free License).",
+          footer: "Eilwacht is not a service of ARD or the Tagesschau. All news items on this page are made up.",
+        },
+      };
+
+      // ---- Keyword filter: port of custom_components/eilwacht/keywords.py ----
+      // Keep in sync with the Python original; ?selftest compares both
+      // (docs/demo/data/selftest.json, written by tools/make_demo.py).
+      // Python's str.split()/strip() and re's \s use str.isspace(); JS \s differs slightly.
+      const WS = "[\\t\\n\\v\\f\\r\\x1c-\\x1f \\x85\\xa0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000]";
+      const WS_RUN = new RegExp(`${WS}+`, "u");
+      const WS_EDGE = new RegExp(`^${WS}+|${WS}+$`, "gu");
+      // Python's \w (str.isalnum() or "_") plus the hyphen: "S-Bahn", "A8".
+      const WORD = "[\\p{L}\\p{N}_-]";
+      const pySplit = (s) => s.split(WS_RUN).filter(Boolean);
+      // Escape only syntax characters: with the u flag "\-" would be an error.
+      const escapeRe = (s) => s.replace(/[\\^$.*+?()[\]{}|/]/g, "\\$&");
+
+      function compileTerm(term, flags = "iu") {
+        const words = pySplit(term).map((word) => word.split("*").map(escapeRe).join(`${WORD}*`));
+        // Anchored at the start of a word only: the word may continue.
+        return new RegExp(`(?<!${WORD})${words.join(`${WS}+`)}`, flags);
+      }
+
+      function parseKeywords(text) {
+        const include = [];
+        const exclude = [];
+        for (const raw of (text ?? "").split(",")) {
+          let term = pySplit(raw).join(" ");
+          let target = include;
+          if (term.startsWith("-")) {
+            term = term.slice(1).replace(WS_EDGE, "");
+            target = exclude;
+          }
+          if (term.replace(/^\*+|\*+$/g, "")) target.push(term);
+        }
+        return { include, exclude };
+      }
+
+      const itemText = (item) =>
+        [item.topline, item.title, item.summary, ...(item.tags ?? [])].filter(Boolean).join(" ");
+
+      // KeywordFilter.matches: matching include terms, [] for a pass without
+      // include terms, null if the item does not pass.
+      function keywordMatches(filter, item) {
+        const text = itemText(item);
+        if (filter.exclude.some((term) => compileTerm(term).test(text))) return null;
+        if (!filter.include.length) return [];
+        const found = filter.include.filter((term) => compileTerm(term).test(text));
+        return found.length ? found : null;
+      }
+
+      // Watch.match / Watch.matches (watch.py): region first, then keywords.
+      function regionPasses(regions, item) {
+        return item.region_ids.length ? item.region_ids.some((r) => regions.includes(r)) : regions.includes(NATIONAL);
+      }
+      function watchMatches(regions, filter, items) {
+        const found = [];
+        for (const item of items) {
+          if (!regionPasses(regions, item)) continue;
+          const keywords = keywordMatches(filter, item);
+          if (keywords !== null) found.push({ item, keywords });
+        }
+        const time = (m) => (m.item.published ? Date.parse(m.item.published) : -Infinity);
+        return found.sort((a, b) => time(b) - time(a));
+      }
+
+      // ---- State and helpers --------------------------------------------------
+      const params = new URLSearchParams(location.search);
+      const pick = (value, allowed, fallback) => (allowed.includes(value) ? value : fallback);
+      const state = {
+        moment: pick(params.get("moment"), MOMENTS, "breaking"),
+        lang: pick(params.get("lang"), ["de", "en"], navigator.language?.startsWith("de") ? "de" : "en"),
+        dark: pick(params.get("dark"), ["auto", "0", "1"], "auto"),
+        kw: params.get("kw") ?? "*streik, -Fußball",
+        regions: params.get("regions") ?? "0,1",
+      };
+      const t = () => TEXT[state.lang];
+      const saveState = () => history.replaceState(null, "", `?${new URLSearchParams(state)}`);
+      const systemDark = matchMedia("(prefers-color-scheme: dark)");
+      const isDark = () => (state.dark === "auto" ? systemDark.matches : state.dark === "1");
+      const testerRegions = () =>
+        state.regions.split(",").filter((r) => r !== "").map(Number).filter((r) => TESTER_REGIONS.includes(r));
+
+      const escapeHtml = (value) =>
+        String(value ?? "").replace(
+          /[&<>"']/g,
+          (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+        );
+      const icon = (name, cls = "") =>
+        `<svg class="mdi ${cls}" viewBox="0 0 24 24" aria-hidden="true"><path d="${PATHS[name]}" /></svg>`;
+      const fmt = (iso, opts) => new Date(iso).toLocaleString(state.lang, { timeZone: "Europe/Berlin", ...opts });
+      const hm = (iso) => fmt(iso, { hour: "2-digit", minute: "2-digit" });
+      const dayTime = (iso) => fmt(iso, { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+      let demoNow = Date.now();
+      function relative(iso) {
+        const rtf = new Intl.RelativeTimeFormat(state.lang, { numeric: "auto" });
+        const minutes = Math.round((demoNow - Date.parse(iso)) / 60000);
+        if (minutes < 60) return rtf.format(-minutes, "minute");
+        const hours = Math.round(minutes / 60);
+        if (hours < 24) return rtf.format(-hours, "hour");
+        return rtf.format(-Math.round(hours / 24), "day");
+      }
+      // Entity ids as Home Assistant derives them from device and entity name.
+      const slug = (s) =>
+        s.toLowerCase().replace(/ä/g, "a").replace(/ö/g, "o").replace(/ü/g, "u").replace(/ß/g, "ss")
+          .replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+      const entityId = (domain, device, name) => `${domain}.${slug(`${device} ${name}`)}`;
+
+      let data;
+      let selftest;
+      const regionName = (id) => (id === NATIONAL ? t().national : data.regions[String(id)]);
+
+      function yaml(obj) {
+        return Object.entries(obj)
+          .map(([k, v]) => {
+            if (Array.isArray(v)) return v.length ? `${k}:\n${v.map((x) => `  - ${x}`).join("\n")}` : `${k}: []`;
+            return `${k}: ${v ?? "null"}`;
+          })
+          .join("\n");
+      }
+
+      // ---- Device page cards ----------------------------------------------------
+      function row({ mdi, on = false, name, value, sub = "", id, attrs }) {
+        return `
+          <details class="row">
+            <summary>${icon(mdi, on ? "on" : "")}<span class="name">${escapeHtml(name)}</span>
+              <span class="value">${escapeHtml(value)}${sub ? `<small>${escapeHtml(sub)}</small>` : ""}</span></summary>
+            <pre>${escapeHtml(`# ${id}\nstate: ${value}\n${yaml(attrs)}`)}</pre>
+          </details>`;
+      }
+
+      function deviceCards(device, sensors, events) {
+        const tx = t();
+        return `
+          <div class="card">
+            <div class="card-title">${tx.serviceInfo}</div>
+            <div class="info"><p>${tx.by}</p><p class="version">${tx.version(data.version)}</p></div>
+            <div class="link-row"><img src="../../custom_components/eilwacht/brand/icon.png" alt="" /><span>Eilwacht</span>${icon("chevron-right")}</div>
+            <div class="visit">${icon("cog")}<span>${tx.visit}</span>${icon("open-in-new")}<span class="dots">${icon("dots-vertical")}</span></div>
+          </div>
+          <div class="card">
+            <div class="card-title">${tx.sensors}</div>
+            <div class="rows">${sensors.join("")}</div>
+            <div class="card-foot">${tx.addToDashboard}</div>
+          </div>
+          <div class="card">
+            <div class="card-title">${tx.events}</div>
+            <div class="rows">${events.join("")}</div>
+            <div class="card-foot">${tx.addToDashboard}</div>
+          </div>`;
+      }
+
+      function breakingDevice(view) {
+        const tx = t();
+        const b = view.breaking;
+        const n = tx.entities;
+        const sensors = [
+          row({
+            mdi: b.active ? "alert-circle" : "alert-circle-outline",
+            on: b.active,
+            name: n.breaking_active,
+            value: b.active ? tx.on : tx.off,
+            id: entityId("binary_sensor", "Eilwacht", n.breaking_active),
+            attrs: { titles: b.titles, urls: b.urls, attribution: tx.attribution, friendly_name: `Eilwacht ${n.breaking_active}` },
+          }),
+          row({
+            mdi: "alert-decagram-outline",
+            name: n.last_breaking,
+            value: b.last ? b.last.state : tx.unknown,
+            id: entityId("sensor", "Eilwacht", n.last_breaking),
+            attrs: { ...(b.last?.attributes ?? {}), attribution: tx.attribution, friendly_name: `Eilwacht ${n.last_breaking}` },
+          }),
+        ];
+        const event = row({
+          mdi: "alert-decagram",
+          name: n.breaking,
+          value: b.event ? relative(b.event.at) : tx.unknown,
+          sub: b.event ? tx.eventTypes.breaking_news : "",
+          id: entityId("event", "Eilwacht", n.breaking),
+          attrs: { event_type: "breaking_news", ...(b.event?.attributes ?? {}), attribution: tx.attribution },
+        });
+        return `
+          <section class="section">
+            <div class="heading">${icon("devices")}<span>${escapeHtml(tx.device("Eilwacht"))}</span></div>
+            ${deviceCards("Eilwacht", sensors, [event])}
+          </section>`;
+      }
+
+      function watchDevice(w) {
+        const tx = t();
+        const n = tx.entities;
+        const device = `Eilwacht ${w.name}`;
+        const regions = w.regions.map(regionName).join(", ");
+        const sensors = [
+          row({
+            mdi: "newspaper-variant-outline",
+            name: n.last_news,
+            value: w.last ? w.last.state : tx.unknown,
+            id: entityId("sensor", device, n.last_news),
+            attrs: { ...(w.last?.attributes ?? {}), attribution: tx.attribution, friendly_name: `${device} ${n.last_news}` },
+          }),
+          row({
+            mdi: "counter",
+            name: n.news_24h,
+            value: `${w.count} ${tx.unit}`,
+            id: entityId("sensor", device, n.news_24h),
+            attrs: { unit_of_measurement: tx.unit, attribution: tx.attribution, friendly_name: `${device} ${n.news_24h}` },
+          }),
+        ];
+        const event = row({
+          mdi: "newspaper-variant-outline",
+          name: n.news,
+          value: w.event ? relative(w.event.at) : tx.unknown,
+          sub: w.event ? tx.eventTypes.news : "",
+          id: entityId("event", device, n.news),
+          attrs: { event_type: "news", ...(w.event?.attributes ?? {}), attribution: tx.attribution },
+        });
+        return `
+          <section class="section">
+            <div class="heading">${icon("devices")}<span>${escapeHtml(tx.device(device))}</span></div>
+            <div class="muted" style="font-size:13px;padding:0 4px">${icon("map-marker-outline")} ${escapeHtml(tx.watchOf(regions, w.keywords))}</div>
+            ${deviceCards(device, sensors, [event])}
+          </section>`;
+      }
+
+      // ---- Dashboard: README markdown card ---------------------------------------
+      function markdownCard(view) {
+        const tx = t();
+        const last = view.breaking.last;
+        const pad = (n) => String(n).padStart(2, "0");
+        // timestamp_custom('%d.%m. %H:%M') of the README template
+        const when = (iso) => {
+          const d = new Date(iso);
+          const local = new Date(d.toLocaleString("en-US", { timeZone: "Europe/Berlin" }));
+          return `${pad(local.getDate())}.${pad(local.getMonth() + 1)}. ${pad(local.getHours())}:${pad(local.getMinutes())}`;
+        };
+        const body = last
+          ? `<p><span class="fake-link" title="${escapeHtml(last.attributes.url)}">${escapeHtml(last.state)}</span></p>
+             <p>${escapeHtml(last.attributes.summary ?? "")}</p>
+             <p><small>${last.attributes.published ? when(last.attributes.published) : ""} · ${escapeHtml(TEXT.de.attribution)}</small></p>`
+          : `<p>${tx.mdEmpty}</p>`;
+        return `
+          <section class="section">
+            <div class="heading">${icon("view-dashboard-outline")}<span>${tx.dashboard}</span></div>
+            <div class="card"><div class="card-title">${tx.mdTitle}</div><div class="md">${body}</div></div>
+            <div class="muted" style="font-size:12px;padding:0 4px">${tx.mdNote}</div>
+          </section>`;
+      }
+
+      // ---- History ---------------------------------------------------------------
+      function historyCard(view) {
+        const tx = t();
+        const W = 420, L = 26, R = 6;
+        const end = demoNow, start = end - 24 * 3600e3;
+        const x = (ms) => L + ((ms - start) / (end - start)) * (W - L - R);
+        const hours = (H) => {
+          let s = "";
+          for (let h = 0; h <= 24; h += 6) {
+            const ms = start + h * 3600e3;
+            const anchor = h === 0 ? "start" : h === 24 ? "end" : "middle";
+            s += `<text x="${x(ms)}" y="${H - 4}" text-anchor="${anchor}">${hm(new Date(ms).toISOString())}</text>`;
+          }
+          return s;
+        };
+        // Timeline of "Eilmeldung aktiv"
+        const hist = view.breaking.history;
+        let tl = "";
+        hist.forEach(([at, on], i) => {
+          const a = Math.max(Date.parse(at), start);
+          const b = i + 1 < hist.length ? Date.parse(hist[i + 1][0]) : end;
+          tl += `<rect x="${x(a)}" y="6" width="${Math.max(1.5, x(b) - x(a))}" height="26" rx="3"
+            fill="${on ? "var(--state-active-color)" : "var(--timeline-off)"}"><title>${on ? tx.on : tx.off}: ${hm(at)}</title></rect>`;
+        });
+        const timeline = `<svg class="chart" viewBox="0 0 ${W} 54" role="img">${tl}${hours(54)}</svg>`;
+        // Step lines of "Meldungen (24 h)"
+        const H = 170, T = 10, B = 24;
+        const max = Math.max(2, ...view.watches.flatMap((w) => w.history.map(([, v]) => v)));
+        const top = Math.ceil((max + 1) / 2) * 2;
+        const y = (v) => T + (1 - v / top) * (H - T - B);
+        let svg = "";
+        for (let v = 0; v <= top; v += 2) {
+          svg += `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" /><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+        }
+        view.watches.forEach((w, i) => {
+          const pts = w.history;
+          let d = `M${x(Date.parse(pts[0][0]))},${y(pts[0][1])}`;
+          for (const [at, v] of pts.slice(1)) d += `H${x(Date.parse(at))}V${y(v)}`;
+          d += `H${x(end)}`;
+          svg += `<path d="${d}" fill="none" stroke="var(--series-${i + 1})" stroke-width="2" />`;
+        });
+        const legend = view.watches
+          .map((w, i) => `<span><i style="background:var(--series-${i + 1})"></i>${escapeHtml(tx.countOf(w.name))}</span>`)
+          .join("");
+        return `
+          <div class="card">
+            <div class="chart-label">Eilwacht ${escapeHtml(tx.entities.breaking_active)}</div>
+            ${timeline}
+            <div class="chart-label">${escapeHtml(tx.entities.news_24h)}</div>
+            <svg class="chart" viewBox="0 0 ${W} ${H}" role="img">${svg}${hours(H)}</svg>
+            <div class="legend">${legend}</div>
+          </div>`;
+      }
+
+      // ---- Notifications ----------------------------------------------------------
+      function notificationsCards(view) {
+        const tx = t();
+        const pushes = view.pushes.length
+          ? view.pushes
+              .map(
+                (p) => `
+              <div class="push"><div class="app">${icon("bell-ring-outline")}<span>Home Assistant · ${escapeHtml(p.device)}</span><span>${relative(p.at)}</span></div><b>${escapeHtml(p.title)}</b>${escapeHtml(p.message)}</div>`,
+              )
+              .join("")
+          : `<div class="push">${tx.noPush}</div>`;
+        const links = Object.entries(tx.blueprints)
+          .map(([file, name]) => `<a href="${BLUEPRINT_URL}${file}.yaml" target="_blank" rel="noopener">${escapeHtml(name)} →</a>`)
+          .join("<br />");
+        const a = view.announcement;
+        const speaker = a
+          ? `<div class="speaker">${icon("account-voice")}<div><q>${escapeHtml(a.message)}</q><small>${escapeHtml(tx.speaker)} · ${relative(a.at)}</small></div></div>`
+          : "";
+        return `
+          <div class="card">
+            <div class="phone">${pushes}</div>
+            <div class="card-foot">${tx.pushNote}<br />${links}</div>
+          </div>
+          <div class="heading">${icon("account-voice")}<span>${tx.announce}</span></div>
+          <div class="card">${speaker}<div class="card-foot">${tx.announceNote}</div></div>`;
+      }
+
+      // ---- Keyword tester ------------------------------------------------------
+      function highlight(text, include, exclude) {
+        if (!text) return "";
+        const marks = [];
+        const collect = (terms, cls) => {
+          for (const term of terms) {
+            for (const m of text.matchAll(compileTerm(term, "giu"))) {
+              if (m[0]) marks.push([m.index, m.index + m[0].length, cls]);
+            }
+          }
+        };
+        collect(exclude, "minus");
+        collect(include, "");
+        marks.sort((a, b) => a[0] - b[0]);
+        let out = "", pos = 0;
+        for (const [a, b, cls] of marks) {
+          if (a < pos) continue;
+          out += escapeHtml(text.slice(pos, a)) + `<mark class="${cls}">${escapeHtml(text.slice(a, b))}</mark>`;
+          pos = b;
+        }
+        return out + escapeHtml(text.slice(pos));
+      }
+
+      function renderTester() {
+        const tx = t();
+        const box = document.getElementById("tester");
+        if (!box.firstChild) {
+          box.innerHTML = `
+            <div class="heading">${icon("text-search")}<span data-t="testerTitle"></span></div>
+            <div class="card tester">
+              <div class="tester-side">
+                <p data-t="testerIntro"></p>
+                <label><span data-t="keywords"></span><input type="text" id="kw" autocomplete="off" spellcheck="false" /></label>
+                <div><span class="muted" style="font-size:12px" data-t="examples"></span><div class="chips" id="presets"></div></div>
+                <div><span class="muted" style="font-size:12px" data-t="regionsLabel"></span><div class="chips regions" id="tregions"></div></div>
+                <div class="parsed" id="parsed"></div>
+                <details><summary data-t="syntax"></summary><table class="syntax" id="syntax"></table><p style="margin-top:6px" data-t="searched"></p></details>
+              </div>
+              <div class="results" id="results"></div>
+            </div>`;
+          const input = box.querySelector("#kw");
+          input.value = state.kw;
+          input.addEventListener("input", () => {
+            state.kw = input.value;
+            saveState();
+            updateResults();
+          });
+          box.querySelector("#presets").innerHTML = PRESETS.map((p) => `<button type="button">${escapeHtml(p)}</button>`).join("");
+          box.querySelector("#presets").addEventListener("click", (event) => {
+            const button = event.target.closest("button");
+            if (!button) return;
+            input.value = state.kw = button.textContent;
+            saveState();
+            updateResults();
+          });
+          box.querySelector("#tregions").addEventListener("click", (event) => {
+            const button = event.target.closest("button");
+            if (!button) return;
+            const id = Number(button.dataset.region);
+            const set = new Set(testerRegions());
+            set.has(id) ? set.delete(id) : set.add(id);
+            state.regions = TESTER_REGIONS.filter((r) => set.has(r)).join(",");
+            saveState();
+            updateResults();
+          });
+        }
+        for (const el of box.querySelectorAll("[data-t]")) el.textContent = tx[el.dataset.t];
+        box.querySelector("#kw").placeholder = tx.placeholder;
+        box.querySelector("#syntax").innerHTML = tx.syntaxRows
+          .map(([a, b]) => `<tr><td>${escapeHtml(a)}</td><td>${escapeHtml(b)}</td></tr>`)
+          .join("");
+        updateResults();
+      }
+
+      function updateResults() {
+        const tx = t();
+        const regions = testerRegions();
+        document.getElementById("tregions").innerHTML = TESTER_REGIONS.map(
+          (r) => `<button type="button" data-region="${r}" aria-pressed="${regions.includes(r)}">${escapeHtml(regionName(r))}</button>`,
+        ).join("");
+        const filter = parseKeywords(state.kw);
+        const terms = (list, cls) => list.map((x) => `<span class="term ${cls}">${escapeHtml(x)}</span>`).join("");
+        document.getElementById("parsed").innerHTML =
+          filter.include.length || filter.exclude.length
+            ? (filter.include.length ? `<span class="muted">${tx.searches}:</span>${terms(filter.include, "")}` : "") +
+              (filter.exclude.length ? `<span class="muted">${tx.excludes}:</span>${terms(filter.exclude, "minus")}` : "")
+            : `<span class="muted">${tx.everything}</span>`;
+
+        const found = watchMatches(regions, filter, data.items);
+        const hitIds = new Map(found.map((m) => [m.item.id, m.keywords]));
+        const newest = (a, b) => Date.parse(b.published) - Date.parse(a.published);
+        const card = (item) => {
+          let kind = "yes", why;
+          if (hitIds.has(item.id)) {
+            const kws = hitIds.get(item.id);
+            why = kws.length ? kws.map((k) => `<span class="term">${escapeHtml(k)}</span>`).join(" ") : "";
+          } else if (!regionPasses(regions, item)) {
+            kind = "no";
+            why = tx.why.region;
+          } else {
+            const text = itemText(item);
+            const hit = filter.exclude.find((term) => compileTerm(term).test(text));
+            kind = hit ? "out" : "no";
+            why = hit ? escapeHtml(tx.why.out(hit)) : tx.why.nokw;
+          }
+          const mdi = { yes: "check-circle", no: "minus-circle", out: "close-circle-outline" }[kind];
+          const hl = (s) => highlight(s, filter.include, filter.exclude);
+          const region = item.region_ids.length ? item.region_ids.map(regionName).join(", ") : tx.national;
+          return `
+            <div class="hit ${kind}">${icon(mdi)}
+              <div class="body">
+                ${item.topline ? `<div class="top">${hl(item.topline)}</div>` : ""}
+                <div class="title">${hl(item.title)}</div>
+                ${item.summary ? `<div class="sum">${hl(item.summary)}</div>` : ""}
+                <div class="meta"><span>${dayTime(item.published)}</span><span>${escapeHtml(region)}</span>
+                  ${item.tags.map((tag) => `<span class="tag">${hl(tag)}</span>`).join("")}
+                  ${why ? `<span class="why">${why}</span>` : ""}</div>
+              </div>
+            </div>`;
+        };
+        const rest = data.items.filter((i) => !hitIds.has(i.id)).sort(newest);
+        document.getElementById("results").innerHTML = `
+          <div class="count">${regions.length ? tx.countText(found.length, data.items.length) : tx.noRegion}</div>
+          ${tx.germanOnly ? `<div class="muted" style="padding:0 16px;font-size:12px">${tx.germanOnly}</div>` : ""}
+          ${found.length ? `<h3>${tx.reported}</h3>${found.map((m) => card(m.item)).join("")}` : ""}
+          ${rest.length ? `<details ${found.length ? "" : "open"}><summary>${tx.notReported(rest.length)}</summary>${rest.map(card).join("")}</details>` : ""}`;
+      }
+
+      // ---- Page ------------------------------------------------------------------
+      function render() {
+        const tx = t();
+        const view = data.moments[state.moment];
+        demoNow = Date.parse(view.now);
+        const clock = fmt(view.now, { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
+        document.getElementById("banner").innerHTML = `${icon("information-outline")}<span>${tx.banner(clock)}</span>`;
+        document.getElementById("dashboard").innerHTML = `
+          ${markdownCard(view)}
+          ${breakingDevice(view)}
+          ${view.watches.map(watchDevice).join("")}
+          <section class="section">
+            <div class="heading">${icon("chart-timeline-variant")}<span>${tx.history}</span></div>
+            ${historyCard(view)}
+          </section>
+          <section class="section">
+            <div class="heading">${icon("bell-ring-outline")}<span>${tx.notifications}</span></div>
+            ${notificationsCards(view)}
+          </section>`;
+        renderTester();
+      }
+
+      function applyTheme() {
+        document.documentElement.dataset.theme = isDark() ? "dark" : "light";
+      }
+
+      function applyText() {
+        const tx = t();
+        document.documentElement.lang = state.lang;
+        for (const el of document.querySelectorAll(".page > :not(.sections) [data-t], footer[data-t]")) {
+          el.textContent = tx[el.dataset.t];
+        }
+        segment("moment", MOMENTS, (v) => tx.moments[v], render);
+        segment("lang", ["de", "en"], (v) => v.toUpperCase(), () => (applyText(), render()));
+        segment("dark", ["auto", "0", "1"], (v) => tx[{ auto: "auto", 0: "light", 1: "dark" }[v]], applyTheme);
+      }
+
+      function segment(id, values, label, onChange) {
+        const box = document.getElementById(id);
+        box.replaceChildren(
+          ...values.map((value) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = label(value);
+            button.setAttribute("aria-pressed", String(state[id] === value));
+            button.addEventListener("click", () => {
+              if (state[id] === value) return;
+              state[id] = value;
+              for (const b of box.children) b.setAttribute("aria-pressed", String(b === button));
+              saveState();
+              onChange();
+            });
+            return button;
+          }),
+        );
+      }
+
+      // Compares the JavaScript port with the Python results (selftest.json).
+      function runSelftest() {
+        const wrong = [];
+        for (const [text, fields, expected] of selftest.examples) {
+          const got = keywordMatches(parseKeywords(text), { tags: [], ...fields });
+          if (JSON.stringify(got) !== JSON.stringify(expected)) wrong.push({ text, title: fields.title, expected, got });
+        }
+        for (const [text, regions, expected] of selftest.watches) {
+          const got = watchMatches(regions, parseKeywords(text), data.items).map((m) => [m.item.id, m.keywords]);
+          if (JSON.stringify(got) !== JSON.stringify(expected)) wrong.push({ text, regions, expected, got });
+        }
+        const total = selftest.examples.length + selftest.watches.length;
+        document.title = wrong.length ? `selftest FAIL ${JSON.stringify(wrong)}` : `selftest ok (${total})`;
+      }
+
+      const runTest = params.has("selftest");
+      [data, selftest] = await Promise.all(
+        ["demo", ...(runTest ? ["selftest"] : [])].map(async (name) => (await fetch(`data/${name}.json`)).json()),
+      );
+      systemDark.addEventListener("change", () => state.dark === "auto" && applyTheme());
+      applyText();
+      applyTheme();
+      render();
+      if (runTest) runSelftest();
+      else saveState();
+    </script>
+  </body>
+</html>
