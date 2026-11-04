@@ -2,8 +2,8 @@
 
 ## Unveröffentlicht
 
-- **Live-Demo zum Ausprobieren ohne Installation:** [eilwacht.github.io/integration](https://eilwacht.github.io/integration/) mit Stichwort-Tester (Stichworte eintippen, Bundesländer wählen und sehen, welche Meldungen ein Nachrichtenwächter melden würde und warum), Geräten, Dashboard-Karte, Verlauf, Push-Nachrichten und Ansage – an einem ruhigen Nachmittag und bei laufender Eilmeldung. Alle Meldungen sind erfunden und so gekennzeichnet; verarbeitet werden sie vom Code der Integration.
-- Intern: `tools/make_demo.py` erzeugt die Daten der Demo, der Workflow „Live-Demo“ veröffentlicht sie über GitHub Pages.
+- **Demo zum Ausprobieren ohne Installation:** [eilwacht.github.io/integration](https://eilwacht.github.io/integration/) mit Stichwort-Tester (Stichworte eintippen, Bundesländer wählen und sehen, welche Meldungen ein Nachrichtenwächter melden würde und warum), Geräten, Dashboard-Karte, Verlauf, Push-Nachrichten und Ansage – an einem ruhigen Nachmittag und bei laufender Eilmeldung. Alle Meldungen sind erfunden und so gekennzeichnet; verarbeitet werden sie vom Code der Integration.
+- Intern: `tools/make_demo.py` erzeugt die Daten der Demo, der Workflow „Demo“ veröffentlicht sie über GitHub Pages.
 - Intern: wöchentlicher Quellen-Check (`tools/source_check.py`, Workflow „Quellen-Check“, montags): ruft headerapp, homepage und news mit dem echten Client ab und prüft, ob Format, Zeitangaben und Bundesländer noch erkannt werden (nur Zahlen im Bericht, keine Inhalte). Bei Problemen öffnet er ein Issue mit Label `quellen-check` und schließt es wieder, sobald alles geht.
 - Intern: Entwicklungs- und Testumgebung auf Home Assistant 2026.10.4 angehoben (Testbibliothek 0.13.375), wie bei Streckenwacht.
 - Intern: `astral-sh/setup-uv` 10.3.2; Dependabot schlägt Aktualisierungen jetzt für `dev` vor statt für `main`.

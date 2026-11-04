@@ -7,11 +7,11 @@
 [![Release](https://img.shields.io/github/v/release/eilwacht/integration?color=9B2423)](https://github.com/eilwacht/integration/releases)
 [![CI](https://github.com/eilwacht/integration/actions/workflows/ci.yml/badge.svg)](https://github.com/eilwacht/integration/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-F5A623.svg)](LICENSE)
-[![Live-Demo](https://img.shields.io/badge/Live--Demo-ausprobieren-F5A623.svg)](https://eilwacht.github.io/integration/?lang=de)
+[![Demo](https://img.shields.io/badge/Demo-erfundene_Daten-F5A623.svg)](https://eilwacht.github.io/integration/?lang=de)
 
 Eilwacht bringt Eilmeldungen und Regionalnachrichten der Tagesschau in dein Home Assistant – nicht als Nachrichtenleser, sondern als Auslöser: für eine Push-Nachricht, eine Ansage in der Küche oder ein Lichtsignal. Nachrichtenwächter melden dir neue Meldungen aus deinem Bundesland, auf Wunsch nur die mit bestimmten Stichworten wie „Warnstreik“ oder „S-Bahn“.
 
-**Ausprobieren ohne Installation:** Die [Live-Demo](https://eilwacht.github.io/integration/?lang=de) hat einen Stichwort-Tester – tippe Stichworte wie im Wächter-Dialog und sieh, welche Meldungen gemeldet würden – und zeigt Geräte, Dashboard-Karte, Verlauf und Push-Nachrichten, ruhig und bei laufender Eilmeldung. Alle Meldungen dort sind erfunden.
+**Ausprobieren ohne Installation:** Die [Demo](https://eilwacht.github.io/integration/?lang=de) hat einen Stichwort-Tester – tippe Stichworte wie im Wächter-Dialog und sieh, welche Meldungen gemeldet würden – und zeigt Geräte, Dashboard-Karte, Verlauf und Push-Nachrichten, ruhig und bei laufender Eilmeldung. Alle Meldungen dort sind erfunden.
 
 *English:* Home Assistant integration for breaking news and regional news from Germany's public broadcaster Tagesschau, as triggers for automations. German-language content only.
 
@@ -207,12 +207,12 @@ Pull Requests sind willkommen. Wie, steht in [CONTRIBUTING.md](https://github.co
 Vom selben Autor und nach demselben Muster gebaut: Einrichtung über die Oberfläche, deutsch und englisch, schonend für SD-Karten.
 
 - **Energie**
-  - [Einspeisewacht](https://github.com/einspeisewacht/integration) – was negative Strompreise bei der PV-Einspeisung kosten (§ 51 EEG) · [Live-Demo](https://einspeisewacht.github.io/integration/?lang=de)
-  - [Tarifwacht](https://github.com/tarifwacht/integration) – was der eigene Strombezug mit anderen Tarifen gekostet hätte, auch dynamisch und mit Modul 3 · [Live-Demo](https://tarifwacht.github.io/integration/?lang=de)
-  - [Speicherwacht](https://github.com/speicherwacht/integration) – Wirkungsgrad, Zyklen und Kapazität des Batteriespeichers · [Live-Demo](https://speicherwacht.github.io/integration/?lang=de)
+  - [Einspeisewacht](https://github.com/einspeisewacht/integration) – was negative Strompreise bei der PV-Einspeisung kosten (§ 51 EEG) · [Demo](https://einspeisewacht.github.io/integration/?lang=de)
+  - [Tarifwacht](https://github.com/tarifwacht/integration) – was der eigene Strombezug mit anderen Tarifen gekostet hätte, auch dynamisch und mit Modul 3 · [Demo](https://tarifwacht.github.io/integration/?lang=de)
+  - [Speicherwacht](https://github.com/speicherwacht/integration) – Wirkungsgrad, Zyklen und Kapazität des Batteriespeichers · [Demo](https://speicherwacht.github.io/integration/?lang=de)
   - [Wärmewacht](https://github.com/waermewacht/integration) – Arbeitszahlen und Gesundheits-Check der Wärmepumpe
 - **Alltag**
-  - [Streckenwacht](https://github.com/streckenwacht/integration) – Baustellen, Sperrungen und Staus auf den eigenen Strecken · [Live-Demo](https://streckenwacht.github.io/integration/?lang=de)
+  - [Streckenwacht](https://github.com/streckenwacht/integration) – Baustellen, Sperrungen und Staus auf den eigenen Strecken · [Demo](https://streckenwacht.github.io/integration/?lang=de)
 
 ## Lizenz
 
