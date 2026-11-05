@@ -1,6 +1,9 @@
 {
   "domain": "eilwacht",
   "name": "Eilwacht",
+  "categories": [
+    "news_social_media"
+  ],
   "codeowners": [
     "@n42net"
   ],
