@@ -8,6 +8,11 @@
         }
       }
     },
+    "button": {
+      "issue_report": {
+        "default": "mdi:clipboard-text-outline"
+      }
+    },
     "event": {
       "breaking": {
         "default": "mdi:alert-decagram"

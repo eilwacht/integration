@@ -114,6 +114,7 @@ Entitäts-IDs bei deutscher Oberfläche, Wächter mit dem Namen „Stuttgart“:
 | **Eilmeldung** (Event) | `event.eilwacht_eilmeldung` | löst bei jeder neuen Eilmeldung aus, Ereignistyp `breaking_news` |
 | **Eilmeldung aktiv** | `binary_sensor.eilwacht_eilmeldung_aktiv` | an, solange tagesschau.de eine Eilmeldung zeigt; Attribute `titles`, `urls` |
 | **Letzte Eilmeldung** | `sensor.eilwacht_letzte_eilmeldung` | Schlagzeile der letzten Eilmeldung; bleibt nach ihrem Ende und über Neustarts erhalten |
+| **Bericht für Fehlermeldung** (Schaltfläche, unter *Diagnose*) | `button.eilwacht_bericht_fur_fehlermeldung` | zeigt einen kurzen Bericht zum Kopieren in ein Issue, siehe [Fehler melden](#fehler-melden) |
 | **Neue Meldung** (Event) | `event.eilwacht_stuttgart_neue_meldung` | löst bei jeder neuen Meldung des Wächters aus, Ereignistyp `news` |
 | **Letzte Meldung** | `sensor.eilwacht_stuttgart_letzte_meldung` | Schlagzeile der neuesten Meldung des Wächters |
 | **Meldungen (24 h)** | `sensor.eilwacht_stuttgart_meldungen_24_h` | Zahl der Meldungen des Wächters aus den letzten 24 Stunden |
@@ -187,7 +188,8 @@ content: >-
 ## Fehlerbehebung
 
 - **Reparaturen:** Ist die Eilmeldungs-Quelle 30 Minuten lang nicht erreichbar oder schlagen die Nachrichten zweimal in Folge fehl, erscheint unter *Einstellungen → System → Reparaturen* ein Hinweis. Er verschwindet von selbst, sobald der Abruf wieder klappt.
-- **Diagnose:** *Geräte & Dienste → Eilwacht → ⋮ → Diagnose herunterladen*. Sie enthält deine Wächter samt Stichworten und die zuletzt aufgezeichnete Eilmeldung im Rohformat.
+- **Bericht für Fehlermeldung:** Schaltfläche am Gerät „Eilwacht“ unter *Diagnose*, siehe [Fehler melden](#fehler-melden). Er zeigt auch, welcher Abruf gerade ausfällt und mit welchem Fehler.
+- **Diagnose:** *Geräte & Dienste → Eilwacht → ⋮ → Diagnose herunterladen*. Sie enthält deine Wächter samt Namen und Stichworten und die zuletzt aufgezeichnete Eilmeldung im Rohformat, siehe [Was steht in der Diagnose-Datei?](#was-steht-in-der-diagnose-datei).
 - **Ausführliches Protokoll:**
 
   ```yaml
@@ -198,7 +200,16 @@ content: >-
 
 ## Fehler melden
 
-Fehler und Ideen bitte als [GitHub-Issue](https://github.com/eilwacht/integration/issues), möglichst mit Diagnose-Datei und Home-Assistant-Version. Sicherheitslücken bitte vertraulich, siehe [SECURITY.md](https://github.com/eilwacht/integration/blob/main/SECURITY.md).
+Fehler und Ideen bitte als [GitHub-Issue](https://github.com/eilwacht/integration/issues), bei Fehlern mit dem **Bericht für Fehlermeldung**: *Geräte & Dienste → Eilwacht → Gerät „Eilwacht“ → Diagnose → Bericht für Fehlermeldung* drücken. Der Bericht erscheint als Benachrichtigung (Glocke unten links) zum Kopieren. Er enthält die Versionen von Eilwacht und Home Assistant, den Zustand der drei Abrufe bei tagesschau.de (in Ordnung oder wie oft in Folge fehlgeschlagen, mit Fehlermeldung), die Zahl der Wächter, laufenden Eilmeldungen und abgerufenen Meldungen, je Wächter die Bundesländer und die **Zahl** der Stichworte, welche Entitäten keinen Wert haben und offene Reparaturhinweise. Entity-IDs, Namen der Wächter, Stichworte und Schlagzeilen stehen nicht darin. Lies ihn trotzdem vor dem Teilen und lösche, was du nicht zeigen willst. Greift ein Stichwort nicht wie erwartet, nenne im Issue ein Beispiel, das den Fehler zeigt. Sicherheitslücken bitte vertraulich, siehe [SECURITY.md](https://github.com/eilwacht/integration/blob/main/SECURITY.md).
+
+### Was steht in der Diagnose-Datei?
+
+Reicht der Bericht nicht, kommt im Issue die Bitte um die Diagnose-Datei (*Geräte & Dienste → Eilwacht → ⋮ → Diagnose herunterladen*). Sie ist ausführlicher, und nicht alles darin kommt von Eilwacht:
+
+- **Von Home Assistant** (jede Integration hat diesen Kopf, Eilwacht kann ihn nicht ändern): Version und Installationsart, Betriebssystem, Zeitzone und unter `custom_components` die Liste **aller** installierten benutzerdefinierten Integrationen mit Versionen. Diese Blöcke darfst du vor dem Hochladen löschen, sie werden nicht gebraucht.
+- **Von Eilwacht** (unter `data`): die Version, unter `watches` jeder Wächter mit **Name, Bundesländern und Stichworten**, unter `breaking` und `news` der Zustand der Abrufe (letzter Abruf erfolgreich, Fehlversuche in Folge, letzter Fehler, Abrufabstand), die laufenden Eilmeldungen, die zuletzt aufgezeichnete Eilmeldung im Rohformat der Tagesschau (`recorded_sample`), die abgerufenen Bundesländer, die Zahl der Meldungen und die ersten drei Meldungen mit Schlagzeile und Link.
+
+Namen und Stichworte der Wächter darfst du vor dem Teilen ersetzen. Die aufgezeichnete Eilmeldung bitte stehen lassen, wenn es um Eilmeldungen geht – sie ist die einzige Quelle für das echte Format. Willst du die Datei nicht öffentlich teilen, ist das in Ordnung: Dann reichen meist der Bericht und gezielte Angaben, nach denen im Issue gefragt wird.
 
 Pull Requests sind willkommen. Wie, steht in [CONTRIBUTING.md](https://github.com/eilwacht/integration/blob/main/CONTRIBUTING.md).
 

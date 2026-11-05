@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import timedelta
+from unittest.mock import patch
 
 import pytest
 from freezegun.api import FrozenDateTimeFactory
@@ -77,6 +78,26 @@ def breaking_ids(hass: HomeAssistant, entry: MockConfigEntry) -> dict[str, str]:
 async def refresh_breaking(hass: HomeAssistant, entry: MockConfigEntry) -> None:
     await entry.runtime_data.breaking.async_refresh()
     await hass.async_block_till_done()
+
+
+async def issue_report(hass: HomeAssistant, entry: MockConfigEntry) -> str:
+    """Press the report button; the text of the notification it shows."""
+    button = entity_id(hass, "button", f"{entry.entry_id}_issue_report")
+    assert hass.states.get(button).state != STATE_UNAVAILABLE
+    with patch(
+        "custom_components.eilwacht.issue_report.persistent_notification.async_create"
+    ) as create:
+        await hass.services.async_call(
+            "button", "press", {"entity_id": button}, blocking=True
+        )
+    assert create.call_args.kwargs["notification_id"] == (
+        f"eilwacht_issue_report_{entry.entry_id}"
+    )
+    message = create.call_args.args[1]
+    # No entity ids, no titles of items.
+    assert "eilwacht_" not in message
+    assert "sensor." not in message and "event." not in message
+    return message
 
 
 # --- Breaking news ------------------------------------------------------------
@@ -208,6 +229,14 @@ async def test_both_sources_down(hass: HomeAssistant, client: FakeClient) -> Non
     ids = breaking_ids(hass, entry)
     assert hass.states.get(ids["active"]).state == STATE_UNAVAILABLE
 
+    # The report button stays available and tells what fails.
+    message = await issue_report(hass, entry)
+    assert "headerapp: 1 failed polls in a row (down)" in message
+    assert "homepage: failing (RuntimeError('bug'))" in message
+    assert "news: no watch" in message
+    assert "active alerts: -" in message
+    assert "watches: 0" in message
+
 
 async def test_recorded_sample_in_diagnostics(
     hass: HomeAssistant, client: FakeClient
@@ -293,6 +322,19 @@ async def test_watch(hass: HomeAssistant, client: FakeClient) -> None:
     assert hass.states.get(ids["last"]).state == "Streik bei der SSB"
     assert hass.states.get(ids["count"]).state == "2"
 
+    # The report: federal states and the number of keywords, but neither the
+    # watch's name nor its keywords nor any headline.
+    message = await issue_report(hass, entry)
+    assert "watch 1: Baden-Württemberg, Bayern; keywords 1, excluded 0" in message
+    assert "headerapp: ok" in message
+    assert "homepage: not needed" in message
+    assert "news: ok" in message
+    assert "news items: 5" in message
+    assert "with a value: 4" in message
+    assert "last_breaking: unknown" in message
+    assert "open: none" in message
+    assert "Streik" not in message and "SSB" not in message
+
 
 async def test_national_watch(hass: HomeAssistant, client: FakeClient) -> None:
     client.news = {
@@ -317,6 +359,9 @@ async def test_news_failure_raises_issue(
     assert hass.states.get(watch_ids(hass, entry)["last"]).state == STATE_UNAVAILABLE
     await refresh_news(hass, entry)
     assert issue_registry.async_get_issue(DOMAIN, "source_failed_news") is not None
+    message = await issue_report(hass, entry)
+    assert "open: source_failed_news" in message
+    assert "news: 2 failed polls in a row (down)" in message
 
     client.news = {}
     await refresh_news(hass, entry)

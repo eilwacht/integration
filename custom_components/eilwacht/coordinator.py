@@ -93,10 +93,13 @@ class _FailureTracking:
 
     hass: HomeAssistant
     failures: int = 0
+    # The last failure while failing, for the report for a bug report.
+    error: str | None = None
     _key: str
 
     def _record_failure(self, error: str) -> None:
         self.failures += 1
+        self.error = error
         if self.failures < FAILURES_BEFORE_ISSUE[self._key]:
             return
         ir.async_create_issue(
@@ -117,6 +120,7 @@ class _FailureTracking:
         if self.failures:
             _LOGGER.info("%s is reachable again", SOURCE_NAMES[self._key])
         self.failures = 0
+        self.error = None
         ir.async_delete_issue(self.hass, DOMAIN, issue_id(self._key))
 
 
@@ -192,6 +196,11 @@ class BreakingCoordinator(_FailureTracking, DataUpdateCoordinator[BreakingData])
         new = self._tracker.update(active.values())
         self.seen.save(self.SEEN_NAME, self._tracker)
         return BreakingData(active=tuple(active.values()), new=tuple(new))
+
+    @property
+    def homepage_active(self) -> bool:
+        """Whether the homepage currently stands in for headerapp."""
+        return self._homepage_at is not None
 
     def _record_sample(self, parsed: list[NewsItem]) -> None:
         """Keep every response with an alert, even one the parser cannot read.

@@ -65,6 +65,15 @@ def test_translations_complete() -> None:
     assert _keys(load(INTEGRATION / "translations" / "de.json")) == _keys(strings)
 
 
+def test_every_entity_translated_and_has_an_icon() -> None:
+    strings = load(INTEGRATION / "strings.json")["entity"]
+    icons = load(INTEGRATION / "icons.json")["entity"]
+    assert set(strings) == set(icons)
+    for platform, keys in strings.items():
+        assert set(keys) == set(icons[platform]), platform
+    assert set(strings["button"]) == {"issue_report"}
+
+
 def test_region_options_translated() -> None:
     options = load(INTEGRATION / "strings.json")["selector"]["regions"]["options"]
     assert set(options) == {"0", *(str(r) for r in REGIONS)}

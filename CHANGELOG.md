@@ -1,5 +1,9 @@
 # Changelog
 
+## Unveröffentlicht
+
+- **Neu: Schaltfläche „Bericht für Fehlermeldung“** am Gerät „Eilwacht“ (unter *Diagnose*). Sie zeigt einen kurzen Bericht als Benachrichtigung zum Kopieren in ein Issue: Versionen, Zustand der Abrufe bei tagesschau.de mit Fehlermeldung, Zahl der Wächter, laufenden Eilmeldungen und Meldungen, je Wächter die Bundesländer und die Zahl der Stichworte, Entitäten ohne Wert und offene Reparaturhinweise – ohne Entity-IDs, Namen der Wächter, Stichworte und Schlagzeilen. Viele wollen die Diagnose-Datei nicht öffentlich teilen, weil Home Assistant ihr unter anderem die Liste aller installierten Integrationen voranstellt. Die README erklärt jetzt unter „Fehler melden“, was in der Diagnose-Datei steht und welche Teile man vor dem Teilen löschen oder ersetzen darf. Die Issue-Vorlage fragt nach dem Bericht statt nach der Diagnose-Datei.
+
 ## 0.2.2 – 2026-11-05
 
 - Kategorien im Manifest für die neue Integrationsübersicht von Home Assistant 2026.11 (Nachrichten & soziale Medien).

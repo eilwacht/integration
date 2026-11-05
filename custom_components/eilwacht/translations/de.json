@@ -91,6 +91,11 @@
         "name": "Eilmeldung aktiv"
       }
     },
+    "button": {
+      "issue_report": {
+        "name": "Bericht für Fehlermeldung"
+      }
+    },
     "event": {
       "breaking": {
         "name": "Eilmeldung",

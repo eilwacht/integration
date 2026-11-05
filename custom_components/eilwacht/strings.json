@@ -91,6 +91,11 @@
         "name": "Breaking news active"
       }
     },
+    "button": {
+      "issue_report": {
+        "name": "Report for a bug report"
+      }
+    },
     "event": {
       "breaking": {
         "name": "Breaking news",
