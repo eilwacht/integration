@@ -1,8 +1,9 @@
 # Changelog
 
-## Unveröffentlicht
+## 0.2.2 – 2026-11-05
 
 - Kategorien im Manifest für die neue Integrationsübersicht von Home Assistant 2026.11 (Nachrichten & soziale Medien).
+- README und Demo: Installation über den Marketplace von Home Assistant 2026.11, für ältere Versionen weiter HACS.
 - **Demo zum Ausprobieren ohne Installation:** [eilwacht.github.io/integration](https://eilwacht.github.io/integration/) mit Stichwort-Tester (Stichworte eintippen, Bundesländer wählen und sehen, welche Meldungen ein Nachrichtenwächter melden würde und warum), Geräten, Dashboard-Karte, Verlauf, Push-Nachrichten und Ansage – an einem ruhigen Nachmittag und bei laufender Eilmeldung. Alle Meldungen sind erfunden und so gekennzeichnet; verarbeitet werden sie vom Code der Integration.
 - Intern: `tools/make_demo.py` erzeugt die Daten der Demo, der Workflow „Demo“ veröffentlicht sie über GitHub Pages.
 - Intern: wöchentlicher Quellen-Check (`tools/source_check.py`, Workflow „Quellen-Check“, montags): ruft headerapp, homepage und news mit dem echten Client ab und prüft, ob Format, Zeitangaben und Bundesländer noch erkannt werden (nur Zahlen im Bericht, keine Inhalte). Bei Problemen öffnet er ein Issue mit Label `quellen-check` und schließt es wieder, sobald alles geht.
