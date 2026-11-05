@@ -65,6 +65,7 @@ Ein Coordinator je Endpunkt für alle Config-Entries – sonst vervielfacht jede
 - **Kein gemeinsames Python-Paket mit Streckenwacht.** Ein PyPI-Paket als `requirements` wäre eine weitere Veröffentlichung mit eigener Versionierung; die Überschneidung (Coordinator-Gerüst, Event-Muster) ist dafür zu klein. Muster werden übernommen, nicht geteilt.
 - README nur auf Deutsch (Zielgruppe ist deutschsprachig; Streckenwacht pflegt zwei vollständige READMEs à ≈ 29 KB). Ein kurzer englischer Absatz für das HACS-Verzeichnis genügt.
 - Projektstand und Versionsgeschichte stehen in `CHANGELOG.md`, nicht in `CLAUDE.md`.
+- **Manifest-Kategorien** (seit 2026-11-05, Commit `f7f38f2`, Version 0.2.2): `["news_social_media"]` für die Integrationsübersicht von HA 2026.11 (Werte laut <https://contributors.home-assistant.io/core/integrations/categories/>). Entschieden am 2026-10-27 nach dem Vorbild der Core-Integration `feedreader`; `weather_alerts.public_warnings` passt nicht, weil Eilmeldungen keine amtlichen Warnungen sind. hassfest kennt den Schlüssel erst ab 2026.11.0.
 
 ## 4. Risiken, Lizenzen, Recht (keine Rechtsberatung)
 
