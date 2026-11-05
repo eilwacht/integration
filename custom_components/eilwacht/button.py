@@ -69,7 +69,7 @@ class IssueReport(ButtonEntity):
             mapping={},
             extra=entry_lines(runtime),
             endpoints=endpoint_lines(runtime),
-            settings_lines=watch_lines(watches),
+            setting_lines=watch_lines(watches),
         )
         show(self.hass, DOMAIN, NAME, entry, report)
 
