@@ -330,7 +330,8 @@ async def test_watch(hass: HomeAssistant, client: FakeClient) -> None:
     assert "homepage: not needed" in message
     assert "news: ok" in message
     assert "news items: 5" in message
-    assert "with a value: 4" in message
+    # Event entities are left out (no value until they fire): 3 sensors.
+    assert "with a value: 3" in message
     assert "last_breaking: unknown" in message
     assert "open: none" in message
     assert "Streik" not in message and "SSB" not in message
