@@ -1,6 +1,6 @@
 # Changelog
 
-## Unveröffentlicht
+## 0.3.0 – 2026-11-06
 
 - **Neu: die letzten 5 Meldungen als Liste** im Attribut `recent` der Sensoren „Letzte Eilmeldung“ und „Letzte Meldung“ (je Wächter), die neueste zuerst, jede mit Schlagzeile, Link, Zeit und Vorschaubild (`title`, `url`, `published`, `image`, `image_copyright`, `image_alt`, bei Wächtern mit Stichworten auch `keywords`). Gedacht fürs Dashboard, die README hat eine fertige Markdown-Karte („Die letzten Meldungen als Liste“). Eine Meldung steht nur einmal darin; die Liste eines Wächters behält auch ältere Meldungen, die tagesschau.de nicht mehr ausliefert, und beginnt nach dem Ändern des Wächters neu. Sie übersteht Neustarts, landet aber nicht in der Datenbank. Nach dem Update beginnt die Eilmeldungsliste mit der zuletzt gezeigten Eilmeldung.
 - **Neu: Vorschaubild** in den Attributen `image` (Adresse eines kleinen Bildes, meist 144 × 144 Pixel), `image_copyright` (Bildnachweis) und `image_alt` an Events, Sensoren mit Schlagzeile und in `recent`. Eilwacht lädt kein Bild herunter und setzt kein Entitätsbild; erst der Browser lädt es von tagesschau.de, wenn eine Karte es zeigt – dann bitte mit Bildnachweis. Eilmeldungen haben meist kein Bild.
