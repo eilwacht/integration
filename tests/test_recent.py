@@ -37,16 +37,21 @@ def titles(entries: list[dict]) -> list[str]:
     return [entry["title"] for entry in entries]
 
 
+NO_IMAGE = {"image": None, "image_copyright": None, "image_alt": None}
+
+
 def test_entry() -> None:
     assert recent_entry(item("a")) == {
         "title": "Meldung",
         "url": "https://www.tagesschau.de/a.html",
         "published": "2026-10-20T17:00:00+02:00",
+        **NO_IMAGE,
     }
     assert recent_entry(item("a", None), ("Ulm",)) == {
         "title": "Meldung",
         "url": "https://www.tagesschau.de/a.html",
         "published": None,
+        **NO_IMAGE,
         "keywords": ["Ulm"],
     }
 
@@ -58,11 +63,18 @@ def test_entries_from_fixtures() -> None:
         "title": "Text 1",
         "url": "https://www.tagesschau.de/eilmeldung/eilmeldung-9580.html",
         "published": "2026-10-21T11:25:00+02:00",
+        **NO_IMAGE,  # alerts have no teaser image
     }
-    for news in parse_api2u(load_fixture("news_bw.json"), Source.NEWS):
+    data = load_fixture("news_bw.json")
+    items = parse_api2u(data, Source.NEWS)
+    for raw, news in zip(data["news"], items, strict=True):
         entry = recent_entry(news)
         assert entry["title"] and entry["url"]
         assert datetime.fromisoformat(entry["published"]).tzinfo
+        # Only the address of the small variant, with its copyright.
+        assert entry["image"] == raw["teaserImage"]["imageVariants"]["1x1-144"]
+        assert entry["image_copyright"] == raw["teaserImage"]["copyright"]
+        assert entry["image_alt"] == raw["teaserImage"]["alttext"]
 
 
 def test_add_newest_first_without_duplicates() -> None:
@@ -121,11 +133,13 @@ def test_merge_compares_times_not_text() -> None:
 def test_restore() -> None:
     saved = [
         {"title": "a", "url": "u", "published": None, "keywords": ["x"], "x": 1},
+        {"title": "b", "image": "https://i/b.jpg", "image_copyright": "C"},
         {"url": "ohne Titel"},
         "kaputt",
     ]
     assert restore_recent(saved) == [
-        {"title": "a", "url": "u", "published": None, "keywords": ["x"]}
+        {"title": "a", "url": "u", "published": None, "keywords": ["x"]},
+        {"title": "b", "image": "https://i/b.jpg", "image_copyright": "C"},
     ]
     assert restore_recent(None) == []
     assert restore_recent({"title": "a"}) == []

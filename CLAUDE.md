@@ -11,7 +11,7 @@ Home-Assistant-Custom-Integration (HACS), Domain `eilwacht`. Eilmeldungen und Re
 
 ## Verbindliche Entscheidungen
 
-- Nur Tagesschau (`json/headerapp` + `api2u`). Kein allgemeines RSS, keine anderen Sender, keine Volltexte oder Bilder.
+- Nur Tagesschau (`json/headerapp` + `api2u`). Kein allgemeines RSS, keine anderen Sender. Keine Volltexte. Bilder nur als Adresse eines kleinen Vorschaubilds mit Bildnachweis – kein Herunterladen, kein Symbolbild der Entität (entity_picture).
 - Nur UI-Config-Flow, kein YAML. `DataUpdateCoordinator`, durchgängig async, `async_get_clientsession(hass)`. Ein Coordinator je Endpunkt, gemeinsam für alle Config-Entries.
 - Höchstens 60 api2u-Abrufe pro Stunde für die gesamte Instanz (Abfrageplan in `docs/ENTWICKLUNG.md` Abschnitt 2).
 - `homepage` nur als Ersatz, solange `headerapp` ausfällt – nie beide zugleich (Eilmeldung verweist auf `/eilmeldung/…`, homepage auf den Artikel → Doppelmeldung).

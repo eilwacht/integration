@@ -14,6 +14,7 @@ from custom_components.eilwacht.tagesschau import (
     parse_api2u,
     parse_date,
     parse_headerapp,
+    parse_teaser_image,
 )
 from tests.conftest import load_fixture
 
@@ -59,6 +60,7 @@ def test_headerapp_recorded_alert() -> None:
     # Relative link to a page of its own, not to the article.
     assert alert.url == "https://www.tagesschau.de/eilmeldung/eilmeldung-9580.html"
     assert alert.published == datetime(2026, 10, 21, 11, 25, tzinfo=BERLIN)
+    assert alert.image is None  # alerts come without a teaser image
 
 
 def test_headerapp_text_is_trimmed() -> None:
@@ -110,6 +112,53 @@ def test_regional_news() -> None:
     assert all(item.region_ids == (1,) for item in items)
     assert all(item.ressort is None for item in items)
     assert all(item.tags for item in items)
+
+
+def test_teaser_images() -> None:
+    """The small square variant, with copyright and alt text (news_bw.json)."""
+    data = load_fixture("news_bw.json")
+    items = parse_api2u(data, Source.NEWS)
+    for raw, item in zip(data["news"], items, strict=True):
+        teaser = raw["teaserImage"]
+        assert item.image == teaser["imageVariants"]["1x1-144"]
+        assert item.image.startswith("https://images.tagesschau.de/")
+        assert item.image_copyright == teaser["copyright"]
+        assert item.image_alt == teaser["alttext"]
+    homepage = parse_api2u(load_fixture("homepage.json"), Source.HOMEPAGE)
+    assert all(item.image for item in homepage)
+
+
+def test_teaser_image_fallbacks() -> None:
+    raw = load_fixture("news_bw.json")["news"][0]["teaserImage"]
+    variants = raw["imageVariants"]
+    rest = {k: v for k, v in variants.items() if k != "1x1-144"}
+    assert parse_teaser_image({**raw, "imageVariants": rest})[0] == variants["1x1-256"]
+    wide = {"16x9-256": variants["16x9-256"], "16x9-1920": variants["16x9-1920"]}
+    assert parse_teaser_image({"imageVariants": wide}) == (
+        variants["16x9-256"],
+        None,
+        None,
+    )
+    # Only large variants, none, broken or missing: no image.
+    big = {"imageVariants": {"16x9-1920": variants["16x9-1920"]}, "copyright": "X"}
+    for value in (
+        big,
+        {"imageVariants": {}},
+        {"imageVariants": None, "copyright": "X"},
+        {"imageVariants": {"1x1-144": 5}},
+        {"imageVariants": {"1x1-144": "javascript:alert(1)"}},
+        {"copyright": "X"},
+        "kaputt",
+        None,
+    ):
+        assert parse_teaser_image(value) == (None, None, None)
+
+
+def test_api2u_item_without_teaser_image() -> None:
+    data = copy.deepcopy(load_fixture("news_bw.json"))
+    del data["news"][0]["teaserImage"]
+    item = parse_api2u(data, Source.NEWS)[0]
+    assert (item.image, item.image_copyright, item.image_alt) == (None, None, None)
 
 
 def test_news_videos_have_no_article_url() -> None:

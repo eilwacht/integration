@@ -50,14 +50,14 @@ Die Nutzungsbedingungen der Tagesschau erlauben die Nutzung für den **privaten,
 ## Was Eilwacht nicht kann
 
 - **Nur die Tagesschau.** Andere Sender (ZDF, Deutschlandfunk, SWR, n-tv) kennzeichnen Eilmeldungen nicht maschinenlesbar. Für beliebige RSS-Feeds gibt es in Home Assistant die Integration [Feedreader](https://www.home-assistant.io/integrations/feedreader/).
-- **Keine Volltexte und Bilder** – Schlagzeile, Dachzeile, erster Satz und der Link zum Artikel.
+- **Keine Volltexte.** Bilder nur als Adresse eines kleinen Vorschaubilds mit Bildnachweis – kein Herunterladen, kein Symbolbild der Entität (`entity_picture`). Sonst Schlagzeile, Dachzeile, erster Satz und der Link zum Artikel.
 - **Keine amtlichen Warnungen.** Dafür gibt es [NINA](https://www.home-assistant.io/integrations/nina/) und die [DWD-Wetterwarnungen](https://www.home-assistant.io/integrations/dwd_weather_warnings/).
 - **Nur kurze Pausen werden nachgeholt:** Was während eines Neustarts von Home Assistant erscheint, wird danach gemeldet. War Home Assistant länger als 6 Stunden aus, lernt Eilwacht still neu – sonst käme nach einem Tag Pause eine Flut von Nachrichten.
 - **Eilmeldungen sind selten.** Die Tagesschau verschickt sie nur bei wirklich wichtigen Ereignissen. Im Alltag melden sich die Nachrichtenwächter deutlich öfter.
 
 ## Datenschutz
 
-Eilwacht ruft nur tagesschau.de ab. Deine Bundesländer und Stichworte bleiben in Home Assistant; die Abfrage enthält nur die Nummern der Bundesländer.
+Eilwacht ruft nur tagesschau.de ab. Deine Bundesländer und Stichworte bleiben in Home Assistant; die Abfrage enthält nur die Nummern der Bundesländer. Vorschaubilder lädt Eilwacht nicht herunter; zeigt eine Dashboard-Karte eines an, lädt es dein Browser von `images.tagesschau.de`.
 
 ## Installation
 
@@ -119,15 +119,18 @@ Entitäts-IDs bei deutscher Oberfläche, Wächter mit dem Namen „Stuttgart“:
 | **Letzte Meldung** | `sensor.eilwacht_stuttgart_letzte_meldung` | Schlagzeile der neuesten Meldung des Wächters; Attribut `recent` mit den letzten 5 Meldungen des Wächters |
 | **Meldungen (24 h)** | `sensor.eilwacht_stuttgart_meldungen_24_h` | Zahl der Meldungen des Wächters aus den letzten 24 Stunden |
 
-Events und die Sensoren mit Schlagzeile tragen dieselben Attribute: `title`, `topline` (Dachzeile), `summary` (erster Satz), `url`, `published`, `regions`, `ressort` und bei Wächtern mit Stichworten `keywords` (die gefundenen Stichworte).
+Events und die Sensoren mit Schlagzeile tragen dieselben Attribute: `title`, `topline` (Dachzeile), `summary` (erster Satz), `url`, `published`, `regions`, `ressort`, `image` (Adresse eines kleinen Vorschaubilds, meist 144 × 144 Pixel, oder leer), `image_copyright` (Bildnachweis), `image_alt` (Bildbeschreibung) und bei Wächtern mit Stichworten `keywords` (die gefundenen Stichworte). Eilmeldungen haben fast nie ein Bild. **Zeigst du ein Vorschaubild an, zeige den Bildnachweis mit** – die Bilder sind urheberrechtlich geschützt (privater Gebrauch, siehe [Datenquelle](#datenquelle)).
 
-Dazu tragen „Letzte Eilmeldung“ und „Letzte Meldung“ das Attribut `recent`: die letzten 5 Meldungen, die neueste zuerst, jede mit `title`, `url`, `published` (ISO-Zeitstempel) und bei Wächtern mit Stichworten `keywords`. Eine Meldung steht darin nur einmal. Die Liste eines Wächters behält auch Meldungen, die tagesschau.de nicht mehr ausliefert, bis neuere sie verdrängen; ändert sich bei tagesschau.de die Schlagzeile, ändert sie sich auch hier. Nach dem Ändern eines Wächters beginnt seine Liste neu. Die Liste übersteht Neustarts, kommt aber **nicht in die Datenbank** (Verlauf und Logbuch): Die neueste Meldung steht dort ohnehin, die Liste würde sie nur aufblähen. Beispiel:
+Dazu tragen „Letzte Eilmeldung“ und „Letzte Meldung“ das Attribut `recent`: die letzten 5 Meldungen, die neueste zuerst, jede mit `title`, `url`, `published` (ISO-Zeitstempel), `image`, `image_copyright`, `image_alt` und bei Wächtern mit Stichworten `keywords`. Eine Meldung steht darin nur einmal. Die Liste eines Wächters behält auch Meldungen, die tagesschau.de nicht mehr ausliefert, bis neuere sie verdrängen; ändert sich bei tagesschau.de die Schlagzeile, ändert sie sich auch hier. Nach dem Ändern eines Wächters beginnt seine Liste neu. Die Liste übersteht Neustarts, kommt aber **nicht in die Datenbank** (Verlauf und Logbuch): Die neueste Meldung steht dort ohnehin, die Liste würde sie nur aufblähen. Beispiel:
 
 ```yaml
 recent:
   - title: Beispielschlagzeile
     url: https://www.tagesschau.de/…
-    published: "2026-10-21T11:25:00+02:00"
+    published: "2026-11-06T09:10:00+01:00"
+    image: https://images.tagesschau.de/image/…/1x1-144.jpg   # oder null
+    image_copyright: SWR
+    image_alt: Beschreibung des Bildes
     keywords: [Stuttgart]   # nur bei Wächtern mit Stichworten
 ```
 
@@ -197,7 +200,7 @@ content: >-
 
 ### Die letzten Meldungen als Liste
 
-Die drei neuesten Eilmeldungen und die drei neuesten Meldungen des Wächters „Stuttgart“, jeweils mit Link und „vor … Std.“:
+Die drei neuesten Eilmeldungen und die drei neuesten Meldungen des Wächters „Stuttgart“, jeweils mit Link, „vor … Std.“ und, wo vorhanden, einem kleinen Vorschaubild mit Bildnachweis:
 
 ```yaml
 type: markdown
@@ -214,7 +217,7 @@ content: |
   {%- endmacro -%}
   {%- macro liste(entity, leer) -%}
   {%- for e in (state_attr(entity, 'recent') or [])[:3] %}
-  - {% if e.url %}[{{ e.title }}]({{ e.url }}){% else %}{{ e.title }}{% endif %}{{ ' · ' ~ vor(e.published) if e.published else '' }}
+  - {% if e.image %}<img src="{{ e.image }}" alt="{{ (e.image_alt or '') | escape }}" width="48"> {% endif %}{% if e.url %}[{{ e.title }}]({{ e.url }}){% else %}{{ e.title }}{% endif %}{{ ' · ' ~ vor(e.published) if e.published else '' }}{% if e.image and e.image_copyright %} <small>Bild: {{ e.image_copyright }}</small>{% endif %}
   {%- else %}
   {{ leer }}
   {%- endfor -%}

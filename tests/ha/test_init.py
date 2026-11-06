@@ -507,6 +507,9 @@ async def test_recent_alerts(hass: HomeAssistant, client: FakeClient) -> None:
         "title": "Eil 7",
         "url": "https://www.tagesschau.de/eil-7.html",
         "published": "2026-10-20T07:00:00+02:00",
+        "image": None,
+        "image_copyright": None,
+        "image_alt": None,
     }
     assert recent_titles(hass, ids["last"]) == [
         "Eil 7",
@@ -597,6 +600,9 @@ async def test_recent_matches_of_a_watch(
         "title": "Streik 7",
         "url": "https://www.tagesschau.de/s7.html",
         "published": "2026-10-20T07:00:00+02:00",
+        "image": None,
+        "image_copyright": None,
+        "image_alt": None,
         "keywords": ["Streik"],
     }
     assert RECENT in last.state_info["unrecorded_attributes"]

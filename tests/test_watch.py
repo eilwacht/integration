@@ -100,6 +100,9 @@ def test_item_attributes() -> None:
         "published": "2026-10-20T18:00:00+02:00",
         "regions": ["Baden-Württemberg"],
         "ressort": None,
+        "image": None,
+        "image_copyright": None,
+        "image_alt": None,
         "keywords": ["Ulm"],
     }
     assert "keywords" not in item_attributes(news)

@@ -33,6 +33,9 @@ BERLIN = ZoneInfo("Europe/Berlin")
 # headerapp "date" is display text, e.g. "Stand: 20.10.2026 17:30 Uhr" (format
 # assumed from the alert bot, which strips "Stand: ").
 _DISPLAY_DATE = re.compile(r"(\d{1,2})\.(\d{1,2})\.(\d{4}),?\s+(\d{1,2}):(\d{2})")
+# api2u "teaserImage" > "imageVariants": the small one to pass on, in order of
+# preference (keys as in tests/fixtures).
+IMAGE_VARIANTS = ("1x1-144", "1x1-256", "16x9-256")
 
 
 class TagesschauError(Exception):
@@ -61,6 +64,23 @@ def _text(value: Any) -> str | None:
     if isinstance(value, str) and value.strip():
         return value.strip()
     return None
+
+
+def parse_teaser_image(value: Any) -> tuple[str | None, str | None, str | None]:
+    """Address, copyright and alt text of a small variant; Nones if unusable.
+
+    Only the address is passed on: the image is never downloaded.
+    """
+    if not isinstance(value, dict):
+        return None, None, None
+    variants = value.get("imageVariants")
+    if not isinstance(variants, dict):
+        return None, None, None
+    for name in IMAGE_VARIANTS:
+        url = _text(variants.get(name))
+        if url and url.startswith("https://"):
+            return url, _text(value.get("copyright")), _text(value.get("alttext"))
+    return None, None, None
 
 
 def parse_headerapp(data: Any) -> list[NewsItem]:
@@ -107,6 +127,7 @@ def _api2u_item(raw: dict[str, Any], source: Source) -> NewsItem | None:
         for tag in raw.get("tags") or ()
         if isinstance(tag, dict) and _text(tag.get("tag"))
     )
+    image, image_copyright, image_alt = parse_teaser_image(raw.get("teaserImage"))
     return NewsItem(
         id=item_id,
         source=source,
@@ -119,6 +140,9 @@ def _api2u_item(raw: dict[str, Any], source: Source) -> NewsItem | None:
         ressort=_text(raw.get("ressort")),
         region_ids=region_ids,
         tags=tags,
+        image=image,
+        image_copyright=image_copyright,
+        image_alt=image_alt,
     )
 
 

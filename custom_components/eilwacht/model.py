@@ -32,6 +32,11 @@ class NewsItem:
     ressort: str | None = None
     region_ids: tuple[int, ...] = ()
     tags: tuple[str, ...] = ()
+    # Address of a small teaser image (api2u "teaserImage"), never downloaded;
+    # shown with its copyright. headerapp alerts have none.
+    image: str | None = None
+    image_copyright: str | None = None
+    image_alt: str | None = None
 
     @property
     def key(self) -> str:

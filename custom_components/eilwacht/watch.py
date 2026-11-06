@@ -25,6 +25,9 @@ ITEM_KEYS = frozenset(
         "published",
         "regions",
         "ressort",
+        "image",
+        "image_copyright",
+        "image_alt",
         "keywords",
     }
 )
@@ -79,6 +82,9 @@ def item_attributes(
         "published": item.published.isoformat() if item.published else None,
         "regions": [REGIONS[r] for r in item.region_ids if r in REGIONS],
         "ressort": item.ressort,
+        "image": item.image,
+        "image_copyright": item.image_copyright,
+        "image_alt": item.image_alt,
     }
     if keywords:
         attributes["keywords"] = list(keywords)

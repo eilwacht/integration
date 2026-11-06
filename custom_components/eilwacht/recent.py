@@ -1,8 +1,9 @@
 """Lists of the most recent items, for the dashboard. Pure Python, no Home Assistant imports.
 
 The sensors "last breaking news" and "last item" of a watch carry them in the
-attribute RECENT, newest first, each entry with title, url, published (and the
-keywords found, for watches with keywords). The attribute is not recorded (the
+attribute RECENT, newest first, each entry with title, url, published, the
+address of a small teaser image with its copyright and alt text (None without
+one; never downloaded), and the keywords found, for watches with keywords. The attribute is not recorded (the
 newest item is in the history already, the list would only bloat the
 database); it survives restarts through the entity's restored state.
 """
@@ -19,7 +20,15 @@ from .model import NewsItem
 RECENT = "recent"
 RECENT_LIMIT = 5
 
-_ENTRY_KEYS = ("title", "url", "published", "keywords")
+_ENTRY_KEYS = (
+    "title",
+    "url",
+    "published",
+    "image",
+    "image_copyright",
+    "image_alt",
+    "keywords",
+)
 _OLDEST = datetime.min.replace(tzinfo=UTC)
 
 type Entry = dict[str, Any]
@@ -31,6 +40,9 @@ def recent_entry(item: NewsItem, keywords: tuple[str, ...] = ()) -> Entry:
         "title": item.title,
         "url": item.url,
         "published": item.published.isoformat() if item.published else None,
+        "image": item.image,
+        "image_copyright": item.image_copyright,
+        "image_alt": item.image_alt,
     }
     if keywords:
         entry["keywords"] = list(keywords)
