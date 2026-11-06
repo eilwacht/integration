@@ -3,7 +3,9 @@
 The sensors "last breaking news" and "last item" of a watch carry them in the
 attribute RECENT, newest first, each entry with title, url, published, the
 address of a small teaser image with its copyright and alt text (None without
-one; never downloaded), and the keywords found, for watches with keywords. The attribute is not recorded (the
+one; never downloaded) and, for watches, the keywords found (empty without
+keywords). Every entry has all these keys, None if unknown: Home Assistant's
+markdown card renders templates strictly, a missing key breaks the card. The attribute is not recorded (the
 newest item is in the history already, the list would only bloat the
 database); it survives restarts through the entity's restored state.
 """
@@ -20,22 +22,23 @@ from .model import NewsItem
 RECENT = "recent"
 RECENT_LIMIT = 5
 
-_ENTRY_KEYS = (
+# Keys of every entry, in this order; watch entries add KEYWORDS.
+ENTRY_KEYS = (
     "title",
     "url",
     "published",
     "image",
     "image_copyright",
     "image_alt",
-    "keywords",
 )
+KEYWORDS = "keywords"
 _OLDEST = datetime.min.replace(tzinfo=UTC)
 
 type Entry = dict[str, Any]
 
 
-def recent_entry(item: NewsItem, keywords: tuple[str, ...] = ()) -> Entry:
-    """An entry of the list."""
+def recent_entry(item: NewsItem, keywords: tuple[str, ...] | None = None) -> Entry:
+    """An entry of the list; keywords (also empty ones) for watches only."""
     entry: Entry = {
         "title": item.title,
         "url": item.url,
@@ -44,8 +47,8 @@ def recent_entry(item: NewsItem, keywords: tuple[str, ...] = ()) -> Entry:
         "image_copyright": item.image_copyright,
         "image_alt": item.image_alt,
     }
-    if keywords:
-        entry["keywords"] = list(keywords)
+    if keywords is not None:
+        entry[KEYWORDS] = list(keywords)
     return entry
 
 
@@ -94,13 +97,28 @@ def merge_recent(
     return sorted(merged.values(), key=_published, reverse=True)[:limit]
 
 
-def restore_recent(value: Any, limit: int = RECENT_LIMIT) -> list[Entry]:
-    """The list from a restored state attribute; unusable entries are skipped."""
+def restore_recent(
+    value: Any, limit: int = RECENT_LIMIT, *, keywords: bool = False
+) -> list[Entry]:
+    """The list from a restored state attribute; unusable entries are skipped.
+
+    Entries saved by older versions (or seeded from the attributes of a 0.2.x
+    state) lack keys: they get all of them, None if unknown, and KEYWORDS
+    (a list) if keywords is set.
+    """
     if not isinstance(value, list):
         return []
-    restored = [
-        {key: entry[key] for key in _ENTRY_KEYS if key in entry}
-        for entry in value
-        if isinstance(entry, Mapping) and isinstance(entry.get("title"), str)
-    ]
+    restored = []
+    for saved in value:
+        if not isinstance(saved, Mapping) or not isinstance(saved.get("title"), str):
+            continue
+        entry: Entry = {key: saved.get(key) for key in ENTRY_KEYS}
+        if keywords:
+            found = saved.get(KEYWORDS)
+            entry[KEYWORDS] = (
+                [k for k in found if isinstance(k, str)]
+                if isinstance(found, list)
+                else []
+            )
+        restored.append(entry)
     return restored[:limit]

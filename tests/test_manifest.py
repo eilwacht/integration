@@ -81,4 +81,4 @@ def test_region_options_translated() -> None:
 
 def test_item_keys() -> None:
     item = NewsItem(id="x", source=Source.NEWS, title="t")
-    assert set(item_attributes(item, ("k",))) == ITEM_KEYS
+    assert tuple(item_attributes(item, ("k",))) == ITEM_KEYS

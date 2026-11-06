@@ -573,7 +573,18 @@ async def test_recent_alerts_start_with_the_restored_alert(
     assert last.entity_id == "sensor.eilwacht_last_breaking_news"
     assert last.state == "Alt"
     assert last.attributes["summary"] == "Satz"
-    assert last.attributes[RECENT] == [{"title": "Alt", "url": url, "published": None}]
+    # All keys, also those 0.2.x did not have (the markdown card is strict).
+    assert last.attributes[RECENT] == [
+        {
+            "title": "Alt",
+            "url": url,
+            "published": None,
+            "image": None,
+            "image_copyright": None,
+            "image_alt": None,
+        }
+    ]
+    assert last.attributes["image"] is None
 
 
 @pytest.mark.freeze_time(NOON)

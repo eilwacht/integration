@@ -85,8 +85,9 @@ class LastBreakingNewsSensor(BreakingEntity, SensorEntity, RestoreEntity):
             self._recent = restore_recent(last.attributes.get(RECENT)) or (
                 restore_recent([last.attributes])
             )
+            # All keys, None if missing (a state of an older version).
             self._attr_extra_state_attributes = {
-                **{k: v for k, v in last.attributes.items() if k in ITEM_KEYS},
+                **{k: last.attributes.get(k) for k in ITEM_KEYS if k != "keywords"},
                 RECENT: self._recent,
             }
         data = self.coordinator.data
@@ -142,7 +143,7 @@ class LastNewsSensor(WatchEntity, SensorEntity, RestoreEntity):
             and extra is not None
             and extra.as_dict().get("fingerprint") == self._fingerprint
         ):
-            self._recent = restore_recent(last.attributes.get(RECENT))
+            self._recent = restore_recent(last.attributes.get(RECENT), keywords=True)
         self._update_recent()
 
     @property

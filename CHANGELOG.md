@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1 – 2026-11-06
+
+- **Behoben:** Die Beispielkarte für die Meldungsliste blieb nach dem Update leer, wenn die Liste mit der zuletzt gezeigten Eilmeldung aus 0.2.x begann: Diesem Eintrag fehlten die Angaben zum Vorschaubild, und die Markdown-Karte von Home Assistant bricht bei einem fehlenden Schlüssel die ganze Karte ab. Jetzt hat jeder Eintrag von `recent` immer alle Schlüssel (`title`, `url`, `published`, `image`, `image_copyright`, `image_alt`, bei Wächtern `keywords`), unbekannte Werte sind leer. Bestehende Listen werden beim nächsten Start ergänzt.
+- Die Beispielkarte in der README liest die Einträge jetzt mit `e.get('…')` und funktioniert so auch, falls einmal ein Schlüssel fehlt. Wer die Karte aus 0.3.0 übernommen hat: Nach dem Update geht sie wieder, die neue Fassung ist trotzdem robuster.
+- Wächter ohne Stichworte haben in `recent` jetzt `keywords: []` statt gar keinen Eintrag.
+
 ## 0.3.0 – 2026-11-06
 
 - **Neu: die letzten 5 Meldungen als Liste** im Attribut `recent` der Sensoren „Letzte Eilmeldung“ und „Letzte Meldung“ (je Wächter), die neueste zuerst, jede mit Schlagzeile, Link, Zeit und Vorschaubild (`title`, `url`, `published`, `image`, `image_copyright`, `image_alt`, bei Wächtern mit Stichworten auch `keywords`). Gedacht fürs Dashboard, die README hat eine fertige Markdown-Karte („Die letzten Meldungen als Liste“). Eine Meldung steht nur einmal darin; die Liste eines Wächters behält auch ältere Meldungen, die tagesschau.de nicht mehr ausliefert, und beginnt nach dem Ändern des Wächters neu. Sie übersteht Neustarts, landet aber nicht in der Datenbank. Nach dem Update beginnt die Eilmeldungsliste mit der zuletzt gezeigten Eilmeldung.

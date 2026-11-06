@@ -15,21 +15,19 @@ NATIONAL = 0
 
 _OLDEST = datetime.min.replace(tzinfo=UTC)
 
-# Keys of item_attributes(), e.g. for restoring them.
-ITEM_KEYS = frozenset(
-    {
-        "title",
-        "topline",
-        "summary",
-        "url",
-        "published",
-        "regions",
-        "ressort",
-        "image",
-        "image_copyright",
-        "image_alt",
-        "keywords",
-    }
+# Keys of item_attributes() in their order, e.g. for restoring them.
+ITEM_KEYS = (
+    "title",
+    "topline",
+    "summary",
+    "url",
+    "published",
+    "regions",
+    "ressort",
+    "image",
+    "image_copyright",
+    "image_alt",
+    "keywords",
 )
 
 

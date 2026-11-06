@@ -121,7 +121,7 @@ Entitäts-IDs bei deutscher Oberfläche, Wächter mit dem Namen „Stuttgart“:
 
 Events und die Sensoren mit Schlagzeile tragen dieselben Attribute: `title`, `topline` (Dachzeile), `summary` (erster Satz), `url`, `published`, `regions`, `ressort`, `image` (Adresse eines kleinen Vorschaubilds, meist 144 × 144 Pixel, oder leer), `image_copyright` (Bildnachweis), `image_alt` (Bildbeschreibung) und bei Wächtern mit Stichworten `keywords` (die gefundenen Stichworte). Eilmeldungen haben fast nie ein Bild. **Zeigst du ein Vorschaubild an, zeige den Bildnachweis mit** – die Bilder sind urheberrechtlich geschützt (privater Gebrauch, siehe [Datenquelle](#datenquelle)).
 
-Dazu tragen „Letzte Eilmeldung“ und „Letzte Meldung“ das Attribut `recent`: die letzten 5 Meldungen, die neueste zuerst, jede mit `title`, `url`, `published` (ISO-Zeitstempel), `image`, `image_copyright`, `image_alt` und bei Wächtern mit Stichworten `keywords`. Eine Meldung steht darin nur einmal. Die Liste eines Wächters behält auch Meldungen, die tagesschau.de nicht mehr ausliefert, bis neuere sie verdrängen; ändert sich bei tagesschau.de die Schlagzeile, ändert sie sich auch hier. Nach dem Ändern eines Wächters beginnt seine Liste neu. Die Liste übersteht Neustarts, kommt aber **nicht in die Datenbank** (Verlauf und Logbuch): Die neueste Meldung steht dort ohnehin, die Liste würde sie nur aufblähen. Beispiel:
+Dazu tragen „Letzte Eilmeldung“ und „Letzte Meldung“ das Attribut `recent`: die letzten 5 Meldungen, die neueste zuerst, jede mit `title`, `url`, `published` (ISO-Zeitstempel), `image`, `image_copyright`, `image_alt` und bei Wächtern `keywords` (die gefundenen Stichworte, leer bei Wächtern ohne Stichworte). Jeder Eintrag hat alle diese Schlüssel, unbekannte Werte sind leer (`null`). Eine Meldung steht darin nur einmal. Die Liste eines Wächters behält auch Meldungen, die tagesschau.de nicht mehr ausliefert, bis neuere sie verdrängen; ändert sich bei tagesschau.de die Schlagzeile, ändert sie sich auch hier. Nach dem Ändern eines Wächters beginnt seine Liste neu. Die Liste übersteht Neustarts, kommt aber **nicht in die Datenbank** (Verlauf und Logbuch): Die neueste Meldung steht dort ohnehin, die Liste würde sie nur aufblähen. Beispiel:
 
 ```yaml
 recent:
@@ -131,7 +131,7 @@ recent:
     image: https://images.tagesschau.de/image/…/1x1-144.jpg   # oder null
     image_copyright: SWR
     image_alt: Beschreibung des Bildes
-    keywords: [Stuttgart]   # nur bei Wächtern mit Stichworten
+    keywords: [Stuttgart]   # nur bei Wächtern
 ```
 
 <table>
@@ -217,7 +217,10 @@ content: |
   {%- endmacro -%}
   {%- macro liste(entity, leer) -%}
   {%- for e in (state_attr(entity, 'recent') or [])[:3] %}
-  - {% if e.image %}<img src="{{ e.image }}" alt="{{ (e.image_alt or '') | escape }}" width="48"> {% endif %}{% if e.url %}[{{ e.title }}]({{ e.url }}){% else %}{{ e.title }}{% endif %}{{ ' · ' ~ vor(e.published) if e.published else '' }}{% if e.image and e.image_copyright %} <small>Bild: {{ e.image_copyright }}</small>{% endif %}
+  {%- set bild = e.get('image') %}
+  {%- set link = e.get('url') %}
+  {%- set zeit = e.get('published') %}
+  - {% if bild %}<img src="{{ bild }}" alt="{{ (e.get('image_alt') or '') | escape }}" width="48"> {% endif %}{% if link %}[{{ e.get('title') }}]({{ link }}){% else %}{{ e.get('title') }}{% endif %}{{ ' · ' ~ vor(zeit) if zeit else '' }}{% if bild and e.get('image_copyright') %} <small>Bild: {{ e.get('image_copyright') }}</small>{% endif %}
   {%- else %}
   {{ leer }}
   {%- endfor -%}
@@ -230,6 +233,8 @@ content: |
 
   <small>Quelle: tagesschau.de</small>
 ```
+
+Die Markdown-Karte von Home Assistant wertet Vorlagen streng aus: Fehlt einem Eintrag ein Schlüssel, bleibt die ganze Karte leer. Deshalb liest das Beispiel die Einträge mit `e.get('…')` statt `e.…` – so passt es auch, falls einmal ein Schlüssel fehlt.
 
 ## Fehlerbehebung
 

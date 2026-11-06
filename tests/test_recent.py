@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 
 from custom_components.eilwacht.model import NewsItem, Source
 from custom_components.eilwacht.recent import (
+    ENTRY_KEYS,
     RECENT_LIMIT,
     add_recent,
     merge_recent,
@@ -77,6 +78,30 @@ def test_entries_from_fixtures() -> None:
         assert entry["image_alt"] == raw["teaserImage"]["alttext"]
 
 
+def test_entry_of_a_watch_without_keywords() -> None:
+    assert recent_entry(item("a"), ())["keywords"] == []
+    assert "keywords" not in recent_entry(item("a"))
+
+
+def test_seeded_from_an_old_state() -> None:
+    """Attributes of a 0.2.x state: no image keys, other keys to drop."""
+    old = {
+        "title": "Alt",
+        "topline": None,
+        "summary": "Satz",
+        "url": "https://www.tagesschau.de/eilmeldung/eilmeldung-1.html",
+        "published": "2026-10-25T18:02:00+01:00",
+        "regions": [],
+        "ressort": None,
+        "attribution": "Quelle: tagesschau.de",
+        "friendly_name": "Eilwacht Letzte Eilmeldung",
+    }
+    (entry,) = restore_recent([old])
+    assert list(entry) == list(ENTRY_KEYS)
+    assert entry["title"] == "Alt"
+    assert entry["image"] is None
+
+
 def test_add_newest_first_without_duplicates() -> None:
     recent: list[dict] = []
     for slug in ("a", "b", "c"):
@@ -137,9 +162,30 @@ def test_restore() -> None:
         {"url": "ohne Titel"},
         "kaputt",
     ]
+    # Always the full set of keys, None if missing (Home Assistant's markdown
+    # card is strict: a missing key empties the whole card).
     assert restore_recent(saved) == [
-        {"title": "a", "url": "u", "published": None, "keywords": ["x"]},
-        {"title": "b", "image": "https://i/b.jpg", "image_copyright": "C"},
+        {"title": "a", "url": "u", "published": None, **NO_IMAGE},
+        {
+            "title": "b",
+            "url": None,
+            "published": None,
+            "image": "https://i/b.jpg",
+            "image_copyright": "C",
+            "image_alt": None,
+        },
+    ]
+    assert restore_recent(saved, keywords=True) == [
+        {"title": "a", "url": "u", "published": None, **NO_IMAGE, "keywords": ["x"]},
+        {
+            "title": "b",
+            "url": None,
+            "published": None,
+            "image": "https://i/b.jpg",
+            "image_copyright": "C",
+            "image_alt": None,
+            "keywords": [],
+        },
     ]
     assert restore_recent(None) == []
     assert restore_recent({"title": "a"}) == []
