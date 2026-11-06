@@ -138,6 +138,16 @@
       .md p { margin: 0 0 8px; }
       .md .fake-link { color: var(--primary-color); font-weight: 700; }
       .md small { color: var(--secondary-text-color); }
+      .md table { border-collapse: collapse; width: 100%; margin: 4px 0 10px; }
+      .md td { vertical-align: top; padding: 4px 8px 4px 0; }
+      .md td a, .md td .fake-link { font-weight: 400; }
+      /* Placeholder instead of a teaser image: no image, no request. */
+      .md .ph { display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+        width: 44px; height: 44px; border-radius: 6px; box-sizing: border-box; padding-top: 2px;
+        background: color-mix(in srgb, var(--accent) 22%, var(--card-background-color));
+        border: 1px dashed color-mix(in srgb, var(--accent) 70%, transparent); color: var(--primary-text-color); }
+      .md .ph svg.mdi { font-size: 18px; }
+      .md .ph small { font-size: 7px; line-height: 1; color: inherit; }
 
       /* History */
       svg.chart { display: block; width: 100%; height: auto; }
@@ -325,6 +335,8 @@
           mdTitle: "Eilmeldung",
           mdEmpty: "Keine Eilmeldung.",
           mdNote: "Markdown-Karte aus der README. In Home Assistant steht dort „Quelle: tagesschau.de“.",
+          recentTitle: "Nachrichten",
+          recentNote: "Zweite Markdown-Karte aus der README („Die letzten Meldungen als Liste“, Attribut recent). Vorschaubilder hier nur als Platzhalter.",
           history: "Verlauf (24 h)",
           countOf: (w) => `Meldungen (24 h) – Eilwacht ${w}`,
           notifications: "Benachrichtigungen",
@@ -413,6 +425,8 @@
           mdTitle: "Eilmeldung",
           mdEmpty: "Keine Eilmeldung.",
           mdNote: "Markdown card from the README (German texts). In Home Assistant it says “Quelle: tagesschau.de”.",
+          recentTitle: "Nachrichten",
+          recentNote: "Second markdown card from the README (list of recent items, attribute recent; German texts). Teaser images shown as placeholders only.",
           history: "History (24 h)",
           countOf: (w) => `Items (24 h) – Eilwacht ${w}`,
           notifications: "Notifications",
@@ -716,7 +730,53 @@
             <div class="heading">${icon("view-dashboard-outline")}<span>${tx.dashboard}</span></div>
             <div class="card"><div class="card-title">${tx.mdTitle}</div><div class="md">${body}</div></div>
             <div class="muted" style="font-size:12px;padding:0 4px">${tx.mdNote}</div>
+            ${recentCard(view)}
           </section>`;
+      }
+
+      // README card "Die letzten Meldungen als Liste": macros vor() and liste().
+      function recentCard(view) {
+        const tx = t();
+        const pad = (n) => String(n).padStart(2, "0");
+        const berlin = (iso) => new Date(new Date(iso).toLocaleString("en-US", { timeZone: "Europe/Berlin" }));
+        const vor = (iso) => {
+          const m = Math.floor((demoNow - Date.parse(iso)) / 60000);
+          const l = berlin(iso);
+          if (m < 1) return "gerade eben";
+          if (m < 60) return `vor ${m} Min.`;
+          if (m < 1440) return `vor ${Math.floor(m / 60)} Std.`;
+          if (m < 2880) return `gestern ${pad(l.getHours())}:${pad(l.getMinutes())}`;
+          return `${pad(l.getDate())}.${pad(l.getMonth() + 1)}. ${pad(l.getHours())}:${pad(l.getMinutes())}`;
+        };
+        // Only placeholders are drawn; any other address is never loaded.
+        const thumb = (image) =>
+          String(image).startsWith("placeholder:")
+            ? `<span class="ph" role="img" aria-label="Beispielbild">${icon("newspaper-variant-outline")}<small>Beispielbild</small></span>`
+            : "";
+        const liste = (recent, leer) => {
+          const items = (recent ?? []).slice(0, 3);
+          if (!items.length) return `<p>${leer}</p>`;
+          const rows = items.map((e) => {
+            const bild = e.image && thumb(e.image);
+            const title = e.url
+              ? `<span class="fake-link" title="${escapeHtml(e.url)}">${escapeHtml(e.title)}</span>`
+              : escapeHtml(e.title);
+            const credit = bild && e.image_copyright ? ` · Bild: ${escapeHtml(e.image_copyright)}` : "";
+            const cell = `${title}<br><small>${e.published ? vor(e.published) : ""}${credit}</small></td>`;
+            return `<tr>${bild ? `<td width="52">${bild}</td><td>` : `<td colspan="2">`}${cell}</tr>`;
+          });
+          return `<table>${rows.join("")}</table>`;
+        };
+        const watch = view.watches[0];
+        const body = `
+          <p><strong>Eilmeldungen</strong></p>
+          ${liste(view.breaking.last?.attributes.recent, "Keine Eilmeldung.")}
+          <p><strong>${escapeHtml(watch.name)}</strong></p>
+          ${liste(watch.last?.attributes.recent, "Keine Meldung.")}
+          <p><small>${escapeHtml(TEXT.de.attribution)}</small></p>`;
+        return `
+            <div class="card"><div class="card-title">${tx.recentTitle}</div><div class="md">${body}</div></div>
+            <div class="muted" style="font-size:12px;padding:0 4px">${tx.recentNote}</div>`;
       }
 
       // ---- History ---------------------------------------------------------------

@@ -47,6 +47,7 @@ def render(states: dict[str, Any]) -> str:
     env.globals.update(
         now=lambda: NOW,
         as_datetime=datetime.fromisoformat,
+        as_local=lambda moment: moment.astimezone(BERLIN),
         state_attr=lambda entity, name: states.get(entity, {}).get(name),
     )
     return env.from_string(card_template()).render()
@@ -57,28 +58,57 @@ def news_entries() -> list[dict[str, Any]]:
     return [recent_entry(item, ("Stuttgart",)) for item in items]
 
 
+IMAGE_ENTRY = {
+    "title": "Mit Bild",
+    "url": "https://www.tagesschau.de/inland/mit-bild-100.html",
+    "published": (NOW - timedelta(minutes=30)).isoformat(),
+    "image": "https://images.tagesschau.de/image/x/1x1-144.jpg",
+    "image_copyright": "SWR",
+    "image_alt": 'Ein "Bild"',
+}
+
+
 @pytest.mark.parametrize(
-    "breaking",
+    ("breaking", "images"),
     [
-        [OLD_ENTRY],  # as 0.3.0 seeded it
-        restore_recent([OLD_ENTRY]),  # as it is seeded now
-        [{"title": "Nur ein Titel"}],
-        [],
+        ([OLD_ENTRY], 0),  # as 0.3.0 seeded it, without image keys
+        (restore_recent([OLD_ENTRY]), 0),  # as it is seeded now
+        ([IMAGE_ENTRY, OLD_ENTRY], 1),
+        ([{"title": "Nur ein Titel"}], 0),
+        ([], 0),
     ],
 )
-def test_card_renders_strictly(breaking: list[dict[str, Any]]) -> None:
+def test_card_renders_strictly(breaking: list[dict[str, Any]], images: int) -> None:
     out = render({BREAKING: {"recent": breaking}, WATCH: {"recent": news_entries()}})
-    assert out.count("\n- ") == min(len(breaking), 3) + 3
+    rows = min(len(breaking), 3) + 3
+    assert out.count("<tr>") == rows
+    # Image left in a cell of its own, with its credit; else one wide cell.
+    assert out.count('<td width="52"><img ') == images + 3
+    assert out.count(" · Bild: ") == images + 3
+    assert out.count('<td colspan="2">') == rows - images - 3
     if not breaking:
         assert "Keine Eilmeldung." in out
-    # Images with their copyright.
-    assert out.count("<img ") == 3
-    assert out.count("<small>Bild: ") == 3
+        assert out.count("<table>") == 1
 
 
 def test_card_contents() -> None:
-    out = render({BREAKING: {"recent": restore_recent([OLD_ENTRY])}})
-    assert f"- [Alte Eilmeldung]({OLD_ENTRY['url']}) · vor 2 Std." in out
+    old = {**OLD_ENTRY, "published": "2026-11-05T18:05:00+01:00"}
+    week = {**OLD_ENTRY, "url": None, "published": "2026-10-30T08:15:00+01:00"}
+    out = render({BREAKING: {"recent": [IMAGE_ENTRY, OLD_ENTRY, old, week]}})
+    assert (
+        '<tr><td width="52"><img src="https://images.tagesschau.de/image/x/1x1-144.jpg"'
+        ' alt="Ein &#34;Bild&#34;" width="44" height="44"></td>'
+        '<td><a href="https://www.tagesschau.de/inland/mit-bild-100.html">Mit Bild</a>'
+        "<br><small>vor 30 Min. · Bild: SWR</small></td></tr>"
+    ) in out
+    assert (
+        f'<tr><td colspan="2"><a href="{OLD_ENTRY["url"]}">Alte Eilmeldung</a>'
+        "<br><small>vor 2 Std.</small></td></tr>"
+    ) in out
+    assert "<small>gestern 18:05</small>" in out
     assert "Keine Meldung." in out
-    assert "<img " not in out
     assert "Quelle: tagesschau.de" in out
+    # Only three per list.
+    assert "30.10." not in out
+    out = render({BREAKING: {"recent": [week]}})
+    assert '<td colspan="2">Alte Eilmeldung<br><small>30.10. 08:15</small>' in out

@@ -200,7 +200,7 @@ content: >-
 
 ### Die letzten Meldungen als Liste
 
-Die drei neuesten Eilmeldungen und die drei neuesten Meldungen des Wächters „Stuttgart“, jeweils mit Link, „vor … Std.“ und, wo vorhanden, einem kleinen Vorschaubild mit Bildnachweis:
+Die drei neuesten Eilmeldungen und die drei neuesten Meldungen des Wächters „Stuttgart“ (für einen anderen Wächter `sensor.eilwacht_<name>_letzte_meldung`), jeweils mit Link, Zeit („vor 2 Std.“, „gestern 18:05“, ältere mit Datum) und, wo vorhanden, einem kleinen Vorschaubild links mit Bildnachweis:
 
 ```yaml
 type: markdown
@@ -211,19 +211,21 @@ content: |
   {%- if m < 1 -%}gerade eben
   {%- elif m < 60 -%}vor {{ m }} Min.
   {%- elif m < 1440 -%}vor {{ m // 60 }} Std.
-  {%- elif m < 2880 -%}vor 1 Tag
-  {%- else -%}vor {{ m // 1440 }} Tagen
+  {%- elif m < 2880 -%}gestern {{ as_local(as_datetime(ts)).strftime('%H:%M') }}
+  {%- else -%}{{ as_local(as_datetime(ts)).strftime('%d.%m. %H:%M') }}
   {%- endif -%}
   {%- endmacro -%}
   {%- macro liste(entity, leer) -%}
-  {%- for e in (state_attr(entity, 'recent') or [])[:3] %}
-  {%- set bild = e.get('image') %}
-  {%- set link = e.get('url') %}
-  {%- set zeit = e.get('published') %}
-  - {% if bild %}<img src="{{ bild }}" alt="{{ (e.get('image_alt') or '') | escape }}" width="48"> {% endif %}{% if link %}[{{ e.get('title') }}]({{ link }}){% else %}{{ e.get('title') }}{% endif %}{{ ' · ' ~ vor(zeit) if zeit else '' }}{% if bild and e.get('image_copyright') %} <small>Bild: {{ e.get('image_copyright') }}</small>{% endif %}
+  {%- set items = (state_attr(entity, 'recent') or [])[:3] -%}
+  {%- if items %}
+  <table>
+  {%- for e in items %}
+  <tr>{% if e.get('image') %}<td width="52"><img src="{{ e.get('image') }}" alt="{{ (e.get('image_alt') or '') | escape }}" width="44" height="44"></td><td>{% else %}<td colspan="2">{% endif %}{% if e.get('url') %}<a href="{{ e.get('url') }}">{{ e.get('title') }}</a>{% else %}{{ e.get('title') }}{% endif %}<br><small>{{ vor(e.get('published')) if e.get('published') else '' }}{% if e.get('image') and e.get('image_copyright') %} · Bild: {{ e.get('image_copyright') }}{% endif %}</small></td></tr>
+  {%- endfor %}
+  </table>
   {%- else %}
   {{ leer }}
-  {%- endfor -%}
+  {%- endif -%}
   {%- endmacro -%}
   **Eilmeldungen**
   {{ liste('sensor.eilwacht_letzte_eilmeldung', 'Keine Eilmeldung.') }}
@@ -234,7 +236,9 @@ content: |
   <small>Quelle: tagesschau.de</small>
 ```
 
-Die Markdown-Karte von Home Assistant wertet Vorlagen streng aus: Fehlt einem Eintrag ein Schlüssel, bleibt die ganze Karte leer. Deshalb liest das Beispiel die Einträge mit `e.get('…')` statt `e.…` – so passt es auch, falls einmal ein Schlüssel fehlt.
+- **Tabelle statt `align`:** Die Markdown-Karte von Home Assistant ignoriert `align` und `float` an Bildern. Deshalb steht das Bild in einer eigenen Tabellenspalte links, der Text rechts; Meldungen ohne Bild nehmen beide Spalten (`colspan="2"`), so bleibt keine leere Zelle.
+- **Streng ausgewertet:** Die Markdown-Karte wertet Vorlagen streng aus: Fehlt einem Eintrag ein Schlüssel, bleibt die ganze Karte leer. Deshalb liest das Beispiel die Einträge mit `e.get('…')` statt `e.…` – so passt es auch, falls einmal ein Schlüssel fehlt.
+- **Bildnachweis:** Wer Vorschaubilder zeigt, zeigt den Bildnachweis mit („Bild: …“).
 
 ## Fehlerbehebung
 

@@ -26,6 +26,7 @@ Output:
 
 from __future__ import annotations
 
+import dataclasses
 import json
 import sys
 from datetime import datetime, time, timedelta
@@ -61,6 +62,10 @@ from custom_components.eilwacht.watch import (  # noqa: E402
 
 OUT = ROOT / "docs" / "demo" / "data"
 LINK = "https://example.invalid/demo/"
+# Teaser images: never real or real-looking ones. Every second story gets a
+# placeholder the page draws itself ("placeholder:<slug>", no request); alerts
+# have none, as in headerapp.
+PLACEHOLDER = "placeholder:"
 
 # The demo runs from START (polls learn silently, as after a long pause) to
 # the later moment. Both moments are on the same Wednesday.
@@ -328,6 +333,21 @@ def iso(moment: datetime) -> str:
     return moment.astimezone(BERLIN).isoformat()
 
 
+def with_placeholder_images(items: list[NewsItem]) -> list[NewsItem]:
+    """Every second item with a placeholder instead of a teaser image."""
+    return [
+        dataclasses.replace(
+            item,
+            image=f"{PLACEHOLDER}{item.id}",
+            image_copyright="Beispiel",
+            image_alt="Beispielbild",
+        )
+        if n % 2 == 1
+        else item
+        for n, item in enumerate(items)
+    ]
+
+
 def item_json(item: NewsItem) -> dict[str, Any]:
     """An item for the page (the keyword tester searches these fields)."""
     return {
@@ -542,6 +562,8 @@ def main() -> None:
     items = parse_api2u({"news": national, "regional": regional}, Source.NEWS)
     assert len({i.published for i in items}) == len(items), "times must differ"
     assert all(i.url and i.url.startswith(LINK) for i in items)
+    items = with_placeholder_images(items)
+    assert all(i.image is None or i.image.startswith(PLACEHOLDER) for i in items)
 
     sim = Simulation(items)
     moments: dict[str, Any] = {}
