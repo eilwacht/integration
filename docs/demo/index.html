@@ -577,9 +577,15 @@
       const regionName = (id) => (id === NATIONAL ? t().national : data.regions[String(id)]);
 
       function yaml(obj) {
+        const scalar = (v) => (Array.isArray(v) ? `[${v.join(", ")}]` : v ?? "null");
+        // List entries may be objects (attribute "recent"): one key per line.
+        const entry = (x) =>
+          x && typeof x === "object" && !Array.isArray(x)
+            ? Object.entries(x).map(([k, v], i) => `${i ? "    " : "  - "}${k}: ${scalar(v)}`).join("\n")
+            : `  - ${scalar(x)}`;
         return Object.entries(obj)
           .map(([k, v]) => {
-            if (Array.isArray(v)) return v.length ? `${k}:\n${v.map((x) => `  - ${x}`).join("\n")}` : `${k}: []`;
+            if (Array.isArray(v)) return v.length ? `${k}:\n${v.map(entry).join("\n")}` : `${k}: []`;
             return `${k}: ${v ?? "null"}`;
           })
           .join("\n");

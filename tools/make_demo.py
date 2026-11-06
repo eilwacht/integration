@@ -11,7 +11,8 @@ news or real people (terms of use, docs/ENTWICKLUNG.md section 4).
 
 The invented items run through the integration's own code, as raw api2u and
 headerapp responses: parse_api2u/parse_headerapp, Watch and KeywordFilter,
-NewItemTracker (which items fire an event), count_since, item_attributes.
+NewItemTracker (which items fire an event), count_since, item_attributes and
+the lists of recent items (recent.py).
 Breaking news is polled every minute, news every 15 minutes, over two days.
 The texts of push and announcement repeat the templates of the blueprints.
 
@@ -38,6 +39,13 @@ from custom_components.eilwacht.changes import NewItemTracker  # noqa: E402
 from custom_components.eilwacht.const import REGIONS, VERSION  # noqa: E402
 from custom_components.eilwacht.keywords import KeywordFilter  # noqa: E402
 from custom_components.eilwacht.model import NewsItem, Source  # noqa: E402
+from custom_components.eilwacht.recent import (  # noqa: E402
+    RECENT,
+    RECENT_LIMIT,
+    add_recent,
+    merge_recent,
+    recent_entry,
+)
 from custom_components.eilwacht.tagesschau import (  # noqa: E402
     BERLIN,
     parse_api2u,
@@ -360,6 +368,7 @@ class Simulation:
         self.breaking_tracker = NewItemTracker()
         self.active: tuple[NewsItem, ...] = ()
         self.last_breaking: NewsItem | None = None
+        self.breaking_recent: list[dict[str, Any]] = []
         self.breaking_event: dict[str, Any] | None = None
         self.breaking_history: list[tuple[datetime, bool]] = []
         # News watches
@@ -368,6 +377,7 @@ class Simulation:
         self.matches: dict[str, list[Match]] = {key: [] for key in WATCHES}
         self.counts: dict[str, list[tuple[datetime, int]]] = {k: [] for k in WATCHES}
         self.watch_events: dict[str, dict[str, Any] | None] = dict.fromkeys(WATCHES)
+        self.watch_recent: dict[str, list[dict[str, Any]]] = {k: [] for k in WATCHES}
         # Blueprints
         self.pushes: list[dict[str, Any]] = []
         self.announcements: list[dict[str, Any]] = []
@@ -389,6 +399,7 @@ class Simulation:
             self.breaking_history.append((now, on))
         for item in new:
             self.last_breaking = item
+            self.breaking_recent = add_recent(self.breaking_recent, recent_entry(item))
             self.breaking_event = {"at": iso(now), "attributes": attributes(item)}
             if not quiet(now, PUSH_QUIET):  # eilmeldung_push.yaml
                 message = item.title + (f"\n{item.summary}" if item.summary else "")
@@ -411,6 +422,10 @@ class Simulation:
         for key, watch in self.watches.items():
             found = watch.matches(self.visible)
             self.matches[key] = found
+            self.watch_recent[key] = merge_recent(
+                [recent_entry(m.item, m.keywords) for m in found[:RECENT_LIMIT]],
+                self.watch_recent[key],
+            )
             by_key = {m.item.key: m for m in found}
             for item in self.trackers[key].update(m.item for m in by_key.values()):
                 keywords = by_key[item.key].keywords
@@ -452,7 +467,10 @@ class Simulation:
                     "keywords": text,
                     "last": {
                         "state": found[0].item.title,
-                        "attributes": attributes(found[0].item, found[0].keywords),
+                        "attributes": {
+                            **attributes(found[0].item, found[0].keywords),
+                            RECENT: self.watch_recent[key],
+                        },
                     }
                     if found
                     else None,
@@ -469,7 +487,10 @@ class Simulation:
                 "active": bool(self.active),
                 "titles": [item.title for item in self.active],
                 "urls": [item.url for item in self.active],
-                "last": {"state": last.title, "attributes": attributes(last)}
+                "last": {
+                    "state": last.title,
+                    "attributes": {**attributes(last), RECENT: self.breaking_recent},
+                }
                 if last
                 else None,
                 "event": self.breaking_event,

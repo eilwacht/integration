@@ -19,7 +19,7 @@ Eilwacht bringt Eilmeldungen und Regionalnachrichten der Tagesschau in dein Home
 
 - [Was Eilwacht kann](#was-eilwacht-kann) · [Datenquelle](#datenquelle) · [Was Eilwacht nicht kann](#was-eilwacht-nicht-kann)
 - **Loslegen:** [Installation](#installation) · [Einrichtung](#einrichtung) · [Eilmeldungen](#eilmeldungen) · [Nachrichtenwächter](#nachrichtenwächter) · [Entitäten](#entitäten)
-- **[Was du damit bauen kannst](#was-du-damit-bauen-kannst):** [Blueprints](#fertige-blueprints) · [Licht rot bei Eilmeldung](#licht-kurz-rot-färben-bei-einer-eilmeldung) · [Letzte Eilmeldung im Dashboard](#letzte-eilmeldung-im-dashboard)
+- **[Was du damit bauen kannst](#was-du-damit-bauen-kannst):** [Blueprints](#fertige-blueprints) · [Licht rot bei Eilmeldung](#licht-kurz-rot-färben-bei-einer-eilmeldung) · [Letzte Eilmeldung im Dashboard](#letzte-eilmeldung-im-dashboard) · [Die letzten Meldungen als Liste](#die-letzten-meldungen-als-liste)
 - **Mehr:** [Datenschutz](#datenschutz) · [Fehlerbehebung](#fehlerbehebung) · [Fehler melden](#fehler-melden) · [Weitere Wachten](#weitere-wachten)
 
 ## Was Eilwacht kann
@@ -113,13 +113,23 @@ Entitäts-IDs bei deutscher Oberfläche, Wächter mit dem Namen „Stuttgart“:
 | --- | --- | --- |
 | **Eilmeldung** (Event) | `event.eilwacht_eilmeldung` | löst bei jeder neuen Eilmeldung aus, Ereignistyp `breaking_news` |
 | **Eilmeldung aktiv** | `binary_sensor.eilwacht_eilmeldung_aktiv` | an, solange tagesschau.de eine Eilmeldung zeigt; Attribute `titles`, `urls` |
-| **Letzte Eilmeldung** | `sensor.eilwacht_letzte_eilmeldung` | Schlagzeile der letzten Eilmeldung; bleibt nach ihrem Ende und über Neustarts erhalten |
+| **Letzte Eilmeldung** | `sensor.eilwacht_letzte_eilmeldung` | Schlagzeile der letzten Eilmeldung; bleibt nach ihrem Ende und über Neustarts erhalten; Attribut `recent` mit den letzten 5 Eilmeldungen |
 | **Bericht für Fehlermeldung** (Schaltfläche, unter *Diagnose*) | `button.eilwacht_bericht_fur_fehlermeldung` | zeigt einen kurzen Bericht zum Kopieren in ein Issue, siehe [Fehler melden](#fehler-melden) |
 | **Neue Meldung** (Event) | `event.eilwacht_stuttgart_neue_meldung` | löst bei jeder neuen Meldung des Wächters aus, Ereignistyp `news` |
-| **Letzte Meldung** | `sensor.eilwacht_stuttgart_letzte_meldung` | Schlagzeile der neuesten Meldung des Wächters |
+| **Letzte Meldung** | `sensor.eilwacht_stuttgart_letzte_meldung` | Schlagzeile der neuesten Meldung des Wächters; Attribut `recent` mit den letzten 5 Meldungen des Wächters |
 | **Meldungen (24 h)** | `sensor.eilwacht_stuttgart_meldungen_24_h` | Zahl der Meldungen des Wächters aus den letzten 24 Stunden |
 
 Events und die Sensoren mit Schlagzeile tragen dieselben Attribute: `title`, `topline` (Dachzeile), `summary` (erster Satz), `url`, `published`, `regions`, `ressort` und bei Wächtern mit Stichworten `keywords` (die gefundenen Stichworte).
+
+Dazu tragen „Letzte Eilmeldung“ und „Letzte Meldung“ das Attribut `recent`: die letzten 5 Meldungen, die neueste zuerst, jede mit `title`, `url`, `published` (ISO-Zeitstempel) und bei Wächtern mit Stichworten `keywords`. Eine Meldung steht darin nur einmal. Die Liste eines Wächters behält auch Meldungen, die tagesschau.de nicht mehr ausliefert, bis neuere sie verdrängen; ändert sich bei tagesschau.de die Schlagzeile, ändert sie sich auch hier. Nach dem Ändern eines Wächters beginnt seine Liste neu. Die Liste übersteht Neustarts, kommt aber **nicht in die Datenbank** (Verlauf und Logbuch): Die neueste Meldung steht dort ohnehin, die Liste würde sie nur aufblähen. Beispiel:
+
+```yaml
+recent:
+  - title: Beispielschlagzeile
+    url: https://www.tagesschau.de/…
+    published: "2026-10-21T11:25:00+02:00"
+    keywords: [Stuttgart]   # nur bei Wächtern mit Stichworten
+```
 
 <table>
   <tr>
@@ -183,6 +193,39 @@ content: >-
   {% else %}
   Keine Eilmeldung.
   {% endif %}
+```
+
+### Die letzten Meldungen als Liste
+
+Die drei neuesten Eilmeldungen und die drei neuesten Meldungen des Wächters „Stuttgart“, jeweils mit Link und „vor … Std.“:
+
+```yaml
+type: markdown
+title: Nachrichten
+content: |
+  {%- macro vor(ts) -%}
+  {%- set m = ((now() - as_datetime(ts)).total_seconds() // 60) | int -%}
+  {%- if m < 1 -%}gerade eben
+  {%- elif m < 60 -%}vor {{ m }} Min.
+  {%- elif m < 1440 -%}vor {{ m // 60 }} Std.
+  {%- elif m < 2880 -%}vor 1 Tag
+  {%- else -%}vor {{ m // 1440 }} Tagen
+  {%- endif -%}
+  {%- endmacro -%}
+  {%- macro liste(entity, leer) -%}
+  {%- for e in (state_attr(entity, 'recent') or [])[:3] %}
+  - {% if e.url %}[{{ e.title }}]({{ e.url }}){% else %}{{ e.title }}{% endif %}{{ ' · ' ~ vor(e.published) if e.published else '' }}
+  {%- else %}
+  {{ leer }}
+  {%- endfor -%}
+  {%- endmacro -%}
+  **Eilmeldungen**
+  {{ liste('sensor.eilwacht_letzte_eilmeldung', 'Keine Eilmeldung.') }}
+
+  **Stuttgart**
+  {{ liste('sensor.eilwacht_stuttgart_letzte_meldung', 'Keine Meldung.') }}
+
+  <small>Quelle: tagesschau.de</small>
 ```
 
 ## Fehlerbehebung

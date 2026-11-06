@@ -15,10 +15,13 @@ from homeassistant.const import (
     STATE_UNAVAILABLE,
     STATE_UNKNOWN,
 )
-from homeassistant.core import Event, HomeAssistant, callback
+from homeassistant.core import Event, HomeAssistant, State, callback
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers import issue_registry as ir
-from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant_custom_component.common import (
+    MockConfigEntry,
+    mock_restore_cache,
+)
 
 from custom_components.eilwacht.const import (
     CONF_KEYWORDS,
@@ -29,6 +32,7 @@ from custom_components.eilwacht.const import (
 )
 from custom_components.eilwacht.diagnostics import async_get_config_entry_diagnostics
 from custom_components.eilwacht.model import Source
+from custom_components.eilwacht.recent import RECENT
 from custom_components.eilwacht.tagesschau import TagesschauError
 
 from .conftest import FakeClient, news_item
@@ -476,3 +480,144 @@ async def test_changed_watch_learns_silently(
     await hass.async_block_till_done()
     assert entry.state is ConfigEntryState.LOADED
     assert hass.states.get(ids["event"]).state == STATE_UNKNOWN
+
+
+# --- Lists of recent items (recent.py) ----------------------------------------------
+
+
+def recent_titles(hass: HomeAssistant, entity: str) -> list[str]:
+    return [entry["title"] for entry in hass.states.get(entity).attributes[RECENT]]
+
+
+@pytest.mark.freeze_time(NOON)
+async def test_recent_alerts(hass: HomeAssistant, client: FakeClient) -> None:
+    entry = make_entry()
+    await setup(hass, entry)
+    ids = breaking_ids(hass, entry)
+    assert hass.states.get(ids["last"]).attributes.get(RECENT) is None
+
+    for n in range(1, 8):
+        client.breaking = [
+            news_item(f"eil-{n}", source=Source.HEADERAPP, title=f"Eil {n}", hour=n)
+        ]
+        await refresh_breaking(hass, entry)
+    last = hass.states.get(ids["last"])
+    assert last.state == "Eil 7"
+    assert last.attributes[RECENT][0] == {
+        "title": "Eil 7",
+        "url": "https://www.tagesschau.de/eil-7.html",
+        "published": "2026-10-20T07:00:00+02:00",
+    }
+    assert recent_titles(hass, ids["last"]) == [
+        "Eil 7",
+        "Eil 6",
+        "Eil 5",
+        "Eil 4",
+        "Eil 3",
+    ]
+    # Not in the database: the newest alert is in the history already.
+    assert RECENT in last.state_info["unrecorded_attributes"]
+
+    # Shown again after it ended: still known, not listed twice.
+    client.breaking = []
+    await refresh_breaking(hass, entry)
+    client.breaking = [news_item("eil-7", source=Source.HEADERAPP, title="Eil 7")]
+    await refresh_breaking(hass, entry)
+    assert recent_titles(hass, ids["last"])[:2] == ["Eil 7", "Eil 6"]
+
+    # An alert during the restart goes on top, the list survives.
+    client.breaking = [
+        news_item("eil-8", source=Source.HEADERAPP, title="Eil 8", hour=12)
+    ]
+    await restart(hass, entry)
+    assert hass.states.get(ids["last"]).state == "Eil 8"
+    assert recent_titles(hass, ids["last"]) == [
+        "Eil 8",
+        "Eil 7",
+        "Eil 6",
+        "Eil 5",
+        "Eil 4",
+    ]
+
+    await restart(hass, entry)
+    assert recent_titles(hass, ids["last"]) == [
+        "Eil 8",
+        "Eil 7",
+        "Eil 6",
+        "Eil 5",
+        "Eil 4",
+    ]
+
+
+async def test_recent_alerts_start_with_the_restored_alert(
+    hass: HomeAssistant, client: FakeClient
+) -> None:
+    """A state saved before the list existed (0.2.x)."""
+    url = "https://www.tagesschau.de/eilmeldung/eilmeldung-1.html"
+    mock_restore_cache(
+        hass,
+        [
+            State(
+                "sensor.eilwacht_last_breaking_news",
+                "Alt",
+                {"title": "Alt", "url": url, "published": None, "summary": "Satz"},
+            )
+        ],
+    )
+    entry = make_entry()
+    await setup(hass, entry)
+    last = hass.states.get(breaking_ids(hass, entry)["last"])
+    assert last.entity_id == "sensor.eilwacht_last_breaking_news"
+    assert last.state == "Alt"
+    assert last.attributes["summary"] == "Satz"
+    assert last.attributes[RECENT] == [{"title": "Alt", "url": url, "published": None}]
+
+
+@pytest.mark.freeze_time(NOON)
+async def test_recent_matches_of_a_watch(
+    hass: HomeAssistant, client: FakeClient
+) -> None:
+    client.news = {
+        (1,): [
+            *(
+                news_item(f"s{n}", title=f"Streik {n}", regions=(1,), hour=n)
+                for n in range(1, 8)
+            ),
+            news_item("wetter", title="Wetter", regions=(1,), hour=12),
+        ]
+    }
+    entry = make_entry(("Streik", [1], "Streik"))
+    await setup(hass, entry)
+    ids = watch_ids(hass, entry)
+    last = hass.states.get(ids["last"])
+    assert recent_titles(hass, ids["last"]) == [
+        "Streik 7", "Streik 6", "Streik 5", "Streik 4", "Streik 3"
+    ]  # fmt: skip
+    assert last.attributes[RECENT][0] == {
+        "title": "Streik 7",
+        "url": "https://www.tagesschau.de/s7.html",
+        "published": "2026-10-20T07:00:00+02:00",
+        "keywords": ["Streik"],
+    }
+    assert RECENT in last.state_info["unrecorded_attributes"]
+
+    # The source no longer lists the older items: the list keeps them.
+    client.news[(1,)] = [
+        news_item("neu", title="Streik neu", regions=(1,), hour=12),
+        news_item("s7", title="Streik 7 (geändert)", regions=(1,), hour=7),
+        news_item("wetter", title="Wetter", regions=(1,), hour=12),
+    ]
+    await refresh_news(hass, entry)
+    expected = ["Streik neu", "Streik 7 (geändert)", "Streik 6", "Streik 5", "Streik 4"]
+    assert recent_titles(hass, ids["last"]) == expected
+
+    await restart(hass, entry)
+    assert recent_titles(hass, ids["last"]) == expected
+
+    # Changed watch: other items, the list starts anew.
+    (subentry,) = entry.subentries.values()
+    hass.config_entries.async_update_subentry(
+        entry, subentry, data={CONF_REGIONS: [1], CONF_KEYWORDS: "Wetter"}
+    )
+    await hass.async_block_till_done()
+    assert recent_titles(hass, ids["last"]) == ["Wetter"]
