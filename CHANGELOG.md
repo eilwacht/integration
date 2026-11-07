@@ -1,5 +1,9 @@
 # Changelog
 
+## Unveröffentlicht
+
+- **Bericht für Fehlermeldung lesbarer:** Einstellungen ohne Python-Schreibweise – `yes`/`no` statt `True`/`False`, `none` statt `None`, Listen ohne Klammern, Zeitpunkte als `2026-11-07 12:39 UTC`.
+
 ## 0.3.1 – 2026-11-06
 
 - **Behoben:** Die Beispielkarte für die Meldungsliste blieb nach dem Update leer, wenn die Liste mit der zuletzt gezeigten Eilmeldung aus 0.2.x begann: Diesem Eintrag fehlten die Angaben zum Vorschaubild, und die Markdown-Karte von Home Assistant bricht bei einem fehlenden Schlüssel die ganze Karte ab. Jetzt hat jeder Eintrag von `recent` immer alle Schlüssel (`title`, `url`, `published`, `image`, `image_copyright`, `image_alt`, bei Wächtern `keywords`), unbekannte Werte sind leer. Bestehende Listen werden beim nächsten Start ergänzt.
