@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterable
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
 
@@ -87,3 +87,52 @@ def item_attributes(
     if keywords:
         attributes["keywords"] = list(keywords)
     return attributes
+
+
+# Text pieces of the summary at the top of a watch's settings form, keys of
+# the "watch_summary" selector translations (the only place a flow can look
+# up a translated string for a placeholder).
+SUMMARY_KEYS = (
+    "regions_and_national",
+    "regions_only",
+    "national_only",
+    "keywords",
+    "no_keywords",
+    "excluded",
+)
+
+_MARKDOWN = str.maketrans({c: "\\" + c for c in "\\*_`[]<>~#|"})
+
+
+def _markdown(text: str) -> str:
+    """User input shown literally in a Markdown description ("*streik")."""
+    return text.translate(_MARKDOWN)
+
+
+def settings_summary(
+    regions: Iterable[int], keywords: str | None, texts: Mapping[str, str]
+) -> str:
+    """Markdown list lines of what a watch reports, from its saved settings.
+
+    `texts` maps SUMMARY_KEYS to translated pieces with the placeholders
+    {regions} and {keywords}.
+    """
+    chosen = set(regions)
+    states = ", ".join(REGIONS[r] for r in sorted(chosen) if r in REGIONS)
+    if not states:
+        line = texts["national_only"]
+    elif NATIONAL in chosen:
+        line = texts["regions_and_national"]
+    else:
+        line = texts["regions_only"]
+    lines = [line.replace("{regions}", states)]
+    parsed = KeywordFilter.parse(keywords)
+    if parsed.include:
+        terms = _markdown(", ".join(parsed.include))
+        lines.append(texts["keywords"].replace("{keywords}", terms))
+    else:
+        lines.append(texts["no_keywords"])
+    if parsed.exclude:
+        terms = _markdown(", ".join(parsed.exclude))
+        lines.append(texts["excluded"].replace("{keywords}", terms))
+    return "\n".join(f"- {line}" for line in lines)

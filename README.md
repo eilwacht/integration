@@ -103,7 +103,7 @@ Stichworte durchsuchen Dachzeile, Schlagzeile, ersten Satz und Schlagwörter der
 | `S-Bahn Stuttgart` | „S-Bahn Stuttgart“, „S-Bahn Stuttgarts“ | „S-Bahn in Stuttgart“ |
 | `-Fußball` | schließt Meldungen mit „Fußball“ oder „Fußballer“ aus | |
 
-Wächter lassen sich jederzeit über ⋮ → **Neu konfigurieren** ändern.
+Wächter lassen sich jederzeit über ⋮ → **Neu konfigurieren** ändern; oben steht dort kurz, was der Wächter meldet (Bundesländer, Stichworte, Ausschlüsse) und wo die Meldungen erscheinen.
 
 ## Entitäten
 

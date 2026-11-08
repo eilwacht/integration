@@ -16,9 +16,10 @@ from homeassistant.config_entries import (
 from homeassistant.const import CONF_NAME
 from homeassistant.core import callback
 from homeassistant.helpers import selector
+from homeassistant.helpers.translation import async_get_translations
 
 from .const import CONF_KEYWORDS, CONF_REGIONS, DOMAIN, REGIONS, SUBENTRY_WATCH
-from .watch import NATIONAL
+from .watch import NATIONAL, SUMMARY_KEYS, settings_summary
 
 REGION_OPTIONS = [str(NATIONAL), *(str(r) for r in REGIONS)]
 
@@ -108,7 +109,25 @@ class WatchSubentryFlow(ConfigSubentryFlow):
                 schema, user_input or self._defaults()
             ),
             errors=errors,
+            description_placeholders=await self._summary_placeholders(),
         )
+
+    async def _summary_placeholders(self) -> dict[str, str] | None:
+        """What the saved watch reports, on top of its settings form."""
+        if self.source != SOURCE_RECONFIGURE:
+            return None
+        subentry = self._get_reconfigure_subentry()
+        translations = await async_get_translations(
+            self.hass, self.hass.config.language, "selector", [DOMAIN]
+        )
+        prefix = f"component.{DOMAIN}.selector.watch_summary.options."
+        texts = {key: translations.get(prefix + key, "") for key in SUMMARY_KEYS}
+        summary = settings_summary(
+            subentry.data.get(CONF_REGIONS, []),
+            subentry.data.get(CONF_KEYWORDS, ""),
+            texts,
+        )
+        return {"summary": summary}
 
     def _defaults(self) -> dict[str, Any]:
         if self.source == SOURCE_RECONFIGURE:

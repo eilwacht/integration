@@ -29,12 +29,12 @@
           "data_description": {
             "name": "Zum Beispiel „Stuttgart“. Wird in den Namen der Entitäten verwendet.",
             "regions": "Regionalnachrichten dieser Länder. „Bundesweit“ ergänzt überregionale Nachrichten ohne Bundesland.",
-            "keywords": "Optional, durch Kommas getrennt. Ein Stichwort findet Wörter, die damit beginnen: „Stuttgart“ auch „Stuttgarter“, „Streik“ auch „Streiks“. „*streik“ findet auch Wörter, in denen es steckt („Warnstreik“), „-Fußball“ schließt aus. Leer: jede Meldung."
+            "keywords": "Optional, durch Kommas getrennt; eines genügt, Groß- und Kleinschreibung egal. Ein Stichwort findet Wörter, die damit beginnen: „Stuttgart“ auch „Stuttgarter“, „Streik“ auch „Streiks“. „*streik“ findet auch Wörter, in denen es steckt („Warnstreik“), „-Fußball“ schließt aus. Leer: jede Meldung."
           }
         },
         "reconfigure": {
           "title": "Nachrichtenwächter ändern",
-          "description": "Meldet neue Nachrichten aus den gewählten Bundesländern – auf Wunsch nur die, in denen bestimmte Stichworte vorkommen.",
+          "description": "**So ist dieser Wächter eingerichtet**\n\n{summary}\n- Neue Meldungen lösen das Ereignis „Neue Meldung“ für Automationen aus (zum Beispiel für den Blueprint „Neue Meldung eines Nachrichtenwächters aufs Handy“) und erscheinen in den Sensoren „Letzte Meldung“ und „Meldungen (24 h)“.\n- Eilmeldungen kommen unabhängig von diesem Wächter über das Gerät „Eilwacht“.\n\nNach dem Ändern von Bundesländern oder Stichworten meldet der Wächter nur, was danach erscheint.",
           "data": {
             "name": "Name",
             "regions": "Bundesländer",
@@ -43,7 +43,7 @@
           "data_description": {
             "name": "Zum Beispiel „Stuttgart“. Wird in den Namen der Entitäten verwendet.",
             "regions": "Regionalnachrichten dieser Länder. „Bundesweit“ ergänzt überregionale Nachrichten ohne Bundesland.",
-            "keywords": "Optional, durch Kommas getrennt. Ein Stichwort findet Wörter, die damit beginnen: „Stuttgart“ auch „Stuttgarter“, „Streik“ auch „Streiks“. „*streik“ findet auch Wörter, in denen es steckt („Warnstreik“), „-Fußball“ schließt aus. Leer: jede Meldung."
+            "keywords": "Optional, durch Kommas getrennt; eines genügt, Groß- und Kleinschreibung egal. Ein Stichwort findet Wörter, die damit beginnen: „Stuttgart“ auch „Stuttgarter“, „Streik“ auch „Streiks“. „*streik“ findet auch Wörter, in denen es steckt („Warnstreik“), „-Fußball“ schließt aus. Leer: jede Meldung."
           }
         }
       },
@@ -76,6 +76,16 @@
         "14": "Sachsen-Anhalt",
         "15": "Schleswig-Holstein",
         "16": "Thüringen"
+      }
+    },
+    "watch_summary": {
+      "options": {
+        "regions_and_national": "Regionalnachrichten aus {regions}, dazu bundesweite Nachrichten",
+        "regions_only": "Regionalnachrichten aus {regions}, keine bundesweiten Nachrichten",
+        "national_only": "Nur bundesweite Nachrichten (ohne Bundesland)",
+        "keywords": "Stichworte: {keywords} (eines genügt, Groß- und Kleinschreibung egal)",
+        "no_keywords": "Keine Stichworte: jede Meldung",
+        "excluded": "Ausgeschlossen: {keywords}"
       }
     }
   },

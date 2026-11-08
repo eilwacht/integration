@@ -29,12 +29,12 @@
           "data_description": {
             "name": "For example “Stuttgart”. Used in entity names.",
             "regions": "Regional news of these states. “Germany-wide” adds national news without a state.",
-            "keywords": "Optional, comma-separated. A keyword finds words starting with it: “Stuttgart” also finds “Stuttgarter”, “Streik” also “Streiks”. “*streik” also finds words containing it (“Warnstreik”), “-Fußball” excludes. Empty: every item."
+            "keywords": "Optional, comma-separated; one of them is enough, case does not matter. A keyword finds words starting with it: “Stuttgart” also finds “Stuttgarter”, “Streik” also “Streiks”. “*streik” also finds words containing it (“Warnstreik”), “-Fußball” excludes. Empty: every item."
           }
         },
         "reconfigure": {
           "title": "Change news watch",
-          "description": "Announces new items from the chosen federal states – optionally only those mentioning certain keywords.",
+          "description": "**How this watch is set up**\n\n{summary}\n- New items trigger the event “New item” for automations (for example the push blueprint of Eilwacht) and appear in the sensors “Last item” and “Items (24 h)”.\n- Breaking news come from the device “Eilwacht”, independent of this watch.\n\nAfter changing federal states or keywords, the watch announces only what appears afterwards.",
           "data": {
             "name": "Name",
             "regions": "Federal states",
@@ -43,7 +43,7 @@
           "data_description": {
             "name": "For example “Stuttgart”. Used in entity names.",
             "regions": "Regional news of these states. “Germany-wide” adds national news without a state.",
-            "keywords": "Optional, comma-separated. A keyword finds words starting with it: “Stuttgart” also finds “Stuttgarter”, “Streik” also “Streiks”. “*streik” also finds words containing it (“Warnstreik”), “-Fußball” excludes. Empty: every item."
+            "keywords": "Optional, comma-separated; one of them is enough, case does not matter. A keyword finds words starting with it: “Stuttgart” also finds “Stuttgarter”, “Streik” also “Streiks”. “*streik” also finds words containing it (“Warnstreik”), “-Fußball” excludes. Empty: every item."
           }
         }
       },
@@ -76,6 +76,16 @@
         "14": "Sachsen-Anhalt",
         "15": "Schleswig-Holstein",
         "16": "Thüringen"
+      }
+    },
+    "watch_summary": {
+      "options": {
+        "regions_and_national": "Regional news from {regions}, plus Germany-wide news",
+        "regions_only": "Regional news from {regions}, no Germany-wide news",
+        "national_only": "Only Germany-wide news (without a federal state)",
+        "keywords": "Keywords: {keywords} (one is enough, case does not matter)",
+        "no_keywords": "No keywords: every item",
+        "excluded": "Excluded: {keywords}"
       }
     }
   },

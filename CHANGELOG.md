@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Übersicht beim Ändern eines Wächters:** ⋮ → *Neu konfigurieren* zeigt oben in wenigen Zeilen, was der Wächter meldet – Bundesländer und ob bundesweite Nachrichten dabei sind, Stichworte (eines genügt, Groß- und Kleinschreibung egal) und Ausschlüsse –, wo die Meldungen erscheinen (Ereignis „Neue Meldung“ für Automationen und Blueprint, Sensoren „Letzte Meldung“ und „Meldungen (24 h)“) und dass Eilmeldungen unabhängig davon über das Gerät „Eilwacht“ kommen. Dazu der Hinweis, dass der Wächter nach dem Ändern nur meldet, was danach erscheint.
+- Die Erklärung der Stichworte sagt jetzt gleich am Anfang, dass eines genügt und Groß- und Kleinschreibung egal ist.
 - **Bericht für Fehlermeldung lesbarer:** Einstellungen ohne Python-Schreibweise – `yes`/`no` statt `True`/`False`, `none` statt `None`, Listen ohne Klammern, Zeitpunkte als `2026-11-07 12:39 UTC`.
 
 ## 0.3.1 – 2026-11-06

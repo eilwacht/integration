@@ -152,3 +152,43 @@ async def test_reconfigure_watch(hass: HomeAssistant) -> None:
     subentry = entry.subentries[subentry_id]
     assert subentry.title == "Ulm/Neu-Ulm"
     assert subentry.data[CONF_REGIONS] == [1, 2]
+
+
+async def test_reconfigure_shows_summary(hass: HomeAssistant) -> None:
+    entry = entry_with(
+        [
+            ConfigSubentryData(
+                data={CONF_REGIONS: [0, 1], CONF_KEYWORDS: "Ulm, *streik, -Fußball"},
+                subentry_type=SUBENTRY_WATCH,
+                title="Ulm",
+                unique_id=None,
+            )
+        ]
+    )
+    entry.add_to_hass(hass)
+    (subentry_id,) = entry.subentries
+    result = await hass.config_entries.subentries.async_init(
+        (entry.entry_id, SUBENTRY_WATCH),
+        context={"source": SOURCE_RECONFIGURE, "subentry_id": subentry_id},
+    )
+    assert result["description_placeholders"] == {
+        "summary": (
+            "- Regional news from Baden-Württemberg, plus Germany-wide news\n"
+            r"- Keywords: Ulm, \*streik (one is enough, case does not matter)"
+            "\n- Excluded: Fußball"
+        )
+    }
+
+    # A failed attempt still shows the saved settings, not the input.
+    result = await configure(
+        hass, result, {"name": "Ulm", CONF_REGIONS: [], CONF_KEYWORDS: ""}
+    )
+    assert result["errors"] == {CONF_REGIONS: "no_regions"}
+    assert "Ulm" in result["description_placeholders"]["summary"]
+
+
+async def test_add_watch_has_no_summary(hass: HomeAssistant) -> None:
+    entry = entry_with()
+    entry.add_to_hass(hass)
+    result = await start_watch_flow(hass, entry)
+    assert not result["description_placeholders"]
