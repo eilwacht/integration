@@ -34,7 +34,7 @@
         },
         "reconfigure": {
           "title": "Change news watch",
-          "description": "**How this watch is set up**\n\n{summary}\n- New items trigger the event “New item” for automations (for example the push blueprint of Eilwacht) and appear in the sensors “Last item” and “Items (24 h)”.\n- Breaking news come from the device “Eilwacht”, independent of this watch.\n\nAfter changing federal states or keywords, the watch announces only what appears afterwards.",
+          "description": "**Set up**\n{summary}\n- New items trigger the event “New item” for automations (for example the push blueprint of Eilwacht) and appear in the sensors “Last item” and “Items (24 h)”.\n- Breaking news come from the device “Eilwacht”, independent of this watch.\n\nAfter changing federal states or keywords, the watch announces only what appears afterwards.",
           "data": {
             "name": "Name",
             "regions": "Federal states",

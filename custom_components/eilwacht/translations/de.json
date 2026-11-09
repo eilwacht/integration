@@ -34,7 +34,7 @@
         },
         "reconfigure": {
           "title": "Nachrichtenwächter ändern",
-          "description": "**So ist dieser Wächter eingerichtet**\n\n{summary}\n- Neue Meldungen lösen das Ereignis „Neue Meldung“ für Automationen aus (zum Beispiel für den Blueprint „Neue Meldung eines Nachrichtenwächters aufs Handy“) und erscheinen in den Sensoren „Letzte Meldung“ und „Meldungen (24 h)“.\n- Eilmeldungen kommen unabhängig von diesem Wächter über das Gerät „Eilwacht“.\n\nNach dem Ändern von Bundesländern oder Stichworten meldet der Wächter nur, was danach erscheint.",
+          "description": "**Eingerichtet**\n{summary}\n- Neue Meldungen lösen das Ereignis „Neue Meldung“ für Automationen aus (zum Beispiel für den Blueprint „Neue Meldung eines Nachrichtenwächters aufs Handy“) und erscheinen in den Sensoren „Letzte Meldung“ und „Meldungen (24 h)“.\n- Eilmeldungen kommen unabhängig von diesem Wächter über das Gerät „Eilwacht“.\n\nNach dem Ändern von Bundesländern oder Stichworten meldet der Wächter nur, was danach erscheint.",
           "data": {
             "name": "Name",
             "regions": "Bundesländer",
