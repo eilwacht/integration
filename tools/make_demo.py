@@ -329,6 +329,13 @@ def quiet(moment: datetime, window: tuple[time, time]) -> bool:
     return local >= start or local < end
 
 
+def watch_push_title(watch: str, heading: str) -> str:
+    """Title of neue_meldung_push.yaml: the watch, then topline or keywords."""
+    if heading.lower() == watch.lower():
+        return f"Eilwacht · {watch}"
+    return f"Eilwacht · {watch}: {heading}"
+
+
 def iso(moment: datetime) -> str:
     return moment.astimezone(BERLIN).isoformat()
 
@@ -428,6 +435,7 @@ class Simulation:
                         "at": iso(now),
                         "device": "Eilwacht",
                         "title": "Eilmeldung",
+                        "title_en": "Breaking news",
                         "message": message,
                         "url": item.url,
                     }
@@ -454,12 +462,14 @@ class Simulation:
                     "attributes": attributes(item, keywords),
                 }
                 if not quiet(now, PUSH_QUIET):  # neue_meldung_push.yaml
-                    heading = item.topline or ", ".join(keywords) or "Neue Meldung"
+                    name = WATCHES[key][0]
+                    heading = item.topline or ", ".join(keywords)
                     self.pushes.append(
                         {
                             "at": iso(now),
-                            "device": f"Eilwacht {WATCHES[key][0]}",
-                            "title": heading,
+                            "device": f"Eilwacht {name}",
+                            "title": watch_push_title(name, heading or "Neue Meldung"),
+                            "title_en": watch_push_title(name, heading or "New item"),
                             "message": item.title,
                             "url": item.url,
                         }

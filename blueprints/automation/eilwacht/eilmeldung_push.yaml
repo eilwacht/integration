@@ -1,9 +1,16 @@
 blueprint:
-  name: Eilwacht – Eilmeldung aufs Handy
+  name: Eilwacht – Eilmeldung aufs Handy / Breaking news to the phone
   description: >-
     Schickt jede neue Eilmeldung der Tagesschau als Push-Nachricht an ein Handy
     mit der Home-Assistant-App. Ein Tippen öffnet den Artikel. Während der
-    Ruhezeit kommt keine Nachricht.
+    Ruhezeit kommt keine Nachricht. Unter „Weitere Aktionen“ lässt sich die
+    Meldung zusätzlich weiterschicken, etwa per Telegram.
+    ---
+    Sends every new breaking news alert of the Tagesschau as a push
+    notification to a phone with the Home Assistant app. A tap opens the
+    article. Nothing is sent during the quiet hours. Under “More actions” the
+    alert can also be passed on, for example via Telegram. The news itself is
+    in German, as tagesschau.de publishes it.
   domain: automation
   author: Eilwacht
   homeassistant:
@@ -11,35 +18,73 @@ blueprint:
   source_url: https://github.com/eilwacht/integration/blob/main/blueprints/automation/eilwacht/eilmeldung_push.yaml
   input:
     event_entity:
-      name: Eilmeldung
-      description: Die Entität „Eilmeldung“ des Geräts Eilwacht.
+      name: Eilmeldung / Breaking news
+      description: >-
+        Die Entität „Eilmeldung“ des Geräts Eilwacht. /
+        The entity “Breaking news” of the device Eilwacht.
       selector:
         entity:
           filter:
             integration: eilwacht
             domain: event
     notify_device:
-      name: Handy
-      description: Gerät mit der offiziellen Home-Assistant-App.
+      name: Handy / Phone
+      description: >-
+        Gerät mit der offiziellen Home-Assistant-App. /
+        Device with the official Home Assistant app.
       selector:
         device:
           filter:
             integration: mobile_app
+    language:
+      name: Sprache der Nachricht / Language of the message
+      description: >-
+        Für den Titel der Nachricht. Die Meldung selbst kommt so, wie die
+        Tagesschau sie schreibt (deutsch). /
+        For the title of the notification. The news itself stays as the
+        Tagesschau writes it (German).
+      default: de
+      selector:
+        select:
+          options:
+            - label: Deutsch
+              value: de
+            - label: English
+              value: en
     quiet_enabled:
-      name: Ruhezeit verwenden
+      name: Ruhezeit verwenden / Use quiet hours
       default: true
       selector:
         boolean: {}
     quiet_start:
-      name: Ruhezeit ab
+      name: Ruhezeit ab / Quiet hours from
       default: "22:00:00"
       selector:
         time: {}
     quiet_end:
-      name: Ruhezeit bis
+      name: Ruhezeit bis / Quiet hours until
       default: "07:00:00"
       selector:
         time: {}
+    more:
+      name: Weitere Aktionen (optional) / More actions (optional)
+      icon: mdi:playlist-plus
+      collapsed: true
+      input:
+        extra_actions:
+          name: Weitere Aktionen / More actions
+          description: >-
+            Laufen nach der Push-Nachricht mit dem fertigen Text. Nutzbar sind
+            `{{ title }}`, `{{ message }}` und `{{ url }}` (Link zum Artikel).
+            Beispiel Telegram: Aktion `telegram_bot.send_message` mit
+            `message: "{{ title }}: {{ message }}"`. /
+            Run after the push notification with the finished text. Available
+            are `{{ title }}`, `{{ message }}` and `{{ url }}` (link to the
+            article). Example Telegram: action `telegram_bot.send_message` with
+            `message: "{{ title }}: {{ message }}"`.
+          default: []
+          selector:
+            action: {}
 
 # Several alerts can arrive in one update: send each of them.
 mode: queued
@@ -51,6 +96,7 @@ triggers:
 
 variables:
   quiet_enabled: !input quiet_enabled
+  lang: !input language
   # After a restart or an outage the entity shows its last event again: only a
   # change from a real previous state is a new event.
   is_new: >-
@@ -59,9 +105,12 @@ variables:
        and trigger.to_state.state not in ['unavailable', 'unknown']
        and trigger.to_state.state != trigger.from_state.state
        and trigger.to_state.attributes.get('event_type') == 'breaking_news' }}
-  title: "{{ trigger.to_state.attributes.get('title', '') if trigger.to_state else '' }}"
+  headline: "{{ trigger.to_state.attributes.get('title', '') if trigger.to_state else '' }}"
   summary: "{{ trigger.to_state.attributes.get('summary') or '' if trigger.to_state else '' }}"
   url: "{{ trigger.to_state.attributes.get('url') or '' if trigger.to_state else '' }}"
+  # The finished texts, also for the extra actions.
+  title: "{{ 'Breaking news' if lang == 'en' else 'Eilmeldung' }}"
+  message: "{{ headline }}{{ '\n' ~ summary if summary else '' }}"
 
 conditions:
   - condition: template
@@ -81,9 +130,11 @@ actions:
     domain: mobile_app
     type: notify
     device_id: !input notify_device
-    title: Eilmeldung
-    message: "{{ title }}{{ '\n' ~ summary if summary else '' }}"
+    title: "{{ title }}"
+    message: "{{ message }}"
     data:
       group: eilwacht
       url: "{{ url }}"
       clickAction: "{{ url }}"
+  - alias: Weitere Aktionen
+    sequence: !input extra_actions

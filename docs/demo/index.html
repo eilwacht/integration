@@ -341,7 +341,7 @@
           countOf: (w) => `Meldungen (24 h) – Eilwacht ${w}`,
           notifications: "Benachrichtigungen",
           noPush: "Noch keine Push-Nachricht in den letzten 24 Stunden.",
-          pushNote: "Texte wie in den Vorlagen der Blueprints; nachts (22–7 Uhr) schweigen sie.",
+          pushNote: "Texte wie in den Vorlagen der Blueprints (Sprache der Nachricht: Deutsch); nachts (22–7 Uhr) schweigen sie. Über „Weitere Aktionen“ geht die Meldung auf Wunsch auch an Telegram & Co.",
           blueprints: {
             eilmeldung_push: "Eilmeldung aufs Handy",
             eilmeldung_ansage: "Eilmeldung ansagen",
@@ -431,7 +431,7 @@
           countOf: (w) => `Items (24 h) – Eilwacht ${w}`,
           notifications: "Notifications",
           noPush: "No push notification in the last 24 hours.",
-          pushNote: "Texts as in the blueprints' templates (German); at night (22–7) they stay silent.",
+          pushNote: "Texts as in the blueprints (language of the message: English; the news itself stays German, as tagesschau.de writes it); at night (22–7) they stay silent. Through “More actions” an alert can also go to Telegram and the like.",
           blueprints: {
             eilmeldung_push: "Breaking news to the phone",
             eilmeldung_ansage: "Announce breaking news",
@@ -840,7 +840,7 @@
           ? view.pushes
               .map(
                 (p) => `
-              <div class="push"><div class="app">${icon("bell-ring-outline")}<span>Home Assistant · ${escapeHtml(p.device)}</span><span>${relative(p.at)}</span></div><b>${escapeHtml(p.title)}</b>${escapeHtml(p.message)}</div>`,
+              <div class="push"><div class="app">${icon("bell-ring-outline")}<span>Home Assistant · ${escapeHtml(p.device)}</span><span>${relative(p.at)}</span></div><b>${escapeHtml(state.lang === "en" ? (p.title_en ?? p.title) : p.title)}</b>${escapeHtml(p.message)}</div>`,
               )
               .join("")
           : `<div class="push">${tx.noPush}</div>`;

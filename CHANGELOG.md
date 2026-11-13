@@ -2,6 +2,9 @@
 
 ## Unveröffentlicht
 
+### Geändert
+
+- **Blueprints zweisprachig, mit weiteren Aktionen (z. B. Telegram) und dem Namen der Anlage im Titel.** Bestehende Automationen laufen unverändert; die Neuerungen gibt es nach einem erneuten Import des Blueprints. Bei den Push-Blueprints wählst du die Sprache des Titels („Eilmeldung“ oder „Breaking news“), die Meldung selbst bleibt, wie die Tagesschau sie schreibt; „Neue Meldung eines Nachrichtenwächters“ nennt den Wächter im Titel (z. B. „Eilwacht · Stuttgart: Verkehr“). Die Ansage ist nur zweisprachig beschriftet. Wie man Telegram anschließt, steht in der README unter „Fertige Blueprints“.
 - **Übersicht beim Ändern eines Wächters:** Überschrift „Eingerichtet“ wie in den anderen Wachten (bisher „So ist dieser Wächter eingerichtet“). Inhalt unverändert.
 
 ## 0.3.2 – 2026-11-08

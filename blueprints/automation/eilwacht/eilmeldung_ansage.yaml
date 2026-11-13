@@ -1,8 +1,13 @@
 blueprint:
-  name: Eilwacht – Eilmeldung ansagen
+  name: Eilwacht – Eilmeldung ansagen / Announce breaking news
   description: >-
     Liest jede neue Eilmeldung der Tagesschau über Lautsprecher vor –
     auf Wunsch nur, wenn jemand zu Hause ist, und nie während der Ruhezeit.
+    ---
+    Reads every new breaking news alert of the Tagesschau aloud on speakers –
+    optionally only when someone is at home, and never during the quiet hours.
+    The headline is German, as tagesschau.de publishes it: best with a German
+    voice.
   domain: automation
   author: Eilwacht
   homeassistant:
@@ -10,51 +15,59 @@ blueprint:
   source_url: https://github.com/eilwacht/integration/blob/main/blueprints/automation/eilwacht/eilmeldung_ansage.yaml
   input:
     event_entity:
-      name: Eilmeldung
-      description: Die Entität „Eilmeldung“ des Geräts Eilwacht.
+      name: Eilmeldung / Breaking news
+      description: >-
+        Die Entität „Eilmeldung“ des Geräts Eilwacht. /
+        The entity “Breaking news” of the device Eilwacht.
       selector:
         entity:
           filter:
             integration: eilwacht
             domain: event
     tts_entity:
-      name: Sprachausgabe
-      description: Der Text-to-Speech-Dienst, z. B. Google Translate oder Piper.
+      name: Sprachausgabe / Text-to-speech
+      description: >-
+        Der Text-to-Speech-Dienst, z. B. Google Translate oder Piper. /
+        The text-to-speech service, e.g. Google Translate or Piper.
       selector:
         entity:
           filter:
             domain: tts
     media_players:
-      name: Lautsprecher
+      name: Lautsprecher / Speakers
       selector:
         entity:
           multiple: true
           filter:
             domain: media_player
     intro:
-      name: Einleitung
-      description: Wird vor die Schlagzeile gesetzt.
+      name: Einleitung / Intro
+      description: >-
+        Wird vor die Schlagzeile gesetzt. /
+        Spoken before the headline.
       default: "Eilmeldung der Tagesschau:"
       selector:
         text: {}
     only_when_home:
-      name: Nur wenn jemand zu Hause ist
-      description: Nach der Zone „Zuhause“ (mindestens eine Person darin).
+      name: Nur wenn jemand zu Hause ist / Only when someone is at home
+      description: >-
+        Nach der Zone „Zuhause“ (mindestens eine Person darin). /
+        By the zone “Home” (at least one person in it).
       default: true
       selector:
         boolean: {}
     quiet_enabled:
-      name: Ruhezeit verwenden
+      name: Ruhezeit verwenden / Use quiet hours
       default: true
       selector:
         boolean: {}
     quiet_start:
-      name: Ruhezeit ab
+      name: Ruhezeit ab / Quiet hours from
       default: "21:30:00"
       selector:
         time: {}
     quiet_end:
-      name: Ruhezeit bis
+      name: Ruhezeit bis / Quiet hours until
       default: "07:30:00"
       selector:
         time: {}
