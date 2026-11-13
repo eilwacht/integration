@@ -6,7 +6,7 @@ from datetime import timedelta
 from typing import Final
 
 DOMAIN: Final = "eilwacht"
-VERSION: Final = "0.3.2"
+VERSION: Final = "0.4.0"
 USER_AGENT: Final = f"Eilwacht/{VERSION} (+https://github.com/eilwacht/integration)"
 ATTRIBUTION: Final = "Quelle: tagesschau.de"
 
