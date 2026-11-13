@@ -5,16 +5,17 @@ blueprint:
   description: >-
     Schickt jede neue Meldung eines Eilwacht-Nachrichtenwächters (Bundesland,
     Stichworte) als Push-Nachricht an ein Handy mit der Home-Assistant-App.
-    Der Titel nennt den Wächter und die Dachzeile oder das gefundene Stichwort.
-    Ein Tippen öffnet den Artikel. Während der Ruhezeit kommt keine Nachricht.
-    Unter „Weitere Aktionen“ lässt sich die Meldung zusätzlich weiterschicken,
-    etwa per Telegram.
+    Der Titel nennt die Dachzeile oder das gefundene Stichwort, bei mehreren
+    Wächtern auch den Wächter. Ein Tippen öffnet den Artikel. Während der
+    Ruhezeit kommt keine Nachricht. Unter „Weitere Aktionen“ lässt sich die
+    Meldung zusätzlich oder statt aufs Handy weiterschicken, etwa per Telegram.
     ---
     Sends every new item of an Eilwacht news watch (federal state, keywords)
     as a push notification to a phone with the Home Assistant app. The title
-    names the watch and the topline or the keyword found. A tap opens the
-    article. Nothing is sent during the quiet hours. Under “More actions” the
-    item can also be passed on, for example via Telegram. The news itself is
+    names the topline or the keyword found, and the watch if there is more
+    than one. A tap opens the article. Nothing is sent during the quiet hours.
+    Under “More actions” the item can also be passed on, with or without the
+    phone, for example via Telegram. The news itself is
     in German, as tagesschau.de publishes it.
   domain: automation
   author: Eilwacht
@@ -33,10 +34,13 @@ blueprint:
             integration: eilwacht
             domain: event
     notify_device:
-      name: Handy / Phone
+      name: Handy (optional) / Phone (optional)
       description: >-
-        Gerät mit der offiziellen Home-Assistant-App. /
-        Device with the official Home Assistant app.
+        Gerät mit der offiziellen Home-Assistant-App. Leer lassen, wenn die
+        Meldung nur über „Weitere Aktionen“ gehen soll. /
+        Device with the official Home Assistant app. Leave empty to pass the
+        news on only via “More actions”.
+      default: ""
       selector:
         device:
           filter:
@@ -100,8 +104,14 @@ triggers:
     entity_id: !input event_entity
 
 variables:
+  notify_device: !input notify_device
   quiet_enabled: !input quiet_enabled
   lang: !input language
+  # The phone's notify action: mobile_app names it after the registered device.
+  # No phone chosen (or the device is gone): nothing is sent to a phone.
+  phone_action: >-
+    {%- set d = device_attr(notify_device, 'name') if notify_device else none -%}
+    {{ 'notify.mobile_app_' ~ (d | slugify) if d else '' }}
   # After a restart or an outage the entity shows its last event again: only a
   # change from a real previous state is a new event.
   is_new: >-
@@ -115,10 +125,18 @@ variables:
     {%- set a = trigger.to_state.attributes if trigger.to_state else {} %}
     {{- a.get('topline') or ((a.get('keywords') or []) | join(', '))
         or ('New item' if lang == 'en' else 'Neue Meldung') -}}
-  # The watch: its device is called "Eilwacht <name>" (or what the user renamed
-  # it to). Without a device only "Eilwacht" is shown.
+  # Number of news watches: each has exactly one event entity with the event
+  # type "news" (the breaking news device has "breaking_news"), on a device of
+  # its own. Counted by device, so a renamed entity still counts once.
+  watches: >-
+    {{ integration_entities('eilwacht')
+       | select('is_state_attr', 'event_types', ['news'])
+       | map('device_id') | reject('none') | unique | list | count }}
+  # The watch, only if there is more than one: its device is called
+  # "Eilwacht <name>" (or what the user renamed it to). Otherwise, or without
+  # a device, only "Eilwacht" is shown.
   watch: >-
-    {%- set d = device_id(trigger.entity_id) -%}
+    {%- set d = device_id(trigger.entity_id) if watches | int(0) > 1 else none -%}
     {%- set n = (device_attr(d, 'name_by_user') or device_attr(d, 'name') or '') if d else '' -%}
     {{- n[9:] if n.startswith('Eilwacht ') else n -}}
   url: "{{ trigger.to_state.attributes.get('url') or '' if trigger.to_state else '' }}"
@@ -143,14 +161,17 @@ conditions:
 
 actions:
   - alias: Push-Nachricht an das Handy
-    domain: mobile_app
-    type: notify
-    device_id: !input notify_device
-    title: "{{ title }}"
-    message: "{{ message }}"
-    data:
-      group: eilwacht
-      url: "{{ url }}"
-      clickAction: "{{ url }}"
+    if:
+      - condition: template
+        value_template: "{{ phone_action != '' }}"
+    then:
+      - action: "{{ phone_action }}"
+        data:
+          title: "{{ title }}"
+          message: "{{ message }}"
+          data:
+            group: eilwacht
+            url: "{{ url }}"
+            clickAction: "{{ url }}"
   - alias: Weitere Aktionen
     sequence: !input extra_actions

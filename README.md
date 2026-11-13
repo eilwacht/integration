@@ -153,9 +153,9 @@ Ohne YAML: Blueprint importieren, Entität und Handy auswählen, fertig.
 | --- | --- | --- |
 | **Eilmeldung aufs Handy** | Push-Nachricht bei jeder neuen Eilmeldung; ein Tippen öffnet den Artikel. Ruhezeit (Standard 22–7 Uhr) | [![Blueprint importieren](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Feilwacht%2Fintegration%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Feilwacht%2Feilmeldung_push.yaml) |
 | **Eilmeldung ansagen** | liest die Schlagzeile über Lautsprecher vor, auf Wunsch nur wenn jemand zu Hause ist. Ruhezeit (Standard 21:30–7:30 Uhr) | [![Blueprint importieren](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Feilwacht%2Fintegration%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Feilwacht%2Feilmeldung_ansage.yaml) |
-| **Neue Meldung eines Nachrichtenwächters aufs Handy** | Push-Nachricht bei jeder neuen Meldung eines Wächters, mit dem Namen des Wächters und Dachzeile oder gefundenem Stichwort als Titel (z. B. „Eilwacht · Stuttgart: Verkehr“). Ruhezeit (Standard 22–7 Uhr) | [![Blueprint importieren](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Feilwacht%2Fintegration%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Feilwacht%2Fneue_meldung_push.yaml) |
+| **Neue Meldung eines Nachrichtenwächters aufs Handy** | Push-Nachricht bei jeder neuen Meldung eines Wächters, mit Dachzeile oder gefundenem Stichwort als Titel (z. B. „Eilwacht: Verkehr“); hast du mehrere Wächter, steht auch der Wächter darin („Eilwacht · Stuttgart: Verkehr“). Ruhezeit (Standard 22–7 Uhr) | [![Blueprint importieren](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Feilwacht%2Fintegration%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Feilwacht%2Fneue_meldung_push.yaml) |
 
-Die Push-Nachrichten gehen an ein Handy mit der offiziellen Home-Assistant-App. Die Blueprints sind deutsch und englisch beschriftet. Unter *Sprache der Nachricht* wählst du, ob der Titel deutsch („Eilmeldung“) oder englisch („Breaking news“) ist; die Meldung selbst kommt so, wie die Tagesschau sie schreibt.
+Die Push-Nachrichten gehen an ein Handy mit der offiziellen Home-Assistant-App. Das Handy ist optional: Lässt du es leer, geht die Meldung nur über *Weitere Aktionen* hinaus, etwa an Telegram. Die Blueprints sind deutsch und englisch beschriftet. Unter *Sprache der Nachricht* wählst du, ob der Titel deutsch („Eilmeldung“) oder englisch („Breaking news“) ist; die Meldung selbst kommt so, wie die Tagesschau sie schreibt.
 
 **Auch an Telegram & Co.:** Im eingeklappten Abschnitt *Weitere Aktionen* kannst du die Meldung zusätzlich weiterschicken. Dort stehen `{{ title }}`, `{{ message }}` und `{{ url }}` (Link zum Artikel) bereit, zum Beispiel:
 
@@ -165,7 +165,7 @@ data:
   message: "{{ title }}: {{ message }} {{ url }}"
 ```
 
-Du hast einen Blueprint schon früher importiert? Deine Automationen laufen unverändert weiter. Sprache, *Weitere Aktionen* und den Wächternamen im Titel bekommst du, wenn du den Blueprint erneut importierst (*Einstellungen → Automationen & Szenen → Blueprints*, dort im ⋮-Menü des Blueprints).
+Du hast einen Blueprint schon früher importiert? Deine Automationen laufen unverändert weiter. Sprache, *Weitere Aktionen*, das optionale Handy und den Wächternamen im Titel (bei mehreren Wächtern) bekommst du, wenn du den Blueprint erneut importierst (*Einstellungen → Automationen & Szenen → Blueprints*, dort im ⋮-Menü des Blueprints).
 
 ### Licht kurz rot färben bei einer Eilmeldung
 

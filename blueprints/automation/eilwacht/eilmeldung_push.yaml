@@ -4,12 +4,13 @@ blueprint:
     Schickt jede neue Eilmeldung der Tagesschau als Push-Nachricht an ein Handy
     mit der Home-Assistant-App. Ein Tippen öffnet den Artikel. Während der
     Ruhezeit kommt keine Nachricht. Unter „Weitere Aktionen“ lässt sich die
-    Meldung zusätzlich weiterschicken, etwa per Telegram.
+    Meldung zusätzlich oder statt aufs Handy weiterschicken, etwa per Telegram.
     ---
     Sends every new breaking news alert of the Tagesschau as a push
     notification to a phone with the Home Assistant app. A tap opens the
     article. Nothing is sent during the quiet hours. Under “More actions” the
-    alert can also be passed on, for example via Telegram. The news itself is
+    alert can also be passed on, with or without the phone, for example via
+    Telegram. The news itself is
     in German, as tagesschau.de publishes it.
   domain: automation
   author: Eilwacht
@@ -28,10 +29,13 @@ blueprint:
             integration: eilwacht
             domain: event
     notify_device:
-      name: Handy / Phone
+      name: Handy (optional) / Phone (optional)
       description: >-
-        Gerät mit der offiziellen Home-Assistant-App. /
-        Device with the official Home Assistant app.
+        Gerät mit der offiziellen Home-Assistant-App. Leer lassen, wenn die
+        Meldung nur über „Weitere Aktionen“ gehen soll. /
+        Device with the official Home Assistant app. Leave empty to pass the
+        news on only via “More actions”.
+      default: ""
       selector:
         device:
           filter:
@@ -95,8 +99,14 @@ triggers:
     entity_id: !input event_entity
 
 variables:
+  notify_device: !input notify_device
   quiet_enabled: !input quiet_enabled
   lang: !input language
+  # The phone's notify action: mobile_app names it after the registered device.
+  # No phone chosen (or the device is gone): nothing is sent to a phone.
+  phone_action: >-
+    {%- set d = device_attr(notify_device, 'name') if notify_device else none -%}
+    {{ 'notify.mobile_app_' ~ (d | slugify) if d else '' }}
   # After a restart or an outage the entity shows its last event again: only a
   # change from a real previous state is a new event.
   is_new: >-
@@ -127,14 +137,17 @@ conditions:
 
 actions:
   - alias: Push-Nachricht an das Handy
-    domain: mobile_app
-    type: notify
-    device_id: !input notify_device
-    title: "{{ title }}"
-    message: "{{ message }}"
-    data:
-      group: eilwacht
-      url: "{{ url }}"
-      clickAction: "{{ url }}"
+    if:
+      - condition: template
+        value_template: "{{ phone_action != '' }}"
+    then:
+      - action: "{{ phone_action }}"
+        data:
+          title: "{{ title }}"
+          message: "{{ message }}"
+          data:
+            group: eilwacht
+            url: "{{ url }}"
+            clickAction: "{{ url }}"
   - alias: Weitere Aktionen
     sequence: !input extra_actions

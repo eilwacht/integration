@@ -330,7 +330,13 @@ def quiet(moment: datetime, window: tuple[time, time]) -> bool:
 
 
 def watch_push_title(watch: str, heading: str) -> str:
-    """Title of neue_meldung_push.yaml: the watch, then topline or keywords."""
+    """Title of neue_meldung_push.yaml: the watch, then topline or keywords.
+
+    The blueprint names the watch only if there is more than one (the demo
+    has two).
+    """
+    if len(WATCHES) < 2:
+        return f"Eilwacht: {heading}"
     if heading.lower() == watch.lower():
         return f"Eilwacht · {watch}"
     return f"Eilwacht · {watch}: {heading}"
