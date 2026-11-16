@@ -27,7 +27,8 @@ Eilwacht bringt Eilmeldungen und Regionalnachrichten der Tagesschau in dein Home
 - **Eilmeldungen** der Tagesschau als Event, als Binärsensor „Eilmeldung aktiv“ und als Sensor „Letzte Eilmeldung“ – ohne Einrichtung, sofort nach dem Hinzufügen.
 - **Nachrichtenwächter** für ein oder mehrere Bundesländer, auf Wunsch auch bundesweit: Event bei jeder neuen Meldung, letzte Meldung, Zahl der Meldungen der letzten 24 Stunden.
 - **Stichwortwächter:** nur Meldungen mit bestimmten Wörtern, mit Platzhaltern und Ausschlüssen.
-- **Fertige Blueprints** für Push-Nachricht und Ansage, mit Ruhezeiten.
+- **Fertige Blueprints** für Push-Nachricht und Ansage, mit Ruhezeiten, auf Wunsch auch an Telegram & Co. ([mehr](#fertige-blueprints)).
+- **Die letzten Meldungen als Liste** fürs Dashboard, mit Link, Zeit und kleinem Vorschaubild ([Beispiel](#die-letzten-meldungen-als-liste)).
 - Fällt eine Quelle aus, erscheint nach einer Weile ein Hinweis unter *Reparaturen*.
 - **Schont SD-Karten:** Eilwacht schreibt nur, wenn sich etwas ändert – wichtig für Home Assistant auf einem Raspberry Pi.
 
