@@ -5,6 +5,7 @@
 ### Geändert
 
 - **README:** Hinweis aufs fehlende Icon im alten HACS-Dashboard entfernt (seit Home Assistant 2026.11 gibt es den Marketplace).
+- **README:** Fragen, Ideen und Erfahrungen gern in den neuen GitHub-Discussions; Fehler weiter als Issue.
 
 ## 0.4.0 – 2026-11-13
 
